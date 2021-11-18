@@ -135,4 +135,7 @@
   <metadata name="timerChats.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>683, 20</value>
   </metadata>
+  <metadata name="timerFastUpdate.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>793, 20</value>
+  </metadata>
 </root>

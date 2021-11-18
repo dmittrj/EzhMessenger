@@ -166,18 +166,35 @@ namespace WindowsFormsClient
         {
             if (SendButt.Text == "Прикрепить")
             {
-
+                MessageBox.Show("Пока нельзя прикреплять :(",
+                "Ой",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error,
+                MessageBoxDefaultButton.Button1);
             } 
             else
             {
                 string UserName = YourName;
                 string Message = MessageTB.Text;
+                if (chatsLB.SelectedItem == null)
+                {
+                    MessageBox.Show("Вы не выбрали чат для отправки. Выберите его в левом меню",
+                        "Ёжесообщение хотело уйти без ёжечата",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    return;
+                }
                 if ((UserName.Length > 0) && (Message.Length > 0))
                 {
                     CourseMessenger.Message msg = new CourseMessenger.Message(UserName, Message, DateTime.Now);
                     API.SendMessageRestSharp(msg, chatsLB.SelectedIndex);
                     MessageTB.Text = "";
                 }
+                label_notify1.Visible = false;
+                label_notify2.Visible = false;
+                label_notify3.Visible = false;
+                label_notify4.Visible = false;
+                label_notifymore.Visible = false;
             }
         }
 
@@ -512,6 +529,7 @@ namespace WindowsFormsClient
             {
                 Members_LB.Items.Add(myChats[chatsLB.SelectedIndex].ChatMmbrs[i].Nick);
             }
+            PanelChatMembers.Location = new Point(PanelChatMembers.Location.X, chatsLB.Location.Y + chatsLB.SelectedIndex * chatsLB.ItemHeight);
             PanelChatMembers.Visible = true;
         }
 
@@ -523,6 +541,7 @@ namespace WindowsFormsClient
             {
                 chatsLB.Items.Clear();
                 myChats.Clear();
+                MessageID.Clear();
                 for (int i = 0; i < tmp.Count; i++)
                 {
                     Chat tmpChat = await API.GetAllAboutChat(tmp[i]);
@@ -572,6 +591,17 @@ namespace WindowsFormsClient
         private void chatsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void CloseMembersButt_Click(object sender, EventArgs e)
+        {
+            PanelChatMembers.Visible = false;
+        }
+
+        private void timerFastUpdate_Tick(object sender, EventArgs e)
+        {
+            timer1.Interval = 1000;
+            timerFastUpdate.Stop();
         }
     }
 

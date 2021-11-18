@@ -119,6 +119,8 @@ namespace WindowsFormsClient
             this.статьМодераторомToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.статьУчастникомToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timerChats = new System.Windows.Forms.Timer(this.components);
+            this.CloseMembersButt = new System.Windows.Forms.Label();
+            this.timerFastUpdate = new System.Windows.Forms.Timer(this.components);
             this.ChatListCM.SuspendLayout();
             this.panel_messages.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FixScrollBar)).BeginInit();
@@ -906,8 +908,11 @@ namespace WindowsFormsClient
             // 
             // PanelChatMembers
             // 
+            this.PanelChatMembers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
+            this.PanelChatMembers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PanelChatMembers.Controls.Add(this.CloseMembersButt);
             this.PanelChatMembers.Controls.Add(this.Members_LB);
-            this.PanelChatMembers.Location = new System.Drawing.Point(241, 63);
+            this.PanelChatMembers.Location = new System.Drawing.Point(241, 62);
             this.PanelChatMembers.Name = "PanelChatMembers";
             this.PanelChatMembers.Size = new System.Drawing.Size(177, 197);
             this.PanelChatMembers.TabIndex = 20;
@@ -915,7 +920,7 @@ namespace WindowsFormsClient
             // 
             // Members_LB
             // 
-            this.Members_LB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
+            this.Members_LB.BackColor = System.Drawing.Color.Black;
             this.Members_LB.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Members_LB.ContextMenuStrip = this.MembList_CM;
             this.Members_LB.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -1063,6 +1068,25 @@ namespace WindowsFormsClient
             this.timerChats.Interval = 2500;
             this.timerChats.Tick += new System.EventHandler(this.timerChats_Tick);
             // 
+            // CloseMembersButt
+            // 
+            this.CloseMembersButt.BackColor = System.Drawing.Color.Transparent;
+            this.CloseMembersButt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CloseMembersButt.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CloseMembersButt.ForeColor = System.Drawing.Color.White;
+            this.CloseMembersButt.Location = new System.Drawing.Point(47, 4);
+            this.CloseMembersButt.Name = "CloseMembersButt";
+            this.CloseMembersButt.Size = new System.Drawing.Size(125, 19);
+            this.CloseMembersButt.TabIndex = 17;
+            this.CloseMembersButt.Text = "Закрыть";
+            this.CloseMembersButt.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.CloseMembersButt.Click += new System.EventHandler(this.CloseMembersButt_Click);
+            // 
+            // timerFastUpdate
+            // 
+            this.timerFastUpdate.Interval = 5000;
+            this.timerFastUpdate.Tick += new System.EventHandler(this.timerFastUpdate_Tick);
+            // 
             // FormMessanger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1086,7 +1110,7 @@ namespace WindowsFormsClient
             this.Controls.Add(this.panel_emptyChat);
             this.Controls.Add(this.panel_messages);
             this.Name = "FormMessanger";
-            this.Text = "ЁЖЕмессенджер";
+            this.Text = "ЁжМессенджер";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ChatListCM.ResumeLayout(false);
             this.panel_messages.ResumeLayout(false);
@@ -1204,6 +1228,8 @@ namespace WindowsFormsClient
         private System.Windows.Forms.ToolStripMenuItem статьМодераторомToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem статьУчастникомToolStripMenuItem;
         private System.Windows.Forms.Timer timerChats;
+        private System.Windows.Forms.Label CloseMembersButt;
+        private System.Windows.Forms.Timer timerFastUpdate;
     }
 }
 
