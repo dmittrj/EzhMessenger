@@ -60,7 +60,7 @@ namespace CourseMessenger
         {
             string ServiceUrl = "http://localhost:5000";
             var client = new RestClient(ServiceUrl);
-            var request = new RestRequest("/api/Messanger/chats/" + userName, Method.GET);
+            var request = new RestRequest("/api/Messanger/get/chats/" + userName, Method.GET);
             IRestResponse<List<int>> Response = client.Execute<List<int>>(request);
             string ResponseContent = Response.Content;
             ResponseContent = ResponseContent.Substring(1, ResponseContent.Length - 2);
@@ -92,11 +92,12 @@ namespace CourseMessenger
         //    return deserializedMsg;
         //}
 
-        public bool SendMessageRestSharp(Message msg)
+        //Отправить сообщение
+        public bool SendMessageRestSharp(Message msg, int idC)
         {
             string ServiceUrl = "http://localhost:5000";
             var client = new RestClient(ServiceUrl);
-            var request = new RestRequest("/api/Messanger", Method.POST);
+            var request = new RestRequest("/api/Messanger/post/send/" + idC.ToString(), Method.POST);
 
             string jsonToSend = JsonConvert.SerializeObject(msg);
             request.AddParameter("application/json; charset=utf-8", jsonToSend, ParameterType.RequestBody);
@@ -123,12 +124,46 @@ namespace CourseMessenger
             return ExitIsTrue;
         }
 
+        //Создать новый чат
+        public bool CreateNewChat(Chat chat)
+        {
+            string ServiceUrl = "http://localhost:5000";
+            var client = new RestClient(ServiceUrl);
+            var request = new RestRequest("/api/Messanger/post/createchat", Method.POST);
 
+            string jsonToSend = JsonConvert.SerializeObject(chat);
+            request.AddParameter("application/json; charset=utf-8", jsonToSend, ParameterType.RequestBody);
+            request.RequestFormat = DataFormat.Json;
+            bool ExitIsTrue = false;
+            try
+            {
+                client.ExecuteAsync(request, response =>
+                {
+                    if (response.StatusCode == HttpStatusCode.OK)
+                    {
+                        ExitIsTrue = true;
+                    }
+                    else
+                    {
+                        ExitIsTrue = false;
+                    }
+                });
+            }
+            catch (Exception error)
+            {
+                Console.WriteLine(error);
+            }
+            return ExitIsTrue;
+        }
+
+
+
+        //Регистрация
         public async Task<string> SendForSignUp(LogPass lgp)
         {
             string ServiceUrl = "http://localhost:5000";
             var client = new RestClient(ServiceUrl);
-            var request = new RestRequest("/api/Messanger/sign", Method.POST);
+            var request = new RestRequest("/api/Messanger/post/sign", Method.POST);
             //var resetEvent = new ManualResetEvent(false);
 
             string jsonToSend = JsonConvert.SerializeObject(lgp);
@@ -150,11 +185,12 @@ namespace CourseMessenger
             //return res;
         }
 
+        //Вход
         public async Task<string> SendForLogIn(LogPass lgp)
         {
             string ServiceUrl = "http://localhost:5000";
             var client = new RestClient(ServiceUrl);
-            var request = new RestRequest("/api/Messanger/log", Method.POST);
+            var request = new RestRequest("/api/Messanger/post/log", Method.POST);
             //var resetEvent = new ManualResetEvent(false);
 
             string jsonToSend = JsonConvert.SerializeObject(lgp);
@@ -175,9 +211,23 @@ namespace CourseMessenger
             }
             //return res;
         }
+        
+        
         public async Task<Message> GetMessageHTTPAsync(int MessageId)
         {
             var responseString = await client.GetStringAsync("http://localhost:5000/api/Messanger/" + MessageId.ToString());
+            if (responseString != null)
+            {
+                Message deserializedMsg = JsonConvert.DeserializeObject<Message>(responseString);
+                return deserializedMsg;
+            }
+            return null;
+        }
+
+        //Запросить сообщение из чата
+        public async Task<Message> GetMessageChatHTTPAsync(int ChatId, int MessageId)
+        {
+            var responseString = await client.GetStringAsync("http://localhost:5000/api/Messanger/get/message/" + ChatId.ToString() + "/" + MessageId.ToString());
             if (responseString != null)
             {
                 Message deserializedMsg = JsonConvert.DeserializeObject<Message>(responseString);
@@ -192,12 +242,10 @@ namespace CourseMessenger
 
 
 
-
-
-
+        //Получить чат по id
         public async Task<Chat> GetAllAboutChat(int id)
         {
-            var responseString = await client.GetStringAsync("http://localhost:5000/api/Messanger/chat/" + id.ToString());
+            var responseString = await client.GetStringAsync("http://localhost:5000/api/Messanger/get/chat/" + id.ToString());
             if (responseString != null)
             {
                 Chat deserializedMsg = JsonConvert.DeserializeObject<Chat>(responseString);

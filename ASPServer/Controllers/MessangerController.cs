@@ -14,25 +14,42 @@ namespace ASPServer.Controllers
     [ApiController]
     public class MessangerController : ControllerBase
     {
+        static int lastChat = 1;
         static List<Member> flins = new List<Member>() { new Member("TheMainHedgehog", 2, true) };
         static List<Chat> ListOfChats = new List<Chat>() { new Chat(0, "Общий ёжечат", flins, false) };
         static List<Message> ListOfMessages = new List<Message>();
         static List<User> ListOfUsers = new List<User>();
         //static List<string> ListOfPasswords = new List<string>();
+
         // GET api/<MessangerController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
+        //[HttpGet("{id}")]
+        //public string Get(int id)
+        //{
+        //    string OutputString = "Not found";
+        //    if ((id < ListOfMessages.Count) && (id >= 0))
+        //    {
+        //        OutputString = JsonConvert.SerializeObject(ListOfMessages[id]);
+        //    }
+        //    Console.WriteLine(String.Format("Запрошено сообщение № {0} : {1}", id, OutputString));
+        //    return OutputString;
+        //}
+
+
+        //Запрошено сообщение из чата
+        [HttpGet("get/message/{idC}/{idM}")]
+        public string GetMessage(int idC, int idM)
         {
             string OutputString = "Not found";
-            if ((id < ListOfMessages.Count) && (id >= 0))
+            if ((idM < ListOfChats[idC].ChatMsgs.Count) && (idM >= 0))
             {
-                OutputString = JsonConvert.SerializeObject(ListOfMessages[id]);
+                OutputString = JsonConvert.SerializeObject(ListOfChats[idC].ChatMsgs[idM]);
             }
-            Console.WriteLine(String.Format("Запрошено сообщение № {0} : {1}", id, OutputString));
+            Console.WriteLine(String.Format("Запрошено сообщение № {1} из чата № {0} : {2}", idC, idM, OutputString));
             return OutputString;
         }
 
-        [HttpGet("chats/{nick}")]
+        //Запрошены чаты
+        [HttpGet("get/chats/{nick}")]
         public string CheckSign(string nick)
         {
             Console.WriteLine("Пользователь " + nick + " запросил доступ к своим чатам");
@@ -49,7 +66,8 @@ namespace ASPServer.Controllers
             return OutputString;
         }
 
-        [HttpGet("chat/{id}")]
+        //Получить чат по id
+        [HttpGet("get/chat/{id}")]
         public string GetChatInfo(int id)
         {
             string OutputString;
@@ -60,7 +78,8 @@ namespace ASPServer.Controllers
 
         // POST api/<MessangerController>
 
-        [HttpPost("sign")]
+        //Регистрация
+        [HttpPost("post/sign")]
         public string SendSigningUp([FromBody] LogPass lgp)
         {
             if (lgp == null)
@@ -88,7 +107,9 @@ namespace ASPServer.Controllers
             return "ok";
         }
 
-        [HttpPost("log")]
+
+        //Вход
+        [HttpPost("post/log")]
         public string SendLoggingIn([FromBody] LogPass lgp)
         {
             if (lgp == null)
@@ -118,16 +139,44 @@ namespace ASPServer.Controllers
             return "ErrLog";
         }
 
+        //Создание чата
+        [HttpPost("post/createchat")]
+        public IActionResult CreateChat([FromBody] Chat chat)
+        {
+            if (chat == null)
+            {
+                return BadRequest();
+            }
+            chat.IdChat = lastChat++;
+            ListOfChats.Add(chat);
+            Console.WriteLine(String.Format("Добавлен новый чат №{0}", lastChat - 1));
+            int numberOfMembers = chat.ChatMmbrs.Count;
+            for (int i = 0; i < numberOfMembers; i++)
+            {
+                for (int j = 0; j < ListOfUsers.Count; j++)
+                {
+                    if (ListOfUsers[j].CompareName(chat.ChatMmbrs[i].Nick))
+                    {
+                        Console.WriteLine("Пользователя " + chat.ChatMmbrs[i].Nick + " присоединили к новому чату");
+                        ListOfUsers[j].Chats.Add(chat.IdChat);
+                        break;
+                    }
+                }
+            }
+            return new OkResult();
+        }
 
-        [HttpPost]
-        public IActionResult SendMessage([FromBody] Message msg)
+
+        //Получить отправленное сообщение
+        [HttpPost("post/send/{idChat}")]
+        public IActionResult SendMessage(int idChat, [FromBody] Message msg)
         {
             if (msg == null)
             {
                 return BadRequest();
             }
-            ListOfMessages.Add(msg);
-            Console.WriteLine(String.Format("Всего сообщений: {0} Посланное сообщение: {1}", ListOfMessages.Count, msg));
+            ListOfChats[idChat].ChatMsgs.Add(msg);
+            Console.WriteLine(String.Format("Всего сообщений в чате № {2}: {0} Посланное сообщение: {1}", ListOfChats[idChat].ChatMsgs.Count, msg, idChat));
             return new OkResult();
         }
 

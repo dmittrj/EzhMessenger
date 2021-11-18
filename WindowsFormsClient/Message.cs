@@ -13,6 +13,7 @@ namespace CourseMessenger
         public string UserName { get; set; }
         public string MessageText { get; set; }
         public DateTime TimeStamp { get; set; }
+        public string ClientNotify;
         public Message(string userName, string messageText, DateTime timeStamp)
         {
             UserName = userName;

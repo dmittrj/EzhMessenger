@@ -1,4 +1,5 @@
 ﻿using CourseMessenger;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +17,10 @@ namespace CourseMessenger
 
         public List<Message> ChatMsgs = new List<Message>();
 
-        public List<Member> ChatMmbrs = new List<Member>();
+        public List<Member> ChatMmbrs { get; set; }
         public List<Event> Events = new List<Event>();
         public bool Secret { get; set; }
+        [JsonConstructor]
         public Chat(int idChat, string chatName, List<Member> chatMmbrs, bool secret)
         {
             IdChat = idChat;
@@ -29,6 +31,10 @@ namespace CourseMessenger
             Secret = secret;
         }
 
-        
+        //[JsonConstructor]
+        public Chat()
+        {
+        }
+
     }
 }

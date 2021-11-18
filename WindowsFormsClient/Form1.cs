@@ -15,7 +15,7 @@ namespace WindowsFormsClient
     
     public partial class FormMessanger : Form
     {
-        private static int MessageID = 0;
+        private static List<int> MessageID = new List<int>();
         private static string UserName;
         private static MessangerClientAPI API = new MessangerClientAPI();
         private static bool hl = false;
@@ -44,7 +44,7 @@ namespace WindowsFormsClient
             if ((UserName.Length > 1) && (Message.Length > 1))
             {
                 CourseMessenger.Message msg = new CourseMessenger.Message(UserName, Message, DateTime.Now);
-                API.SendMessageRestSharp(msg); 
+                API.SendMessageRestSharp(msg, chatsLB.SelectedIndex); 
                 Error_label.Visible = true;
             }
         }
@@ -57,29 +57,38 @@ namespace WindowsFormsClient
                 MessageTB.Text = "Введите ёжесообщение...";
                 hl = false;
             }
+            if (chatsLB.SelectedItem == null) return;
             var getMessage = new Func<Task>(async () =>
             {
-                CourseMessenger.Message msg = await API.GetMessageHTTPAsync(MessageID);
+                CourseMessenger.Message msg = await API.GetMessageChatHTTPAsync(myChats[chatsLB.SelectedIndex].IdChat, MessageID[chatsLB.SelectedIndex]);
                 while (msg != null)
                 {
                     //MessagesList.Items.Add(msg);
+                    //CourseMessenger.Message tmpMsg = new CourseMessenger.Message(msg.UserName, msg.MessageText, msg.TimeStamp);
                     abonents.Add(msg.UserName);
                     msgs.Add(msg.MessageText);
                     dates.Add(msg.TimeStamp);
                     if (Regex.IsMatch(msg.MessageText, @"@everyone"))
                     {
-                        sups.Add("@everyone");
-                    } else if (Regex.IsMatch(msg.MessageText, $@"@{YourName}"))
+                        msg.ClientNotify = "@everyone";
+                        //sups.Add("@everyone");
+                    }
+                    else if (Regex.IsMatch(msg.MessageText, $@"@{YourName}"))
                     {
-                        sups.Add($@"@{YourName}");
-                    } else sups.Add("");
-                    MessageID++;
-                    msg = await API.GetMessageHTTPAsync(MessageID);
+                        msg.ClientNotify = $@"@{YourName}";
+                        //sups.Add($@"@{YourName}");
+                    }
+                    else msg.ClientNotify = "";
+                    //sups.Add("");
+                    MessageID[chatsLB.SelectedIndex]++;
+                    myChats[chatsLB.SelectedIndex].ChatMsgs.Add(msg);
+                    msg = await API.GetMessageChatHTTPAsync(myChats[chatsLB.SelectedIndex].IdChat, MessageID[chatsLB.SelectedIndex]);
                 }
             });
             getMessage.Invoke();
 
-            if (MessageID <= 4) FixScrollBar.Visible = false;
+            if (chatsLB.SelectedItem != null)
+            if (MessageID[chatsLB.SelectedIndex] <= 4) FixScrollBar.Visible = false;
             else
             {
                 FixScrollBar.Height = panel_messages.Height / (msgs.Count - 3);
@@ -87,63 +96,64 @@ namespace WindowsFormsClient
                 FixScrollBar.Visible = true;
             }
 
-            if (abonents.Count > 0)
+            if (myChats[chatsLB.SelectedIndex].ChatMsgs.Count > 0)
             {
-                nameMsg_1.Text = abonents[abonents.Count - 1 - shift];
-                textMsg_1.Text = msgs[msgs.Count - 1 - shift];
+                nameMsg_1.Text = myChats[chatsLB.SelectedIndex].ChatMsgs[myChats[chatsLB.SelectedIndex].ChatMsgs.Count - 1 - shift].UserName;
+                textMsg_1.Text = myChats[chatsLB.SelectedIndex].ChatMsgs[myChats[chatsLB.SelectedIndex].ChatMsgs.Count - 1 - shift].MessageText;
                 notifyMsg_1.Location = new Point(nameMsg_1.Location.X + nameMsg_1.Width + 3, nameMsg_1.Location.Y);
-                notifyMsg_1.Text = sups[msgs.Count - 1 - shift];
-                if (dates[dates.Count - 1 - shift].Date == DateTime.Today)
-                timeMsg_1.Text = dates[dates.Count - 1 - shift].ToString("t");
-                else timeMsg_1.Text = dates[dates.Count - 1 - shift].ToString("f");
+                notifyMsg_1.Text = myChats[chatsLB.SelectedIndex].ChatMsgs[myChats[chatsLB.SelectedIndex].ChatMsgs.Count - 1 - shift].ClientNotify;
+                if (myChats[chatsLB.SelectedIndex].ChatMsgs[myChats[chatsLB.SelectedIndex].ChatMsgs.Count - 1 - shift].TimeStamp.Date == DateTime.Today)
+                timeMsg_1.Text = myChats[chatsLB.SelectedIndex].ChatMsgs[myChats[chatsLB.SelectedIndex].ChatMsgs.Count - 1 - shift].TimeStamp.ToString("t");
+                else timeMsg_1.Text = myChats[chatsLB.SelectedIndex].ChatMsgs[myChats[chatsLB.SelectedIndex].ChatMsgs.Count - 1 - shift].TimeStamp.ToString("f");
                 if (nameMsg_1.Text == YourName) nameMsg_1.ForeColor = Color.FromArgb(240, 220, 102);
                 else nameMsg_1.ForeColor = Color.FromArgb(255, 255, 255);
                 panelMsg_1.Visible = true;
             }
             else panelMsg_1.Visible = false;
-            if (abonents.Count > 1)
+            if (myChats[chatsLB.SelectedIndex].ChatMsgs.Count > 1)
             {
-                nameMsg_2.Text = abonents[abonents.Count - 2 - shift];
-                textMsg_2.Text = msgs[msgs.Count - 2 - shift];
+                nameMsg_2.Text = myChats[chatsLB.SelectedIndex].ChatMsgs[myChats[chatsLB.SelectedIndex].ChatMsgs.Count - 2 - shift].UserName;
+                textMsg_2.Text = myChats[chatsLB.SelectedIndex].ChatMsgs[myChats[chatsLB.SelectedIndex].ChatMsgs.Count - 2 - shift].MessageText;
                 notifyMsg_2.Location = new Point(nameMsg_2.Location.X + nameMsg_2.Width + 3, nameMsg_2.Location.Y);
-                notifyMsg_2.Text = sups[msgs.Count - 2 - shift];
-                if (dates[dates.Count - 2 - shift].Date == DateTime.Today)
-                    timeMsg_2.Text = dates[dates.Count - 2 - shift].ToString("t");
-                else timeMsg_2.Text = dates[dates.Count - 2 - shift].ToString("f");
+                notifyMsg_2.Text = myChats[chatsLB.SelectedIndex].ChatMsgs[myChats[chatsLB.SelectedIndex].ChatMsgs.Count - 2 - shift].ClientNotify;
+                if (myChats[chatsLB.SelectedIndex].ChatMsgs[myChats[chatsLB.SelectedIndex].ChatMsgs.Count - 2 - shift].TimeStamp.Date == DateTime.Today)
+                    timeMsg_2.Text = myChats[chatsLB.SelectedIndex].ChatMsgs[myChats[chatsLB.SelectedIndex].ChatMsgs.Count - 2 - shift].TimeStamp.ToString("t");
+                else timeMsg_2.Text = myChats[chatsLB.SelectedIndex].ChatMsgs[myChats[chatsLB.SelectedIndex].ChatMsgs.Count - 2 - shift].TimeStamp.ToString("f");
                 if (nameMsg_2.Text == YourName) nameMsg_2.ForeColor = Color.FromArgb(240, 220, 102);
                 else nameMsg_2.ForeColor = Color.FromArgb(255, 255, 255);
                 panelMsg_2.Visible = true;
             }
             else panelMsg_2.Visible = false;
-            if (abonents.Count > 2)
+            if (myChats[chatsLB.SelectedIndex].ChatMsgs.Count > 2)
             {
-                nameMsg_3.Text = abonents[abonents.Count - 3 - shift];
-                textMsg_3.Text = msgs[msgs.Count - 3 - shift];
+                nameMsg_3.Text = myChats[chatsLB.SelectedIndex].ChatMsgs[myChats[chatsLB.SelectedIndex].ChatMsgs.Count - 3 - shift].UserName;
+                textMsg_3.Text = myChats[chatsLB.SelectedIndex].ChatMsgs[myChats[chatsLB.SelectedIndex].ChatMsgs.Count - 3 - shift].MessageText;
                 notifyMsg_3.Location = new Point(nameMsg_3.Location.X + nameMsg_3.Width + 3, nameMsg_3.Location.Y);
-                notifyMsg_3.Text = sups[msgs.Count - 3 - shift];
-                if (dates[dates.Count - 3 - shift].Date == DateTime.Today)
-                    timeMsg_3.Text = dates[dates.Count - 3 - shift].ToString("t");
-                else timeMsg_3.Text = dates[dates.Count - 3 - shift].ToString("f");
+                notifyMsg_3.Text = myChats[chatsLB.SelectedIndex].ChatMsgs[myChats[chatsLB.SelectedIndex].ChatMsgs.Count - 3 - shift].ClientNotify;
+                if (myChats[chatsLB.SelectedIndex].ChatMsgs[myChats[chatsLB.SelectedIndex].ChatMsgs.Count - 3 - shift].TimeStamp.Date == DateTime.Today)
+                    timeMsg_3.Text = myChats[chatsLB.SelectedIndex].ChatMsgs[myChats[chatsLB.SelectedIndex].ChatMsgs.Count - 3 - shift].TimeStamp.ToString("t");
+                else timeMsg_3.Text = myChats[chatsLB.SelectedIndex].ChatMsgs[myChats[chatsLB.SelectedIndex].ChatMsgs.Count - 3 - shift].TimeStamp.ToString("f");
                 if (nameMsg_3.Text == YourName) nameMsg_3.ForeColor = Color.FromArgb(240, 220, 102);
                 else nameMsg_3.ForeColor = Color.FromArgb(255, 255, 255);
                 panelMsg_3.Visible = true;
             }
             else panelMsg_3.Visible = false;
-            if (abonents.Count > 3)
+            if (myChats[chatsLB.SelectedIndex].ChatMsgs.Count > 3)
             {
-                nameMsg_4.Text = abonents[abonents.Count - 4 - shift];
-                textMsg_4.Text = msgs[msgs.Count - 4 - shift];
+                nameMsg_4.Text = myChats[chatsLB.SelectedIndex].ChatMsgs[myChats[chatsLB.SelectedIndex].ChatMsgs.Count - 4 - shift].UserName;
+                textMsg_4.Text = myChats[chatsLB.SelectedIndex].ChatMsgs[myChats[chatsLB.SelectedIndex].ChatMsgs.Count - 4 - shift].MessageText;
                 notifyMsg_4.Location = new Point(nameMsg_4.Location.X + nameMsg_4.Width + 3, nameMsg_4.Location.Y);
-                notifyMsg_4.Text = sups[msgs.Count - 4 - shift];
-                if (dates[dates.Count - 4 - shift].Date == DateTime.Today)
-                    timeMsg_4.Text = dates[dates.Count - 4 - shift].ToString("t");
-                else timeMsg_4.Text = dates[dates.Count - 4 - shift].ToString("f");
+                notifyMsg_4.Text = myChats[chatsLB.SelectedIndex].ChatMsgs[myChats[chatsLB.SelectedIndex].ChatMsgs.Count - 4 - shift].ClientNotify;
+                if (myChats[chatsLB.SelectedIndex].ChatMsgs[myChats[chatsLB.SelectedIndex].ChatMsgs.Count - 4 - shift].TimeStamp.Date == DateTime.Today)
+                    timeMsg_4.Text = myChats[chatsLB.SelectedIndex].ChatMsgs[myChats[chatsLB.SelectedIndex].ChatMsgs.Count - 4 - shift].TimeStamp.ToString("t");
+                else timeMsg_4.Text = myChats[chatsLB.SelectedIndex].ChatMsgs[myChats[chatsLB.SelectedIndex].ChatMsgs.Count - 4 - shift].TimeStamp.ToString("f");
                 if (nameMsg_4.Text == YourName) nameMsg_4.ForeColor = Color.FromArgb(240, 220, 102);
                 else nameMsg_4.ForeColor = Color.FromArgb(255, 255, 255);
                 panelMsg_4.Visible = true;
             }
             else panelMsg_4.Visible = false;
-            if (MessageID == 0) panel_emptyChat.Visible = true; 
+            if (chatsLB.SelectedItem != null)
+            if (MessageID[chatsLB.SelectedIndex] == 0) panel_emptyChat.Visible = true; 
             else panel_emptyChat.Visible = false;
         }
 
@@ -165,7 +175,7 @@ namespace WindowsFormsClient
                 if ((UserName.Length > 0) && (Message.Length > 0))
                 {
                     CourseMessenger.Message msg = new CourseMessenger.Message(UserName, Message, DateTime.Now);
-                    API.SendMessageRestSharp(msg);
+                    API.SendMessageRestSharp(msg, chatsLB.SelectedIndex);
                     MessageTB.Text = "";
                 }
             }
@@ -295,6 +305,7 @@ namespace WindowsFormsClient
         private void CreateChat_butt_Click(object sender, EventArgs e)
         {
             panelCreateChat.Visible = true;
+            head_lbl.Text = "Создание ёжечата";
         }
 
         private void deleteChat_context_Click(object sender, EventArgs e)
@@ -332,6 +343,7 @@ namespace WindowsFormsClient
                     {
                         Chat tmpChat = await API.GetAllAboutChat(tmp[i]);
                         myChats.Add(tmpChat);
+                        MessageID.Add(tmpChat.ChatMsgs.Count);
                         chatsLB.Items.Add(tmpChat.ChatName);
                     }
                     
@@ -349,6 +361,8 @@ namespace WindowsFormsClient
                 }
                 MessageTB.Text = "";
             }
+            timer1.Start();
+            timerChats.Start();
         }
 
         private void LogInNick_TB_TextChanged(object sender, EventArgs e)
@@ -401,27 +415,84 @@ namespace WindowsFormsClient
             }
             else
             {
+                //string stat;
+                //myChats[chatsLB.SelectedIndex].ChatMmbrs[Members_LB.SelectedIndex].
                 MemberName_CMP.Text = "@" + Members_LB.SelectedItem.ToString();
             }
+            int i;
+            for (i = 0; i < myChats[chatsLB.SelectedIndex].ChatMmbrs.Count; i++)
+            {
+                if (myChats[chatsLB.SelectedIndex].ChatMmbrs[i].Nick == YourName) break;
+            }
+
+            switch (myChats[chatsLB.SelectedIndex].ChatMmbrs[i].Role)
+            {
+                case 0:
+                    BlockUser_CMP.Visible = false;
+                    AwayUser_CMP.Visible = false;
+                    MakeAdmin_CMP.Visible = false;
+                    break;
+                case 1:
+                    BlockUser_CMP.Visible = true;
+                    AwayUser_CMP.Visible = false;
+                    if (myChats[chatsLB.SelectedIndex].ChatMmbrs[Members_LB.SelectedIndex].Role == 1)
+                    MakeAdmin_CMP.Visible = true; else MakeAdmin_CMP.Visible = false;
+                    if (myChats[chatsLB.SelectedIndex].ChatMmbrs[Members_LB.SelectedIndex].Role == 1)
+                    {
+                        DemoteModer_CMP.Visible = true;
+                        DemoteMemb_CMP.Visible = true;
+                    }
+                    else DemoteModer_CMP.Visible = false; 
+                    break;
+                case 2:
+                    BlockUser_CMP.Visible = true;
+                    AwayUser_CMP.Visible = true;
+                    if (myChats[chatsLB.SelectedIndex].ChatMmbrs[Members_LB.SelectedIndex].Role == 1)
+                        MakeAdmin_CMP.Visible = true;
+                    else MakeAdmin_CMP.Visible = false;
+                    if (myChats[chatsLB.SelectedIndex].ChatMmbrs[Members_LB.SelectedIndex].Role == 1)
+                    {
+                        DemoteModer_CMP.Visible = true;
+                        DemoteMemb_CMP.Visible = true;
+                    }
+                    break;
+            }
+            
         }
 
         private void notify_CMP_Click(object sender, EventArgs e)
         {
-            MessageTB.Text = "@" + Members_LB.SelectedItem.ToString() + " " + MessageTB.Text;
+            if (hl)
+            {
+                MessageTB.Text = "@" + Members_LB.SelectedItem.ToString() + " " + MessageTB.Text;
+            }
+            else
+            {
+                hl = true;
+                MessageTB.Text = "@" + Members_LB.SelectedItem.ToString();
+                MessageTB.ForeColor = Color.FromArgb(255, 255, 255);
+            }
+            
         }
 
         private void ConfirmCreateChat_Butt_Click(object sender, EventArgs e)
         {
+            panelCreateChat.Visible = false;
             List<Member> tmpMember = new List<Member>();
             tmpMember.Add(new Member(YourName, 2, false));
             string[] spls = ChatMembersTB.Text.Split(' ');
             foreach (string tempMemb in spls)
             {
                 string coolstr = tempMemb;
-                if (tempMemb[0] == '@') coolstr = tempMemb.Substring(1, tempMemb.Length - 1);
+                if (tempMemb != "") if (tempMemb[0] == '@') coolstr = tempMemb.Substring(1, tempMemb.Length - 1);
                 tmpMember.Add(new Member(coolstr, 0, false));
             }
-            Chat tmpChat = new Chat(-1, ChatNameTB.Text, tmpMember, SecretChat_CB.Checked);
+            Chat tmpChat = new Chat(0, ChatNameTB.Text, tmpMember, SecretChat_CB.Checked);
+            API.CreateNewChat(tmpChat);
+            ChatNameTB.Text = "";
+            ChatMembersTB.Text = "";
+            SecretChat_CB.Checked = false;
+            head_lbl.Text = "Ёжечаты";
         }
 
         private void ChatListCM_Opening(object sender, CancelEventArgs e)
@@ -442,6 +513,65 @@ namespace WindowsFormsClient
                 Members_LB.Items.Add(myChats[chatsLB.SelectedIndex].ChatMmbrs[i].Nick);
             }
             PanelChatMembers.Visible = true;
+        }
+
+        private async void timerChats_Tick(object sender, EventArgs e)
+        {
+            
+            List<int> tmp = API.GetChats(YourName);
+            if (tmp.Count != chatsLB.Items.Count)
+            {
+                chatsLB.Items.Clear();
+                myChats.Clear();
+                for (int i = 0; i < tmp.Count; i++)
+                {
+                    Chat tmpChat = await API.GetAllAboutChat(tmp[i]);
+                    myChats.Add(tmpChat);
+                    MessageID.Add(tmpChat.ChatMsgs.Count);
+                    chatsLB.Items.Add(tmpChat.ChatName);
+                }
+            }
+        }
+
+        private void LeaveChat_CMP_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Вы действительно хотите покинуть чат \"" + chatsLB.SelectedItem.ToString() + "\"? Вернуться в этот чат вы сможете только по приглашению другого участника чата",
+                "Покинуть ёжечат",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Exclamation,
+                MessageBoxDefaultButton.Button2);
+        }
+
+        private void ChatRolesLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ChatRolesLB_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            this.Text += "a";
+            //ChatRolesLB.TopIndex
+        }
+
+        private void vScrollBar1_Scroll(object sender, ScrollEventArgs e)
+        {
+            
+        }
+
+        private void ChatRolesLB_MouseDown(object sender, MouseEventArgs e)
+        {
+            this.Text += "a";
+        }
+
+        private void ChatRolesLB_MouseMove(object sender, MouseEventArgs e)
+        {
+            //int visibleItems = ChatRolesLB.ClientSize.Height / ChatRolesLB.ItemHeight;
+            //Members_LB.TopIndex = Math.Max(ChatRolesLB.Items.Count - visibleItems + 1, 0);
+        }
+
+        private void chatsLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 

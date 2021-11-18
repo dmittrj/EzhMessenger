@@ -39,10 +39,10 @@ namespace WindowsFormsClient
             this.ChatListCM = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ChatNameCMP = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.пригласитьВЁжечатToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.InviteChat_CMP = new System.Windows.Forms.ToolStripMenuItem();
             this.ChatMembers_CMP = new System.Windows.Forms.ToolStripMenuItem();
             this.переименоватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.покинутьЁжечатToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.LeaveChat_CMP = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteChat_context = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.создатьЁжечатToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,7 +87,6 @@ namespace WindowsFormsClient
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.ChatMembersTB = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.ChatNameTB = new System.Windows.Forms.TextBox();
             this.panel_registration = new System.Windows.Forms.Panel();
@@ -106,19 +105,20 @@ namespace WindowsFormsClient
             this.MemberName_CMP = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.notify_CMP = new System.Windows.Forms.ToolStripMenuItem();
-            this.заблокироватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.изгнатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BlockUser_CMP = new System.Windows.Forms.ToolStripMenuItem();
+            this.AwayUser_CMP = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
-            this.назначитьАдминистраторомToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.MakeAdmin_CMP = new System.Windows.Forms.ToolStripMenuItem();
             this.разжаловатьАдминистратораToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.доМодератораToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.доУчастникаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DemoteModer_CMP = new System.Windows.Forms.ToolStripMenuItem();
+            this.DemoteMemb_CMP = new System.Windows.Forms.ToolStripMenuItem();
             this.назначитьМодераторомToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.разжаловатьМодератораToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.статьМодераторомToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
             this.статьАдминистраторомToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.статьМодераторомToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.статьУчастникомToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timerChats = new System.Windows.Forms.Timer(this.components);
             this.ChatListCM.SuspendLayout();
             this.panel_messages.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FixScrollBar)).BeginInit();
@@ -149,7 +149,6 @@ namespace WindowsFormsClient
             // 
             // timer1
             // 
-            this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
@@ -180,16 +179,17 @@ namespace WindowsFormsClient
             this.chatsLB.Name = "chatsLB";
             this.chatsLB.Size = new System.Drawing.Size(225, 427);
             this.chatsLB.TabIndex = 5;
+            this.chatsLB.SelectedIndexChanged += new System.EventHandler(this.chatsLB_SelectedIndexChanged);
             // 
             // ChatListCM
             // 
             this.ChatListCM.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ChatNameCMP,
             this.toolStripMenuItem1,
-            this.пригласитьВЁжечатToolStripMenuItem,
+            this.InviteChat_CMP,
             this.ChatMembers_CMP,
             this.переименоватьToolStripMenuItem,
-            this.покинутьЁжечатToolStripMenuItem,
+            this.LeaveChat_CMP,
             this.deleteChat_context,
             this.toolStripMenuItem2,
             this.создатьЁжечатToolStripMenuItem,
@@ -210,11 +210,11 @@ namespace WindowsFormsClient
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(239, 6);
             // 
-            // пригласитьВЁжечатToolStripMenuItem
+            // InviteChat_CMP
             // 
-            this.пригласитьВЁжечатToolStripMenuItem.Name = "пригласитьВЁжечатToolStripMenuItem";
-            this.пригласитьВЁжечатToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
-            this.пригласитьВЁжечатToolStripMenuItem.Text = "Пригласить в ёжечат";
+            this.InviteChat_CMP.Name = "InviteChat_CMP";
+            this.InviteChat_CMP.Size = new System.Drawing.Size(242, 22);
+            this.InviteChat_CMP.Text = "Пригласить в ёжечат";
             // 
             // ChatMembers_CMP
             // 
@@ -229,11 +229,12 @@ namespace WindowsFormsClient
             this.переименоватьToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
             this.переименоватьToolStripMenuItem.Text = "Переименовать";
             // 
-            // покинутьЁжечатToolStripMenuItem
+            // LeaveChat_CMP
             // 
-            this.покинутьЁжечатToolStripMenuItem.Name = "покинутьЁжечатToolStripMenuItem";
-            this.покинутьЁжечатToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
-            this.покинутьЁжечатToolStripMenuItem.Text = "Покинуть ёжечат";
+            this.LeaveChat_CMP.Name = "LeaveChat_CMP";
+            this.LeaveChat_CMP.Size = new System.Drawing.Size(242, 22);
+            this.LeaveChat_CMP.Text = "Покинуть ёжечат";
+            this.LeaveChat_CMP.Click += new System.EventHandler(this.LeaveChat_CMP_Click);
             // 
             // deleteChat_context
             // 
@@ -380,7 +381,7 @@ namespace WindowsFormsClient
             this.Error_label.BackColor = System.Drawing.Color.Transparent;
             this.Error_label.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Error_label.ForeColor = System.Drawing.Color.LightCoral;
-            this.Error_label.Location = new System.Drawing.Point(3, 0);
+            this.Error_label.Location = new System.Drawing.Point(3, 2);
             this.Error_label.Name = "Error_label";
             this.Error_label.Size = new System.Drawing.Size(715, 21);
             this.Error_label.TabIndex = 17;
@@ -637,7 +638,7 @@ namespace WindowsFormsClient
             this.panel_emptyChat.Controls.Add(this.label5);
             this.panel_emptyChat.Location = new System.Drawing.Point(280, 63);
             this.panel_emptyChat.Name = "panel_emptyChat";
-            this.panel_emptyChat.Size = new System.Drawing.Size(713, 376);
+            this.panel_emptyChat.Size = new System.Drawing.Size(709, 372);
             this.panel_emptyChat.TabIndex = 15;
             this.panel_emptyChat.Visible = false;
             // 
@@ -651,7 +652,7 @@ namespace WindowsFormsClient
             this.label5.ForeColor = System.Drawing.Color.DarkGray;
             this.label5.Location = new System.Drawing.Point(0, 68);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(710, 241);
+            this.label5.Size = new System.Drawing.Size(706, 237);
             this.label5.TabIndex = 16;
             this.label5.Text = "Этот чат ёжепуст";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -676,7 +677,6 @@ namespace WindowsFormsClient
             this.panelCreateChat.Controls.Add(this.label9);
             this.panelCreateChat.Controls.Add(this.label8);
             this.panelCreateChat.Controls.Add(this.ChatMembersTB);
-            this.panelCreateChat.Controls.Add(this.label7);
             this.panelCreateChat.Controls.Add(this.label6);
             this.panelCreateChat.Controls.Add(this.ChatNameTB);
             this.panelCreateChat.Location = new System.Drawing.Point(14, 62);
@@ -705,7 +705,7 @@ namespace WindowsFormsClient
             this.SecretChat_CB.AutoSize = true;
             this.SecretChat_CB.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.SecretChat_CB.ForeColor = System.Drawing.Color.White;
-            this.SecretChat_CB.Location = new System.Drawing.Point(399, 254);
+            this.SecretChat_CB.Location = new System.Drawing.Point(397, 215);
             this.SecretChat_CB.Name = "SecretChat_CB";
             this.SecretChat_CB.Size = new System.Drawing.Size(229, 29);
             this.SecretChat_CB.TabIndex = 20;
@@ -718,7 +718,7 @@ namespace WindowsFormsClient
             this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label9.ForeColor = System.Drawing.Color.Gray;
             this.label9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label9.Location = new System.Drawing.Point(384, 203);
+            this.label9.Location = new System.Drawing.Point(384, 171);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(408, 34);
             this.label9.TabIndex = 19;
@@ -729,7 +729,7 @@ namespace WindowsFormsClient
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(105, 167);
+            this.label8.Location = new System.Drawing.Point(105, 135);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(277, 28);
             this.label8.TabIndex = 18;
@@ -742,22 +742,10 @@ namespace WindowsFormsClient
             this.ChatMembersTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ChatMembersTB.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ChatMembersTB.ForeColor = System.Drawing.Color.White;
-            this.ChatMembersTB.Location = new System.Drawing.Point(388, 164);
+            this.ChatMembersTB.Location = new System.Drawing.Point(388, 132);
             this.ChatMembersTB.Name = "ChatMembersTB";
             this.ChatMembersTB.Size = new System.Drawing.Size(367, 36);
             this.ChatMembersTB.TabIndex = 17;
-            // 
-            // label7
-            // 
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.ForeColor = System.Drawing.Color.Gray;
-            this.label7.Location = new System.Drawing.Point(249, 123);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(506, 28);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "Идентификатор чата: 1000 (создано автоматически)";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label6
             // 
@@ -921,14 +909,14 @@ namespace WindowsFormsClient
             this.PanelChatMembers.Controls.Add(this.Members_LB);
             this.PanelChatMembers.Location = new System.Drawing.Point(241, 63);
             this.PanelChatMembers.Name = "PanelChatMembers";
-            this.PanelChatMembers.Size = new System.Drawing.Size(172, 197);
+            this.PanelChatMembers.Size = new System.Drawing.Size(177, 197);
             this.PanelChatMembers.TabIndex = 20;
             this.PanelChatMembers.Visible = false;
             // 
             // Members_LB
             // 
             this.Members_LB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
-            this.Members_LB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Members_LB.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Members_LB.ContextMenuStrip = this.MembList_CM;
             this.Members_LB.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Members_LB.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -937,10 +925,18 @@ namespace WindowsFormsClient
             this.Members_LB.ItemHeight = 21;
             this.Members_LB.Items.AddRange(new object[] {
             "Dmitry",
-            "Alexey"});
+            "Alexey",
+            "Ivan",
+            "Mary",
+            "Kate",
+            "Olga",
+            "Rusakov",
+            "eronoff",
+            "Anton",
+            "Slava"});
             this.Members_LB.Location = new System.Drawing.Point(3, 26);
             this.Members_LB.Name = "Members_LB";
-            this.Members_LB.Size = new System.Drawing.Size(166, 170);
+            this.Members_LB.Size = new System.Drawing.Size(171, 168);
             this.Members_LB.TabIndex = 6;
             // 
             // MembList_CM
@@ -949,10 +945,10 @@ namespace WindowsFormsClient
             this.MemberName_CMP,
             this.toolStripMenuItem3,
             this.notify_CMP,
-            this.заблокироватьToolStripMenuItem,
-            this.изгнатьToolStripMenuItem,
+            this.BlockUser_CMP,
+            this.AwayUser_CMP,
             this.toolStripMenuItem4,
-            this.назначитьАдминистраторомToolStripMenuItem,
+            this.MakeAdmin_CMP,
             this.разжаловатьАдминистратораToolStripMenuItem,
             this.назначитьМодераторомToolStripMenuItem,
             this.разжаловатьМодератораToolStripMenuItem,
@@ -983,49 +979,49 @@ namespace WindowsFormsClient
             this.notify_CMP.Text = "Упомянуть";
             this.notify_CMP.Click += new System.EventHandler(this.notify_CMP_Click);
             // 
-            // заблокироватьToolStripMenuItem
+            // BlockUser_CMP
             // 
-            this.заблокироватьToolStripMenuItem.Name = "заблокироватьToolStripMenuItem";
-            this.заблокироватьToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
-            this.заблокироватьToolStripMenuItem.Text = "Заблокировать";
+            this.BlockUser_CMP.Name = "BlockUser_CMP";
+            this.BlockUser_CMP.Size = new System.Drawing.Size(238, 22);
+            this.BlockUser_CMP.Text = "Заблокировать";
             // 
-            // изгнатьToolStripMenuItem
+            // AwayUser_CMP
             // 
-            this.изгнатьToolStripMenuItem.Name = "изгнатьToolStripMenuItem";
-            this.изгнатьToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
-            this.изгнатьToolStripMenuItem.Text = "Изгнать";
+            this.AwayUser_CMP.Name = "AwayUser_CMP";
+            this.AwayUser_CMP.Size = new System.Drawing.Size(238, 22);
+            this.AwayUser_CMP.Text = "Изгнать";
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
             this.toolStripMenuItem4.Size = new System.Drawing.Size(235, 6);
             // 
-            // назначитьАдминистраторомToolStripMenuItem
+            // MakeAdmin_CMP
             // 
-            this.назначитьАдминистраторомToolStripMenuItem.Name = "назначитьАдминистраторомToolStripMenuItem";
-            this.назначитьАдминистраторомToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
-            this.назначитьАдминистраторомToolStripMenuItem.Text = "Назначить администратором";
+            this.MakeAdmin_CMP.Name = "MakeAdmin_CMP";
+            this.MakeAdmin_CMP.Size = new System.Drawing.Size(238, 22);
+            this.MakeAdmin_CMP.Text = "Назначить администратором";
             // 
             // разжаловатьАдминистратораToolStripMenuItem
             // 
             this.разжаловатьАдминистратораToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.доМодератораToolStripMenuItem,
-            this.доУчастникаToolStripMenuItem});
+            this.DemoteModer_CMP,
+            this.DemoteMemb_CMP});
             this.разжаловатьАдминистратораToolStripMenuItem.Name = "разжаловатьАдминистратораToolStripMenuItem";
             this.разжаловатьАдминистратораToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
             this.разжаловатьАдминистратораToolStripMenuItem.Text = "Разжаловать администратора";
             // 
-            // доМодератораToolStripMenuItem
+            // DemoteModer_CMP
             // 
-            this.доМодератораToolStripMenuItem.Name = "доМодератораToolStripMenuItem";
-            this.доМодератораToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.доМодератораToolStripMenuItem.Text = "до модератора";
+            this.DemoteModer_CMP.Name = "DemoteModer_CMP";
+            this.DemoteModer_CMP.Size = new System.Drawing.Size(180, 22);
+            this.DemoteModer_CMP.Text = "до модератора";
             // 
-            // доУчастникаToolStripMenuItem
+            // DemoteMemb_CMP
             // 
-            this.доУчастникаToolStripMenuItem.Name = "доУчастникаToolStripMenuItem";
-            this.доУчастникаToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
-            this.доУчастникаToolStripMenuItem.Text = "до участника";
+            this.DemoteMemb_CMP.Name = "DemoteMemb_CMP";
+            this.DemoteMemb_CMP.Size = new System.Drawing.Size(180, 22);
+            this.DemoteMemb_CMP.Text = "до участника";
             // 
             // назначитьМодераторомToolStripMenuItem
             // 
@@ -1062,6 +1058,11 @@ namespace WindowsFormsClient
             this.статьУчастникомToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
             this.статьУчастникомToolStripMenuItem.Text = "Стать участником";
             // 
+            // timerChats
+            // 
+            this.timerChats.Interval = 2500;
+            this.timerChats.Tick += new System.EventHandler(this.timerChats_Tick);
+            // 
             // FormMessanger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1069,6 +1070,8 @@ namespace WindowsFormsClient
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1019, 545);
+            this.Controls.Add(this.panel_registration);
+            this.Controls.Add(this.panelCreateChat);
             this.Controls.Add(this.PanelChatMembers);
             this.Controls.Add(this.CreateChat_butt);
             this.Controls.Add(this.label_notifymore);
@@ -1080,10 +1083,8 @@ namespace WindowsFormsClient
             this.Controls.Add(this.chatsLB);
             this.Controls.Add(this.head_lbl);
             this.Controls.Add(this.MessageTB);
-            this.Controls.Add(this.panel_messages);
             this.Controls.Add(this.panel_emptyChat);
-            this.Controls.Add(this.panel_registration);
-            this.Controls.Add(this.panelCreateChat);
+            this.Controls.Add(this.panel_messages);
             this.Name = "FormMessanger";
             this.Text = "ЁЖЕмессенджер";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -1155,10 +1156,10 @@ namespace WindowsFormsClient
         private System.Windows.Forms.ContextMenuStrip ChatListCM;
         private System.Windows.Forms.ToolStripMenuItem ChatNameCMP;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem пригласитьВЁжечатToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem InviteChat_CMP;
         private System.Windows.Forms.ToolStripMenuItem ChatMembers_CMP;
         private System.Windows.Forms.ToolStripMenuItem переименоватьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem покинутьЁжечатToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem LeaveChat_CMP;
         private System.Windows.Forms.ToolStripMenuItem deleteChat_context;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem создатьЁжечатToolStripMenuItem;
@@ -1166,7 +1167,6 @@ namespace WindowsFormsClient
         private System.Windows.Forms.Panel panelCreateChat;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox ChatNameTB;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox ChatMembersTB;
@@ -1190,19 +1190,20 @@ namespace WindowsFormsClient
         private System.Windows.Forms.ToolStripMenuItem MemberName_CMP;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem notify_CMP;
-        private System.Windows.Forms.ToolStripMenuItem заблокироватьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem изгнатьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem BlockUser_CMP;
+        private System.Windows.Forms.ToolStripMenuItem AwayUser_CMP;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
-        private System.Windows.Forms.ToolStripMenuItem назначитьАдминистраторомToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem MakeAdmin_CMP;
         private System.Windows.Forms.ToolStripMenuItem разжаловатьАдминистратораToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem доМодератораToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem доУчастникаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem DemoteModer_CMP;
+        private System.Windows.Forms.ToolStripMenuItem DemoteMemb_CMP;
         private System.Windows.Forms.ToolStripMenuItem назначитьМодераторомToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem разжаловатьМодератораToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator статьМодераторомToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem статьАдминистраторомToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem статьМодераторомToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem статьУчастникомToolStripMenuItem;
+        private System.Windows.Forms.Timer timerChats;
     }
 }
 
