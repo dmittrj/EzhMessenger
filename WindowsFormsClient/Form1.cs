@@ -431,9 +431,12 @@ namespace WindowsFormsClient
             if (Members_LB.SelectedItem == null)
             {
                 MemberName_CMP.Text = "Участник не выделен";
+                MembList_CM.Close();
+                return;
             }
             else
             {
+                MemberStatus_CMP.Visible = false;
                 //string stat;
                 //myChats[chatsLB.SelectedIndex].ChatMmbrs[Members_LB.SelectedIndex].
                 MemberName_CMP.Text = "@" + Members_LB.SelectedItem.ToString();
@@ -476,7 +479,19 @@ namespace WindowsFormsClient
                     }
                     break;
             }
-            
+            DateTime wasOnline;
+            wasOnline = API.GetOnline(Members_LB.SelectedItem.ToString());
+            if (wasOnline == DateTime.Now)
+            {
+                MemberStatus_CMP.Text = "онлайн";
+            } else if (wasOnline.Date == DateTime.Now.Date)
+            {
+                MemberStatus_CMP.Text = "был в сети сегодня в " + wasOnline.ToString("t");
+            }
+            else
+            {
+                MemberStatus_CMP.Text = "был в сети " + wasOnline.ToString("M") + " в " + wasOnline.ToString("t");
+            }
         }
 
         private void notify_CMP_Click(object sender, EventArgs e)

@@ -76,6 +76,25 @@ namespace ASPServer.Controllers
         }
 
 
+        //Получить статус онлайн
+        [HttpGet("get/online/{nick}")]
+        public string GetOnline(string nick)
+        {
+            string OutputString = "No info";
+            for (int i = 0; i < ListOfUsers.Count; i++)
+            {
+                if (ListOfUsers[i].CompareName(nick))
+                {
+                    OutputString = JsonConvert.SerializeObject(ListOfUsers[i].Status);
+                    Console.WriteLine("Выдано");
+                    break;
+                }
+            }
+            //OutputString = JsonConvert.SerializeObject(ListOfChats[id]);
+            return OutputString;
+        }
+
+
         // POST api/<MessangerController>
 
         //Регистрация

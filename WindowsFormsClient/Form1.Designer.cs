@@ -100,6 +100,7 @@ namespace WindowsFormsClient
             this.label14 = new System.Windows.Forms.Label();
             this.LogInNick_TB = new System.Windows.Forms.TextBox();
             this.PanelChatMembers = new System.Windows.Forms.Panel();
+            this.CloseMembersButt = new System.Windows.Forms.Label();
             this.Members_LB = new System.Windows.Forms.ListBox();
             this.MembList_CM = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MemberName_CMP = new System.Windows.Forms.ToolStripMenuItem();
@@ -119,8 +120,8 @@ namespace WindowsFormsClient
             this.статьМодераторомToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.статьУчастникомToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timerChats = new System.Windows.Forms.Timer(this.components);
-            this.CloseMembersButt = new System.Windows.Forms.Label();
             this.timerFastUpdate = new System.Windows.Forms.Timer(this.components);
+            this.MemberStatus_CMP = new System.Windows.Forms.ToolStripMenuItem();
             this.ChatListCM.SuspendLayout();
             this.panel_messages.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FixScrollBar)).BeginInit();
@@ -918,6 +919,20 @@ namespace WindowsFormsClient
             this.PanelChatMembers.TabIndex = 20;
             this.PanelChatMembers.Visible = false;
             // 
+            // CloseMembersButt
+            // 
+            this.CloseMembersButt.BackColor = System.Drawing.Color.Transparent;
+            this.CloseMembersButt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CloseMembersButt.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CloseMembersButt.ForeColor = System.Drawing.Color.White;
+            this.CloseMembersButt.Location = new System.Drawing.Point(47, 4);
+            this.CloseMembersButt.Name = "CloseMembersButt";
+            this.CloseMembersButt.Size = new System.Drawing.Size(125, 19);
+            this.CloseMembersButt.TabIndex = 17;
+            this.CloseMembersButt.Text = "Закрыть";
+            this.CloseMembersButt.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.CloseMembersButt.Click += new System.EventHandler(this.CloseMembersButt_Click);
+            // 
             // Members_LB
             // 
             this.Members_LB.BackColor = System.Drawing.Color.Black;
@@ -948,6 +963,7 @@ namespace WindowsFormsClient
             // 
             this.MembList_CM.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MemberName_CMP,
+            this.MemberStatus_CMP,
             this.toolStripMenuItem3,
             this.notify_CMP,
             this.BlockUser_CMP,
@@ -962,7 +978,7 @@ namespace WindowsFormsClient
             this.статьМодераторомToolStripMenuItem1,
             this.статьУчастникомToolStripMenuItem});
             this.MembList_CM.Name = "MembList_CM";
-            this.MembList_CM.Size = new System.Drawing.Size(239, 264);
+            this.MembList_CM.Size = new System.Drawing.Size(239, 308);
             this.MembList_CM.Opening += new System.ComponentModel.CancelEventHandler(this.MembList_CM_Opening);
             // 
             // MemberName_CMP
@@ -1019,13 +1035,13 @@ namespace WindowsFormsClient
             // DemoteModer_CMP
             // 
             this.DemoteModer_CMP.Name = "DemoteModer_CMP";
-            this.DemoteModer_CMP.Size = new System.Drawing.Size(180, 22);
+            this.DemoteModer_CMP.Size = new System.Drawing.Size(156, 22);
             this.DemoteModer_CMP.Text = "до модератора";
             // 
             // DemoteMemb_CMP
             // 
             this.DemoteMemb_CMP.Name = "DemoteMemb_CMP";
-            this.DemoteMemb_CMP.Size = new System.Drawing.Size(180, 22);
+            this.DemoteMemb_CMP.Size = new System.Drawing.Size(156, 22);
             this.DemoteMemb_CMP.Text = "до участника";
             // 
             // назначитьМодераторомToolStripMenuItem
@@ -1068,24 +1084,19 @@ namespace WindowsFormsClient
             this.timerChats.Interval = 2500;
             this.timerChats.Tick += new System.EventHandler(this.timerChats_Tick);
             // 
-            // CloseMembersButt
-            // 
-            this.CloseMembersButt.BackColor = System.Drawing.Color.Transparent;
-            this.CloseMembersButt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.CloseMembersButt.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CloseMembersButt.ForeColor = System.Drawing.Color.White;
-            this.CloseMembersButt.Location = new System.Drawing.Point(47, 4);
-            this.CloseMembersButt.Name = "CloseMembersButt";
-            this.CloseMembersButt.Size = new System.Drawing.Size(125, 19);
-            this.CloseMembersButt.TabIndex = 17;
-            this.CloseMembersButt.Text = "Закрыть";
-            this.CloseMembersButt.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.CloseMembersButt.Click += new System.EventHandler(this.CloseMembersButt_Click);
-            // 
             // timerFastUpdate
             // 
             this.timerFastUpdate.Interval = 5000;
             this.timerFastUpdate.Tick += new System.EventHandler(this.timerFastUpdate_Tick);
+            // 
+            // MemberStatus_CMP
+            // 
+            this.MemberStatus_CMP.Enabled = false;
+            this.MemberStatus_CMP.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic);
+            this.MemberStatus_CMP.Name = "MemberStatus_CMP";
+            this.MemberStatus_CMP.Size = new System.Drawing.Size(238, 22);
+            this.MemberStatus_CMP.Text = "в сети";
+            this.MemberStatus_CMP.Visible = false;
             // 
             // FormMessanger
             // 
@@ -1230,6 +1241,7 @@ namespace WindowsFormsClient
         private System.Windows.Forms.Timer timerChats;
         private System.Windows.Forms.Label CloseMembersButt;
         private System.Windows.Forms.Timer timerFastUpdate;
+        private System.Windows.Forms.ToolStripMenuItem MemberStatus_CMP;
     }
 }
 

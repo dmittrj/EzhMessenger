@@ -68,6 +68,21 @@ namespace CourseMessenger
             return deserializedMsg;
         }
 
+
+        //Получить статус
+        public DateTime GetOnline(string userName)
+        {
+            string ServiceUrl = "http://localhost:5000";
+            var client = new RestClient(ServiceUrl);
+            var request = new RestRequest("/api/Messanger/get/online/" + userName, Method.GET);
+            IRestResponse<DateTime> Response = client.Execute<DateTime>(request);
+            string ResponseContent = Response.Content;
+            ResponseContent = ResponseContent.Substring(3, ResponseContent.Length - 6);
+            DateTime deserializedMsg = JsonConvert.DeserializeObject<DateTime>(ResponseContent);
+            return deserializedMsg;
+        }
+
+
         //Получить инфу о чате
         public Chat GetAllAboutCha(int id)
         {
