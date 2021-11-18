@@ -195,6 +195,8 @@ namespace WindowsFormsClient
                 label_notify3.Visible = false;
                 label_notify4.Visible = false;
                 label_notifymore.Visible = false;
+                timer1.Interval = 300;
+                timerFastUpdate.Start();
             }
         }
 
