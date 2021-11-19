@@ -499,35 +499,74 @@ namespace WindowsFormsClient
                     AwayUser_CMP.Visible = false;
                     MakeAdmin_CMP.Visible = false;
                     DemoteAdmin_CMP.Visible = false;
-                    break;
-                case 1:
-                    BlockUser_CMP.Visible = true;
-                    AwayUser_CMP.Visible = false;
-                    if (myChats[chatsLB.SelectedIndex].ChatMmbrs[Members_LB.SelectedIndex].Role == 2)
-                    {
-
-                    }
+                    MakeModer_CMP.Visible = false;
+                    BecomeAdmin_CMP.Visible = false;
+                    BecomeModer_CMP.Visible = true;
+                    BecomeMemb_CMP.Visible = false;
                     if (myChats[chatsLB.SelectedIndex].ChatMmbrs[Members_LB.SelectedIndex].Role == 1)
                     {
-                        AdminToModer_CMP.Visible = true;
-                        AdminToMemb_CMP.Visible = true;
+                        DemoteModer_CMP.Visible = true;
+                    } else DemoteModer_CMP.Visible = false;
+                    break;
+                case 1:
+                    BecomeAdmin_CMP.Visible = true;
+                    BecomeModer_CMP.Visible = false;
+                    BecomeMemb_CMP.Visible = false;
+                    if (myChats[chatsLB.SelectedIndex].ChatMmbrs[Members_LB.SelectedIndex].Role == 2)
+                    {
+                        BlockUser_CMP.Visible = false;
+                        AwayUser_CMP.Visible = false;
+                        MakeAdmin_CMP.Visible = false;
+                        DemoteAdmin_CMP.Visible = true;
+                        MakeModer_CMP.Visible = false;
+                        DemoteModer_CMP.Visible = false;
+                    } else
+                    if (myChats[chatsLB.SelectedIndex].ChatMmbrs[Members_LB.SelectedIndex].Role == 1)
+                    {
+                        BlockUser_CMP.Visible = true;
+                        AwayUser_CMP.Visible = true;
                         MakeAdmin_CMP.Visible = true;
+                        DemoteAdmin_CMP.Visible = false;
+                        MakeModer_CMP.Visible = false;
+                        DemoteModer_CMP.Visible = true;
                     }
                     else
                     {
-                        AdminToModer_CMP.Visible = false;
+                        BlockUser_CMP.Visible = true;
+                        AwayUser_CMP.Visible = true;
+                        MakeAdmin_CMP.Visible = false;
+                        DemoteAdmin_CMP.Visible = false;
+                        MakeModer_CMP.Visible = true;
+                        DemoteModer_CMP.Visible = false;
                     }
                     break;
                 case 2:
                     BlockUser_CMP.Visible = true;
                     AwayUser_CMP.Visible = true;
-                    if (myChats[chatsLB.SelectedIndex].ChatMmbrs[Members_LB.SelectedIndex].Role == 1)
-                        MakeAdmin_CMP.Visible = true;
-                    else MakeAdmin_CMP.Visible = false;
+                    BecomeAdmin_CMP.Visible = false;
+                    BecomeModer_CMP.Visible = true;
+                    BecomeMemb_CMP.Visible = true;
+                    if (myChats[chatsLB.SelectedIndex].ChatMmbrs[Members_LB.SelectedIndex].Role == 2)
+                    {
+                        MakeAdmin_CMP.Visible = false;
+                        DemoteAdmin_CMP.Visible = true;
+                        MakeModer_CMP.Visible = false;
+                        DemoteModer_CMP.Visible = false;
+                    }
+                    else
                     if (myChats[chatsLB.SelectedIndex].ChatMmbrs[Members_LB.SelectedIndex].Role == 1)
                     {
-                        AdminToModer_CMP.Visible = true;
-                        AdminToMemb_CMP.Visible = true;
+                        MakeAdmin_CMP.Visible = true;
+                        DemoteAdmin_CMP.Visible = false;
+                        MakeModer_CMP.Visible = false;
+                        DemoteModer_CMP.Visible = true;
+                    }
+                    else
+                    {
+                        MakeAdmin_CMP.Visible = false;
+                        DemoteAdmin_CMP.Visible = false;
+                        MakeModer_CMP.Visible = true;
+                        DemoteModer_CMP.Visible = false;
                     }
                     break;
             }
@@ -763,6 +802,10 @@ namespace WindowsFormsClient
         private void TimerOnline_Tick(object sender, EventArgs e)
         {
             API.ImOnline(YourName);
+        }
+
+        private void Members_LB_SelectedIndexChanged(object sender, EventArgs e)
+        {
         }
     }
 

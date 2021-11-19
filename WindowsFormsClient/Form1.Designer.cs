@@ -954,12 +954,11 @@ namespace WindowsFormsClient
             this.Members_LB.ForeColor = System.Drawing.Color.White;
             this.Members_LB.FormattingEnabled = true;
             this.Members_LB.ItemHeight = 21;
-            this.Members_LB.Items.AddRange(new object[] {
-            "list"});
             this.Members_LB.Location = new System.Drawing.Point(3, 26);
             this.Members_LB.Name = "Members_LB";
             this.Members_LB.Size = new System.Drawing.Size(171, 147);
             this.Members_LB.TabIndex = 6;
+            this.Members_LB.SelectedIndexChanged += new System.EventHandler(this.Members_LB_SelectedIndexChanged);
             // 
             // MembList_CM
             // 
@@ -980,7 +979,7 @@ namespace WindowsFormsClient
             this.BecomeModer_CMP,
             this.BecomeMemb_CMP});
             this.MembList_CM.Name = "MembList_CM";
-            this.MembList_CM.Size = new System.Drawing.Size(239, 308);
+            this.MembList_CM.Size = new System.Drawing.Size(239, 286);
             this.MembList_CM.Opening += new System.ComponentModel.CancelEventHandler(this.MembList_CM_Opening);
             // 
             // MemberName_CMP
@@ -1191,8 +1190,6 @@ namespace WindowsFormsClient
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1019, 545);
-            this.Controls.Add(this.panel_registration);
-            this.Controls.Add(this.panelCreateChat);
             this.Controls.Add(this.panel_invite);
             this.Controls.Add(this.LogOut_Butt);
             this.Controls.Add(this.PanelChatMembers);
@@ -1208,6 +1205,8 @@ namespace WindowsFormsClient
             this.Controls.Add(this.MessageTB);
             this.Controls.Add(this.panel_emptyChat);
             this.Controls.Add(this.panel_messages);
+            this.Controls.Add(this.panel_registration);
+            this.Controls.Add(this.panelCreateChat);
             this.Name = "FormMessanger";
             this.Text = "ЁжМессенджер";
             this.Load += new System.EventHandler(this.Form1_Load);
