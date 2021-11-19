@@ -569,13 +569,26 @@ namespace WindowsFormsClient
 
         private void LeaveChat_CMP_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Вы действительно хотите покинуть чат \"" + chatsLB.SelectedItem.ToString() + "\"? Вернуться в этот чат вы сможете только по приглашению другого участника чата",
-                "Покинуть ёжечат",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Exclamation,
-                MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            if (myChats[chatsLB.SelectedIndex].Secret)
             {
-                API.LeaveChat(YourName, myChats[chatsLB.SelectedIndex].IdChat);
+                if (MessageBox.Show("Внимание!\n\nПокидая секретный ёжечат, вы больше никогда не сможете в него вернуться\nВы действительно хотите покинуть чат \"" + chatsLB.SelectedItem.ToString() + "\"?",
+                    "Покинуть ёжечат",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning,
+                    MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                {
+                    API.LeaveChat(YourName, myChats[chatsLB.SelectedIndex].IdChat);
+                }
+            } else
+            {
+                if (MessageBox.Show("Вы действительно хотите покинуть чат \"" + chatsLB.SelectedItem.ToString() + "\"? Вернуться в этот чат вы сможете только по приглашению другого участника чата",
+                    "Покинуть ёжечат",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Exclamation,
+                    MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                {
+                    API.LeaveChat(YourName, myChats[chatsLB.SelectedIndex].IdChat);
+                }
             }
         }
 
@@ -653,6 +666,25 @@ namespace WindowsFormsClient
             }
             panel_invite.Location = new Point(panel_invite.Location.X, chatsLB.Location.Y + chatsLB.SelectedIndex * chatsLB.ItemHeight);
             panel_invite.Visible = true;
+        }
+
+        private void InviteRename_Butt_Click(object sender, EventArgs e)
+        {
+            panel_invite.Visible = false;
+            List<Member> tmpMember = new List<Member>();
+            string[] spls = InviteRename_TB.Text.Split(' ');
+            foreach (string tempMemb in spls)
+            {
+                string coolstr = tempMemb;
+                if (tempMemb != "") if (tempMemb[0] == '@') coolstr = tempMemb.Substring(1, tempMemb.Length - 1);
+                tmpMember.Add(new Member(coolstr, 0, false));
+            }
+            Chat tmpChat = new Chat(myChats[chatsLB.SelectedIndex].IdChat, chatsLB.SelectedItem.ToString(), tmpMember, false);
+            API.Invite(tmpChat);
+            //ChatNameTB.Text = "";
+            //ChatMembersTB.Text = "";
+            //SecretChat_CB.Checked = false;
+            //head_lbl.Text = "Ёжечаты";
         }
     }
 

@@ -125,8 +125,8 @@ namespace WindowsFormsClient
             this.LogOut_Butt = new System.Windows.Forms.Label();
             this.panel_invite = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.InviteRename_TB = new System.Windows.Forms.TextBox();
+            this.InviteRename_Butt = new System.Windows.Forms.Button();
             this.ChatListCM.SuspendLayout();
             this.panel_messages.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FixScrollBar)).BeginInit();
@@ -1115,8 +1115,8 @@ namespace WindowsFormsClient
             // 
             this.panel_invite.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
             this.panel_invite.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel_invite.Controls.Add(this.button1);
-            this.panel_invite.Controls.Add(this.textBox1);
+            this.panel_invite.Controls.Add(this.InviteRename_Butt);
+            this.panel_invite.Controls.Add(this.InviteRename_TB);
             this.panel_invite.Controls.Add(this.label1);
             this.panel_invite.Location = new System.Drawing.Point(241, 266);
             this.panel_invite.Name = "panel_invite";
@@ -1137,30 +1137,31 @@ namespace WindowsFormsClient
             this.label1.Text = "Закрыть";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // textBox1
+            // InviteRename_TB
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.ForeColor = System.Drawing.Color.White;
-            this.textBox1.Location = new System.Drawing.Point(3, 38);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(210, 29);
-            this.textBox1.TabIndex = 18;
-            this.textBox1.Text = "Введите никнеймы...";
+            this.InviteRename_TB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
+            this.InviteRename_TB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.InviteRename_TB.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.InviteRename_TB.ForeColor = System.Drawing.Color.White;
+            this.InviteRename_TB.Location = new System.Drawing.Point(8, 38);
+            this.InviteRename_TB.Name = "InviteRename_TB";
+            this.InviteRename_TB.Size = new System.Drawing.Size(210, 29);
+            this.InviteRename_TB.TabIndex = 18;
+            this.InviteRename_TB.Text = "Введите никнеймы...";
             // 
-            // button1
+            // InviteRename_Butt
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(3, 70);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(83, 21);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "Пригласить";
-            this.button1.UseVisualStyleBackColor = false;
+            this.InviteRename_Butt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.InviteRename_Butt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.InviteRename_Butt.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.InviteRename_Butt.ForeColor = System.Drawing.Color.White;
+            this.InviteRename_Butt.Location = new System.Drawing.Point(7, 70);
+            this.InviteRename_Butt.Name = "InviteRename_Butt";
+            this.InviteRename_Butt.Size = new System.Drawing.Size(83, 21);
+            this.InviteRename_Butt.TabIndex = 19;
+            this.InviteRename_Butt.Text = "Пригласить";
+            this.InviteRename_Butt.UseVisualStyleBackColor = false;
+            this.InviteRename_Butt.Click += new System.EventHandler(this.InviteRename_Butt_Click);
             // 
             // FormMessanger
             // 
@@ -1312,8 +1313,8 @@ namespace WindowsFormsClient
         private System.Windows.Forms.ToolStripMenuItem MemberStatus_CMP;
         private System.Windows.Forms.Label LogOut_Butt;
         private System.Windows.Forms.Panel panel_invite;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button InviteRename_Butt;
+        private System.Windows.Forms.TextBox InviteRename_TB;
         private System.Windows.Forms.Label label1;
     }
 }

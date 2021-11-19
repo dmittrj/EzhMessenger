@@ -83,6 +83,7 @@ namespace CourseMessenger
             return deserializedMsg;
         }
 
+        //Покинуть чат
         public void LeaveChat(string userName, int id)
         {
             string ServiceUrl = "http://localhost:5000";
@@ -185,6 +186,39 @@ namespace CourseMessenger
             }
             return ExitIsTrue;
         }
+
+        //Пригласить в чат
+        public bool Invite(Chat chat)
+        {
+            string ServiceUrl = "http://localhost:5000";
+            var client = new RestClient(ServiceUrl);
+            var request = new RestRequest("/api/Messanger/post/invite", Method.POST);
+
+            string jsonToSend = JsonConvert.SerializeObject(chat);
+            request.AddParameter("application/json; charset=utf-8", jsonToSend, ParameterType.RequestBody);
+            request.RequestFormat = DataFormat.Json;
+            bool ExitIsTrue = false;
+            try
+            {
+                client.ExecuteAsync(request, response =>
+                {
+                    if (response.StatusCode == HttpStatusCode.OK)
+                    {
+                        ExitIsTrue = true;
+                    }
+                    else
+                    {
+                        ExitIsTrue = false;
+                    }
+                });
+            }
+            catch (Exception error)
+            {
+                Console.WriteLine(error);
+            }
+            return ExitIsTrue;
+        }
+
 
 
 

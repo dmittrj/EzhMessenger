@@ -101,7 +101,7 @@ namespace ASPServer.Controllers
         public string LeaveChat(string nick, int id)
         {
             string OutputString = "No info";
-            Console.WriteLine("\nЕго песенка спета\nКолонки молчат\n" + nick + " сделал(а) больно\nИ покиунл(а) чат\n");
+            Console.WriteLine("\nЕго песенка спета\nКолонки молчат\n" + nick + " сделал(а) больно\nИ покинул(а) чат\n");
             for (int i = 0; i < ListOfUsers.Count; i++)
             {
                 if (ListOfUsers[i].CompareName(nick))
@@ -212,6 +212,39 @@ namespace ASPServer.Controllers
             }
             return new OkResult();
         }
+
+        //Приглашение в чат
+        [HttpPost("post/invite")]
+        public IActionResult Invite([FromBody] Chat chat)
+        {
+            if (chat == null)
+            {
+                return BadRequest();
+            }
+            //chat.IdChat = lastChat++;
+            //ListOfChats.Add(chat);
+            Console.WriteLine("Приглашение в чат...");
+            int numberOfMembers = chat.ChatMmbrs.Count;
+            for (int i = 0; i < numberOfMembers; i++)
+            {
+                for (int j = 0; j < ListOfUsers.Count; j++)
+                {
+                    if (ListOfUsers[j].CompareName(chat.ChatMmbrs[i].Nick))
+                    {
+                        Console.WriteLine("Пользователя " + chat.ChatMmbrs[i].Nick + " присоединили к новому чату");
+                        ListOfUsers[j].Chats.Add(chat.IdChat);
+                        break;
+                    }
+                }
+            }
+            return new OkResult();
+        }
+
+
+
+
+
+
 
 
         //Получить отправленное сообщение
