@@ -85,7 +85,8 @@ namespace ASPServer.Controllers
             {
                 if (ListOfUsers[i].CompareName(nick))
                 {
-                    OutputString = JsonConvert.SerializeObject(ListOfUsers[i].Status);
+                    //OutputString = JsonConvert.SerializeObject(ListOfUsers[i].Status);
+                    OutputString = ListOfUsers[i].Status.ToString("O");
                     Console.WriteLine("Выдано");
                     break;
                 }

@@ -77,7 +77,8 @@ namespace CourseMessenger
             var request = new RestRequest("/api/Messanger/get/online/" + userName, Method.GET);
             IRestResponse<DateTime> Response = client.Execute<DateTime>(request);
             string ResponseContent = Response.Content;
-            ResponseContent = ResponseContent.Substring(3, ResponseContent.Length - 6);
+            //ResponseContent = ResponseContent.Substring(2, ResponseContent.Length - 4);
+            if (ResponseContent == "\"No info\"") return DateTime.Now;
             DateTime deserializedMsg = JsonConvert.DeserializeObject<DateTime>(ResponseContent);
             return deserializedMsg;
         }

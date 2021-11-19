@@ -45,8 +45,8 @@ namespace WindowsFormsClient
             this.LeaveChat_CMP = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteChat_context = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.создатьЁжечатToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.создатьЁжесекретныйЁжечатToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CreateChat_CMP = new System.Windows.Forms.ToolStripMenuItem();
+            this.CreateSecret_CMP = new System.Windows.Forms.ToolStripMenuItem();
             this.SendButt = new System.Windows.Forms.Label();
             this.timer_wighter = new System.Windows.Forms.Timer(this.components);
             this.label_notify1 = new System.Windows.Forms.Label();
@@ -104,6 +104,7 @@ namespace WindowsFormsClient
             this.Members_LB = new System.Windows.Forms.ListBox();
             this.MembList_CM = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MemberName_CMP = new System.Windows.Forms.ToolStripMenuItem();
+            this.MemberStatus_CMP = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
             this.notify_CMP = new System.Windows.Forms.ToolStripMenuItem();
             this.BlockUser_CMP = new System.Windows.Forms.ToolStripMenuItem();
@@ -121,7 +122,7 @@ namespace WindowsFormsClient
             this.статьУчастникомToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timerChats = new System.Windows.Forms.Timer(this.components);
             this.timerFastUpdate = new System.Windows.Forms.Timer(this.components);
-            this.MemberStatus_CMP = new System.Windows.Forms.ToolStripMenuItem();
+            this.LogOut_Butt = new System.Windows.Forms.Label();
             this.ChatListCM.SuspendLayout();
             this.panel_messages.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FixScrollBar)).BeginInit();
@@ -162,7 +163,7 @@ namespace WindowsFormsClient
             this.head_lbl.ForeColor = System.Drawing.Color.White;
             this.head_lbl.Location = new System.Drawing.Point(7, 9);
             this.head_lbl.Name = "head_lbl";
-            this.head_lbl.Size = new System.Drawing.Size(965, 40);
+            this.head_lbl.Size = new System.Drawing.Size(633, 40);
             this.head_lbl.TabIndex = 4;
             this.head_lbl.Text = "Войдите или зарегистрируйтесь";
             // 
@@ -195,10 +196,10 @@ namespace WindowsFormsClient
             this.LeaveChat_CMP,
             this.deleteChat_context,
             this.toolStripMenuItem2,
-            this.создатьЁжечатToolStripMenuItem,
-            this.создатьЁжесекретныйЁжечатToolStripMenuItem});
+            this.CreateChat_CMP,
+            this.CreateSecret_CMP});
             this.ChatListCM.Name = "contextMenuStrip1";
-            this.ChatListCM.Size = new System.Drawing.Size(243, 192);
+            this.ChatListCM.Size = new System.Drawing.Size(243, 214);
             this.ChatListCM.Opening += new System.ComponentModel.CancelEventHandler(this.ChatListCM_Opening);
             // 
             // ChatNameCMP
@@ -251,18 +252,19 @@ namespace WindowsFormsClient
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(239, 6);
             // 
-            // создатьЁжечатToolStripMenuItem
+            // CreateChat_CMP
             // 
-            this.создатьЁжечатToolStripMenuItem.Name = "создатьЁжечатToolStripMenuItem";
-            this.создатьЁжечатToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
-            this.создатьЁжечатToolStripMenuItem.Text = "Создать ёжечат...";
+            this.CreateChat_CMP.Name = "CreateChat_CMP";
+            this.CreateChat_CMP.Size = new System.Drawing.Size(242, 22);
+            this.CreateChat_CMP.Text = "Создать ёжечат...";
+            this.CreateChat_CMP.Click += new System.EventHandler(this.CreateChat_CMP_Click);
             // 
-            // создатьЁжесекретныйЁжечатToolStripMenuItem
+            // CreateSecret_CMP
             // 
-            this.создатьЁжесекретныйЁжечатToolStripMenuItem.Name = "создатьЁжесекретныйЁжечатToolStripMenuItem";
-            this.создатьЁжесекретныйЁжечатToolStripMenuItem.Size = new System.Drawing.Size(242, 22);
-            this.создатьЁжесекретныйЁжечатToolStripMenuItem.Text = "Создать ёжесекретный ёжечат";
-            this.создатьЁжесекретныйЁжечатToolStripMenuItem.Click += new System.EventHandler(this.создатьЁжесекретныйЁжечатToolStripMenuItem_Click);
+            this.CreateSecret_CMP.Name = "CreateSecret_CMP";
+            this.CreateSecret_CMP.Size = new System.Drawing.Size(242, 22);
+            this.CreateSecret_CMP.Text = "Создать ёжесекретный ёжечат";
+            this.CreateSecret_CMP.Click += new System.EventHandler(this.CreateSecret_CMP_Click);
             // 
             // SendButt
             // 
@@ -270,7 +272,7 @@ namespace WindowsFormsClient
             this.SendButt.Cursor = System.Windows.Forms.Cursors.Hand;
             this.SendButt.Font = new System.Drawing.Font("Segoe UI Semibold", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.SendButt.ForeColor = System.Drawing.Color.White;
-            this.SendButt.Location = new System.Drawing.Point(848, 457);
+            this.SendButt.Location = new System.Drawing.Point(845, 455);
             this.SendButt.Name = "SendButt";
             this.SendButt.Size = new System.Drawing.Size(145, 32);
             this.SendButt.TabIndex = 6;
@@ -978,7 +980,7 @@ namespace WindowsFormsClient
             this.статьМодераторомToolStripMenuItem1,
             this.статьУчастникомToolStripMenuItem});
             this.MembList_CM.Name = "MembList_CM";
-            this.MembList_CM.Size = new System.Drawing.Size(239, 308);
+            this.MembList_CM.Size = new System.Drawing.Size(239, 286);
             this.MembList_CM.Opening += new System.ComponentModel.CancelEventHandler(this.MembList_CM_Opening);
             // 
             // MemberName_CMP
@@ -987,6 +989,15 @@ namespace WindowsFormsClient
             this.MemberName_CMP.Name = "MemberName_CMP";
             this.MemberName_CMP.Size = new System.Drawing.Size(238, 22);
             this.MemberName_CMP.Text = "Имя участника";
+            // 
+            // MemberStatus_CMP
+            // 
+            this.MemberStatus_CMP.Enabled = false;
+            this.MemberStatus_CMP.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic);
+            this.MemberStatus_CMP.Name = "MemberStatus_CMP";
+            this.MemberStatus_CMP.Size = new System.Drawing.Size(238, 22);
+            this.MemberStatus_CMP.Text = "в сети";
+            this.MemberStatus_CMP.Visible = false;
             // 
             // toolStripMenuItem3
             // 
@@ -1089,14 +1100,19 @@ namespace WindowsFormsClient
             this.timerFastUpdate.Interval = 5000;
             this.timerFastUpdate.Tick += new System.EventHandler(this.timerFastUpdate_Tick);
             // 
-            // MemberStatus_CMP
+            // LogOut_Butt
             // 
-            this.MemberStatus_CMP.Enabled = false;
-            this.MemberStatus_CMP.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic);
-            this.MemberStatus_CMP.Name = "MemberStatus_CMP";
-            this.MemberStatus_CMP.Size = new System.Drawing.Size(238, 22);
-            this.MemberStatus_CMP.Text = "в сети";
-            this.MemberStatus_CMP.Visible = false;
+            this.LogOut_Butt.BackColor = System.Drawing.Color.Transparent;
+            this.LogOut_Butt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.LogOut_Butt.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LogOut_Butt.ForeColor = System.Drawing.Color.White;
+            this.LogOut_Butt.Location = new System.Drawing.Point(810, 9);
+            this.LogOut_Butt.Name = "LogOut_Butt";
+            this.LogOut_Butt.Size = new System.Drawing.Size(197, 32);
+            this.LogOut_Butt.TabIndex = 21;
+            this.LogOut_Butt.Text = "Выйти";
+            this.LogOut_Butt.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.LogOut_Butt.Click += new System.EventHandler(this.LogOut_Butt_Click);
             // 
             // FormMessanger
             // 
@@ -1105,21 +1121,22 @@ namespace WindowsFormsClient
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1019, 545);
-            this.Controls.Add(this.panel_registration);
-            this.Controls.Add(this.panelCreateChat);
+            this.Controls.Add(this.LogOut_Butt);
             this.Controls.Add(this.PanelChatMembers);
             this.Controls.Add(this.CreateChat_butt);
             this.Controls.Add(this.label_notifymore);
             this.Controls.Add(this.label_notify4);
             this.Controls.Add(this.label_notify3);
             this.Controls.Add(this.label_notify2);
-            this.Controls.Add(this.label_notify1);
             this.Controls.Add(this.SendButt);
+            this.Controls.Add(this.label_notify1);
             this.Controls.Add(this.chatsLB);
             this.Controls.Add(this.head_lbl);
             this.Controls.Add(this.MessageTB);
             this.Controls.Add(this.panel_emptyChat);
             this.Controls.Add(this.panel_messages);
+            this.Controls.Add(this.panel_registration);
+            this.Controls.Add(this.panelCreateChat);
             this.Name = "FormMessanger";
             this.Text = "ЁжМессенджер";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -1197,8 +1214,8 @@ namespace WindowsFormsClient
         private System.Windows.Forms.ToolStripMenuItem LeaveChat_CMP;
         private System.Windows.Forms.ToolStripMenuItem deleteChat_context;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem создатьЁжечатToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem создатьЁжесекретныйЁжечатToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem CreateChat_CMP;
+        private System.Windows.Forms.ToolStripMenuItem CreateSecret_CMP;
         private System.Windows.Forms.Panel panelCreateChat;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox ChatNameTB;
@@ -1242,6 +1259,7 @@ namespace WindowsFormsClient
         private System.Windows.Forms.Label CloseMembersButt;
         private System.Windows.Forms.Timer timerFastUpdate;
         private System.Windows.Forms.ToolStripMenuItem MemberStatus_CMP;
+        private System.Windows.Forms.Label LogOut_Butt;
     }
 }
 

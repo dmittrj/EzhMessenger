@@ -186,6 +186,8 @@ namespace WindowsFormsClient
                 }
                 if ((UserName.Length > 0) && (Message.Length > 0))
                 {
+                    if (myChats[chatsLB.SelectedIndex].Secret)
+                        UserName = "Ёжик";
                     CourseMessenger.Message msg = new CourseMessenger.Message(UserName, Message, DateTime.Now);
                     API.SendMessageRestSharp(msg, chatsLB.SelectedIndex);
                     MessageTB.Text = "";
@@ -314,11 +316,6 @@ namespace WindowsFormsClient
         private void UserNameTB_TextChanged(object sender, EventArgs e)
         {
             //YourName = UserNameTB.Text;
-        }
-
-        private void создатьЁжесекретныйЁжечатToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void CreateChat_butt_Click(object sender, EventArgs e)
@@ -492,6 +489,7 @@ namespace WindowsFormsClient
             {
                 MemberStatus_CMP.Text = "был в сети " + wasOnline.ToString("M") + " в " + wasOnline.ToString("t");
             }
+            MemberStatus_CMP.Visible = true;
         }
 
         private void notify_CMP_Click(object sender, EventArgs e)
@@ -503,10 +501,10 @@ namespace WindowsFormsClient
             else
             {
                 hl = true;
-                MessageTB.Text = "@" + Members_LB.SelectedItem.ToString();
+                MessageTB.Text = "@" + Members_LB.SelectedItem.ToString() + " ";
                 MessageTB.ForeColor = Color.FromArgb(255, 255, 255);
             }
-            
+            PanelChatMembers.Visible = false;
         }
 
         private void ConfirmCreateChat_Butt_Click(object sender, EventArgs e)
@@ -619,6 +617,28 @@ namespace WindowsFormsClient
         {
             timer1.Interval = 1000;
             timerFastUpdate.Stop();
+        }
+
+        private void LogOut_Butt_Click(object sender, EventArgs e)
+        {
+            timerFastUpdate.Stop();
+            timer1.Stop();
+            timerChats.Stop();
+            LogInNick_TB.Text = "";
+            LogPass_TB.Text = "";
+            panel_registration.Visible = true;
+        }
+
+        private void CreateChat_CMP_Click(object sender, EventArgs e)
+        {
+            SecretChat_CB.Checked = false;
+            CreateChat_butt_Click(sender, e);
+        }
+
+        private void CreateSecret_CMP_Click(object sender, EventArgs e)
+        {
+            SecretChat_CB.Checked = true;
+            CreateChat_butt_Click(sender, e);
         }
     }
 
