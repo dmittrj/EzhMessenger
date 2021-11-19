@@ -111,15 +111,15 @@ namespace WindowsFormsClient
             this.AwayUser_CMP = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
             this.MakeAdmin_CMP = new System.Windows.Forms.ToolStripMenuItem();
-            this.разжаловатьАдминистратораToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.DemoteAdmin_CMP = new System.Windows.Forms.ToolStripMenuItem();
+            this.AdminToModer_CMP = new System.Windows.Forms.ToolStripMenuItem();
+            this.AdminToMemb_CMP = new System.Windows.Forms.ToolStripMenuItem();
+            this.MakeModer_CMP = new System.Windows.Forms.ToolStripMenuItem();
             this.DemoteModer_CMP = new System.Windows.Forms.ToolStripMenuItem();
-            this.DemoteMemb_CMP = new System.Windows.Forms.ToolStripMenuItem();
-            this.назначитьМодераторомToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.разжаловатьМодератораToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.статьМодераторомToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
-            this.статьАдминистраторомToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.статьМодераторомToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.статьУчастникомToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BecomeAdmin_CMP = new System.Windows.Forms.ToolStripMenuItem();
+            this.BecomeModer_CMP = new System.Windows.Forms.ToolStripMenuItem();
+            this.BecomeMemb_CMP = new System.Windows.Forms.ToolStripMenuItem();
             this.timerChats = new System.Windows.Forms.Timer(this.components);
             this.timerFastUpdate = new System.Windows.Forms.Timer(this.components);
             this.LogOut_Butt = new System.Windows.Forms.Label();
@@ -127,6 +127,8 @@ namespace WindowsFormsClient
             this.label1 = new System.Windows.Forms.Label();
             this.InviteRename_TB = new System.Windows.Forms.TextBox();
             this.InviteRename_Butt = new System.Windows.Forms.Button();
+            this.TimerOnline = new System.Windows.Forms.Timer(this.components);
+            this.Label_Updating = new System.Windows.Forms.Label();
             this.ChatListCM.SuspendLayout();
             this.panel_messages.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FixScrollBar)).BeginInit();
@@ -919,6 +921,7 @@ namespace WindowsFormsClient
             // 
             this.PanelChatMembers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
             this.PanelChatMembers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PanelChatMembers.Controls.Add(this.Label_Updating);
             this.PanelChatMembers.Controls.Add(this.CloseMembersButt);
             this.PanelChatMembers.Controls.Add(this.Members_LB);
             this.PanelChatMembers.Location = new System.Drawing.Point(241, 62);
@@ -955,7 +958,7 @@ namespace WindowsFormsClient
             "list"});
             this.Members_LB.Location = new System.Drawing.Point(3, 26);
             this.Members_LB.Name = "Members_LB";
-            this.Members_LB.Size = new System.Drawing.Size(171, 168);
+            this.Members_LB.Size = new System.Drawing.Size(171, 147);
             this.Members_LB.TabIndex = 6;
             // 
             // MembList_CM
@@ -969,15 +972,15 @@ namespace WindowsFormsClient
             this.AwayUser_CMP,
             this.toolStripMenuItem4,
             this.MakeAdmin_CMP,
-            this.разжаловатьАдминистратораToolStripMenuItem,
-            this.назначитьМодераторомToolStripMenuItem,
-            this.разжаловатьМодератораToolStripMenuItem,
+            this.DemoteAdmin_CMP,
+            this.MakeModer_CMP,
+            this.DemoteModer_CMP,
             this.статьМодераторомToolStripMenuItem,
-            this.статьАдминистраторомToolStripMenuItem,
-            this.статьМодераторомToolStripMenuItem1,
-            this.статьУчастникомToolStripMenuItem});
+            this.BecomeAdmin_CMP,
+            this.BecomeModer_CMP,
+            this.BecomeMemb_CMP});
             this.MembList_CM.Name = "MembList_CM";
-            this.MembList_CM.Size = new System.Drawing.Size(239, 286);
+            this.MembList_CM.Size = new System.Drawing.Size(239, 308);
             this.MembList_CM.Opening += new System.ComponentModel.CancelEventHandler(this.MembList_CM_Opening);
             // 
             // MemberName_CMP
@@ -1031,61 +1034,61 @@ namespace WindowsFormsClient
             this.MakeAdmin_CMP.Size = new System.Drawing.Size(238, 22);
             this.MakeAdmin_CMP.Text = "Назначить администратором";
             // 
-            // разжаловатьАдминистратораToolStripMenuItem
+            // DemoteAdmin_CMP
             // 
-            this.разжаловатьАдминистратораToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.DemoteModer_CMP,
-            this.DemoteMemb_CMP});
-            this.разжаловатьАдминистратораToolStripMenuItem.Name = "разжаловатьАдминистратораToolStripMenuItem";
-            this.разжаловатьАдминистратораToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
-            this.разжаловатьАдминистратораToolStripMenuItem.Text = "Разжаловать администратора";
+            this.DemoteAdmin_CMP.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AdminToModer_CMP,
+            this.AdminToMemb_CMP});
+            this.DemoteAdmin_CMP.Name = "DemoteAdmin_CMP";
+            this.DemoteAdmin_CMP.Size = new System.Drawing.Size(238, 22);
+            this.DemoteAdmin_CMP.Text = "Разжаловать администратора";
+            // 
+            // AdminToModer_CMP
+            // 
+            this.AdminToModer_CMP.Name = "AdminToModer_CMP";
+            this.AdminToModer_CMP.Size = new System.Drawing.Size(180, 22);
+            this.AdminToModer_CMP.Text = "до модератора";
+            // 
+            // AdminToMemb_CMP
+            // 
+            this.AdminToMemb_CMP.Name = "AdminToMemb_CMP";
+            this.AdminToMemb_CMP.Size = new System.Drawing.Size(180, 22);
+            this.AdminToMemb_CMP.Text = "до участника";
+            // 
+            // MakeModer_CMP
+            // 
+            this.MakeModer_CMP.Name = "MakeModer_CMP";
+            this.MakeModer_CMP.Size = new System.Drawing.Size(238, 22);
+            this.MakeModer_CMP.Text = "Назначить модератором";
             // 
             // DemoteModer_CMP
             // 
             this.DemoteModer_CMP.Name = "DemoteModer_CMP";
-            this.DemoteModer_CMP.Size = new System.Drawing.Size(156, 22);
-            this.DemoteModer_CMP.Text = "до модератора";
-            // 
-            // DemoteMemb_CMP
-            // 
-            this.DemoteMemb_CMP.Name = "DemoteMemb_CMP";
-            this.DemoteMemb_CMP.Size = new System.Drawing.Size(156, 22);
-            this.DemoteMemb_CMP.Text = "до участника";
-            // 
-            // назначитьМодераторомToolStripMenuItem
-            // 
-            this.назначитьМодераторомToolStripMenuItem.Name = "назначитьМодераторомToolStripMenuItem";
-            this.назначитьМодераторомToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
-            this.назначитьМодераторомToolStripMenuItem.Text = "Назначить модератором";
-            // 
-            // разжаловатьМодератораToolStripMenuItem
-            // 
-            this.разжаловатьМодератораToolStripMenuItem.Name = "разжаловатьМодератораToolStripMenuItem";
-            this.разжаловатьМодератораToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
-            this.разжаловатьМодератораToolStripMenuItem.Text = "Разжаловать модератора";
+            this.DemoteModer_CMP.Size = new System.Drawing.Size(238, 22);
+            this.DemoteModer_CMP.Text = "Разжаловать модератора";
             // 
             // статьМодераторомToolStripMenuItem
             // 
             this.статьМодераторомToolStripMenuItem.Name = "статьМодераторомToolStripMenuItem";
             this.статьМодераторомToolStripMenuItem.Size = new System.Drawing.Size(235, 6);
             // 
-            // статьАдминистраторомToolStripMenuItem
+            // BecomeAdmin_CMP
             // 
-            this.статьАдминистраторомToolStripMenuItem.Name = "статьАдминистраторомToolStripMenuItem";
-            this.статьАдминистраторомToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
-            this.статьАдминистраторомToolStripMenuItem.Text = "Стать администратором";
+            this.BecomeAdmin_CMP.Name = "BecomeAdmin_CMP";
+            this.BecomeAdmin_CMP.Size = new System.Drawing.Size(238, 22);
+            this.BecomeAdmin_CMP.Text = "Стать администратором";
             // 
-            // статьМодераторомToolStripMenuItem1
+            // BecomeModer_CMP
             // 
-            this.статьМодераторомToolStripMenuItem1.Name = "статьМодераторомToolStripMenuItem1";
-            this.статьМодераторомToolStripMenuItem1.Size = new System.Drawing.Size(238, 22);
-            this.статьМодераторомToolStripMenuItem1.Text = "Стать модератором";
+            this.BecomeModer_CMP.Name = "BecomeModer_CMP";
+            this.BecomeModer_CMP.Size = new System.Drawing.Size(238, 22);
+            this.BecomeModer_CMP.Text = "Стать модератором";
             // 
-            // статьУчастникомToolStripMenuItem
+            // BecomeMemb_CMP
             // 
-            this.статьУчастникомToolStripMenuItem.Name = "статьУчастникомToolStripMenuItem";
-            this.статьУчастникомToolStripMenuItem.Size = new System.Drawing.Size(238, 22);
-            this.статьУчастникомToolStripMenuItem.Text = "Стать участником";
+            this.BecomeMemb_CMP.Name = "BecomeMemb_CMP";
+            this.BecomeMemb_CMP.Size = new System.Drawing.Size(238, 22);
+            this.BecomeMemb_CMP.Text = "Стать участником";
             // 
             // timerChats
             // 
@@ -1103,12 +1106,13 @@ namespace WindowsFormsClient
             this.LogOut_Butt.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LogOut_Butt.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LogOut_Butt.ForeColor = System.Drawing.Color.White;
-            this.LogOut_Butt.Location = new System.Drawing.Point(810, 9);
+            this.LogOut_Butt.Location = new System.Drawing.Point(890, 9);
             this.LogOut_Butt.Name = "LogOut_Butt";
-            this.LogOut_Butt.Size = new System.Drawing.Size(197, 32);
+            this.LogOut_Butt.Size = new System.Drawing.Size(117, 32);
             this.LogOut_Butt.TabIndex = 21;
             this.LogOut_Butt.Text = "Выйти";
             this.LogOut_Butt.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.LogOut_Butt.Visible = false;
             this.LogOut_Butt.Click += new System.EventHandler(this.LogOut_Butt_Click);
             // 
             // panel_invite
@@ -1162,6 +1166,23 @@ namespace WindowsFormsClient
             this.InviteRename_Butt.Text = "Пригласить";
             this.InviteRename_Butt.UseVisualStyleBackColor = false;
             this.InviteRename_Butt.Click += new System.EventHandler(this.InviteRename_Butt_Click);
+            // 
+            // TimerOnline
+            // 
+            this.TimerOnline.Interval = 45000;
+            this.TimerOnline.Tick += new System.EventHandler(this.TimerOnline_Tick);
+            // 
+            // Label_Updating
+            // 
+            this.Label_Updating.BackColor = System.Drawing.Color.Transparent;
+            this.Label_Updating.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Label_Updating.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Label_Updating.ForeColor = System.Drawing.Color.White;
+            this.Label_Updating.Location = new System.Drawing.Point(3, 172);
+            this.Label_Updating.Name = "Label_Updating";
+            this.Label_Updating.Size = new System.Drawing.Size(125, 19);
+            this.Label_Updating.TabIndex = 18;
+            this.Label_Updating.Text = "Обновление...";
             // 
             // FormMessanger
             // 
@@ -1298,15 +1319,15 @@ namespace WindowsFormsClient
         private System.Windows.Forms.ToolStripMenuItem AwayUser_CMP;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem MakeAdmin_CMP;
-        private System.Windows.Forms.ToolStripMenuItem разжаловатьАдминистратораToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem DemoteAdmin_CMP;
+        private System.Windows.Forms.ToolStripMenuItem AdminToModer_CMP;
+        private System.Windows.Forms.ToolStripMenuItem AdminToMemb_CMP;
+        private System.Windows.Forms.ToolStripMenuItem MakeModer_CMP;
         private System.Windows.Forms.ToolStripMenuItem DemoteModer_CMP;
-        private System.Windows.Forms.ToolStripMenuItem DemoteMemb_CMP;
-        private System.Windows.Forms.ToolStripMenuItem назначитьМодераторомToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem разжаловатьМодератораToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator статьМодераторомToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem статьАдминистраторомToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem статьМодераторомToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem статьУчастникомToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem BecomeAdmin_CMP;
+        private System.Windows.Forms.ToolStripMenuItem BecomeModer_CMP;
+        private System.Windows.Forms.ToolStripMenuItem BecomeMemb_CMP;
         private System.Windows.Forms.Timer timerChats;
         private System.Windows.Forms.Label CloseMembersButt;
         private System.Windows.Forms.Timer timerFastUpdate;
@@ -1316,6 +1337,8 @@ namespace WindowsFormsClient
         private System.Windows.Forms.Button InviteRename_Butt;
         private System.Windows.Forms.TextBox InviteRename_TB;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Timer TimerOnline;
+        private System.Windows.Forms.Label Label_Updating;
     }
 }
 

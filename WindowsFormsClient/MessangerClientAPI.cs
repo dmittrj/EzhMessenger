@@ -112,6 +112,20 @@ namespace CourseMessenger
             return deserializedMsg;
         }
 
+
+        //Отправить информацию о том, что пользователь онлайн
+        public void ImOnline(string id)
+        {
+            string ServiceUrl = "http://localhost:5000";
+            var client = new RestClient(ServiceUrl);
+            var request = new RestRequest("/api/Messanger/get/me/online/" + id, Method.GET);
+            IRestResponse<Chat> Response = client.Execute<Chat>(request);
+            //string ResponseContent = Response.Content;
+            //ResponseContent = ResponseContent.Substring(1, ResponseContent.Length - 2);
+            //Chat deserializedMsg = JsonConvert.DeserializeObject<Chat>(ResponseContent);
+            //return deserializedMsg;
+        }
+
         //public Message GetSigning(string UserNick)
         //{
         //    string ServiceUrl = "http://localhost:5000";

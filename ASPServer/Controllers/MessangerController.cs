@@ -95,6 +95,27 @@ namespace ASPServer.Controllers
             return OutputString;
         }
 
+        //Пользователь сообщает, что он в сети
+        [HttpGet("get/me/online/{nick}")]
+        public string MarkOnline(string nick)
+        {
+            string OutputString = "No info";
+            for (int i = 0; i < ListOfUsers.Count; i++)
+            {
+                if (ListOfUsers[i].CompareName(nick))
+                {
+                    ListOfUsers[i].Status = DateTime.Now;
+                    Console.WriteLine("Пользователь " + nick + " онлайн");
+                    break;
+                }
+            }
+            //OutputString = JsonConvert.SerializeObject(ListOfChats[id]);
+            return OutputString;
+        }
+
+
+
+
 
         //Кто-то покинул чат
         [HttpGet("get/leave/{nick}/{id}")]
