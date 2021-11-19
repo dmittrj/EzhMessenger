@@ -569,11 +569,14 @@ namespace WindowsFormsClient
 
         private void LeaveChat_CMP_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Вы действительно хотите покинуть чат \"" + chatsLB.SelectedItem.ToString() + "\"? Вернуться в этот чат вы сможете только по приглашению другого участника чата",
+            if (MessageBox.Show("Вы действительно хотите покинуть чат \"" + chatsLB.SelectedItem.ToString() + "\"? Вернуться в этот чат вы сможете только по приглашению другого участника чата",
                 "Покинуть ёжечат",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Exclamation,
-                MessageBoxDefaultButton.Button2);
+                MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+            {
+                API.LeaveChat(YourName, myChats[chatsLB.SelectedIndex].IdChat);
+            }
         }
 
         private void ChatRolesLB_SelectedIndexChanged(object sender, EventArgs e)
@@ -639,6 +642,17 @@ namespace WindowsFormsClient
         {
             SecretChat_CB.Checked = true;
             CreateChat_butt_Click(sender, e);
+        }
+
+        private void InviteChat_CMP_Click(object sender, EventArgs e)
+        {
+            int j = myChats[chatsLB.SelectedIndex].ChatMmbrs.Count;
+            for (int i = 0; i < j; i++)
+            {
+                Members_LB.Items.Add(myChats[chatsLB.SelectedIndex].ChatMmbrs[i].Nick);
+            }
+            panel_invite.Location = new Point(panel_invite.Location.X, chatsLB.Location.Y + chatsLB.SelectedIndex * chatsLB.ItemHeight);
+            panel_invite.Visible = true;
         }
     }
 

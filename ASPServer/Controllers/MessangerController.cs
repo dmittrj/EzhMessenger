@@ -96,6 +96,33 @@ namespace ASPServer.Controllers
         }
 
 
+        //Кто-то покинул чат
+        [HttpGet("get/leave/{nick}/{id}")]
+        public string LeaveChat(string nick, int id)
+        {
+            string OutputString = "No info";
+            Console.WriteLine("\nЕго песенка спета\nКолонки молчат\n" + nick + " сделал(а) больно\nИ покиунл(а) чат\n");
+            for (int i = 0; i < ListOfUsers.Count; i++)
+            {
+                if (ListOfUsers[i].CompareName(nick))
+                {
+                    //OutputString = JsonConvert.SerializeObject(ListOfUsers[i].Status);
+                    //OutputString = ListOfUsers[i].Status.ToString("O");
+                    for (int j = 0; j < ListOfUsers[i].Chats.Count; j++)
+                        if (ListOfUsers[i].Chats[j] == id)
+                            ListOfUsers[i].Chats.RemoveAt(j);
+                    Console.WriteLine("Чат удалён из списка чатов пользователя");
+                    break;
+                }
+                for (int j = 0; j < ListOfChats[id].ChatMmbrs.Count; j++)
+                    if (ListOfChats[id].ChatMmbrs[j].Nick == nick)
+                        ListOfChats[id].ChatMmbrs.RemoveAt(j);
+                Console.WriteLine("Пользователь удалён из списка участников чата");
+            }
+            OutputString = "deleted";
+            return OutputString;
+        }
+
         // POST api/<MessangerController>
 
         //Регистрация

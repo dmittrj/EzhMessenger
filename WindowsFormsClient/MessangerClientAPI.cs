@@ -83,6 +83,20 @@ namespace CourseMessenger
             return deserializedMsg;
         }
 
+        public void LeaveChat(string userName, int id)
+        {
+            string ServiceUrl = "http://localhost:5000";
+            var client = new RestClient(ServiceUrl);
+            var request = new RestRequest("/api/Messanger/get/leave/" + userName + "/" + id.ToString(), Method.GET);
+            IRestResponse<DateTime> Response = client.Execute<DateTime>(request);
+            //string ResponseContent = Response.Content;
+            //ResponseContent = ResponseContent.Substring(2, ResponseContent.Length - 4);
+            //if (ResponseContent == "\"No info\"") return DateTime.Now;
+            //DateTime deserializedMsg = JsonConvert.DeserializeObject<DateTime>(ResponseContent);
+            //return deserializedMsg;
+        }
+
+
 
         //Получить инфу о чате
         public Chat GetAllAboutCha(int id)
