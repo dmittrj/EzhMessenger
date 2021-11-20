@@ -91,12 +91,12 @@ namespace WindowsFormsClient
             this.ChatNameTB = new System.Windows.Forms.TextBox();
             this.panel_registration = new System.Windows.Forms.Panel();
             this.SignUp_Butt = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.PanelRegPass = new System.Windows.Forms.Panel();
             this.LogUserPass_label = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.LogPass_TB = new System.Windows.Forms.TextBox();
             this.ShowPassword_CB = new System.Windows.Forms.CheckBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.PanelRegName = new System.Windows.Forms.Panel();
             this.LogInNick_TB = new System.Windows.Forms.TextBox();
             this.LogUserName_label = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -136,6 +136,25 @@ namespace WindowsFormsClient
             this.CloseWindowButton = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.PictureTriangle = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.CloseCreateChat = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.ChatListCM.SuspendLayout();
             this.panel_messages.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FixScrollBar)).BeginInit();
@@ -146,23 +165,29 @@ namespace WindowsFormsClient
             this.panel_emptyChat.SuspendLayout();
             this.panelCreateChat.SuspendLayout();
             this.panel_registration.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.PanelRegPass.SuspendLayout();
+            this.PanelRegName.SuspendLayout();
             this.PanelChatMembers.SuspendLayout();
             this.MembList_CM.SuspendLayout();
             this.panel_invite.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NavigationBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureTriangle)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // MessageTB
             // 
             this.MessageTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.MessageTB.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.MessageTB.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.MessageTB.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.MessageTB.ForeColor = System.Drawing.Color.Gray;
-            this.MessageTB.Location = new System.Drawing.Point(279, 455);
+            this.MessageTB.Location = new System.Drawing.Point(249, 439);
             this.MessageTB.Name = "MessageTB";
-            this.MessageTB.Size = new System.Drawing.Size(547, 29);
+            this.MessageTB.Size = new System.Drawing.Size(547, 25);
             this.MessageTB.TabIndex = 3;
             this.MessageTB.Text = "Введите ёжесообщение...";
             this.MessageTB.Click += new System.EventHandler(this.MessageTB_Click);
@@ -178,7 +203,7 @@ namespace WindowsFormsClient
             this.head_lbl.BackColor = System.Drawing.Color.Transparent;
             this.head_lbl.Font = new System.Drawing.Font("Segoe UI Semibold", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.head_lbl.ForeColor = System.Drawing.Color.White;
-            this.head_lbl.Location = new System.Drawing.Point(9, 54);
+            this.head_lbl.Location = new System.Drawing.Point(7, 46);
             this.head_lbl.Name = "head_lbl";
             this.head_lbl.Size = new System.Drawing.Size(213, 40);
             this.head_lbl.TabIndex = 4;
@@ -196,9 +221,9 @@ namespace WindowsFormsClient
             this.chatsLB.ItemHeight = 23;
             this.chatsLB.Items.AddRange(new object[] {
             "Общий чат"});
-            this.chatsLB.Location = new System.Drawing.Point(14, 102);
+            this.chatsLB.Location = new System.Drawing.Point(14, 91);
             this.chatsLB.Name = "chatsLB";
-            this.chatsLB.Size = new System.Drawing.Size(208, 347);
+            this.chatsLB.Size = new System.Drawing.Size(208, 370);
             this.chatsLB.TabIndex = 5;
             this.chatsLB.SelectedIndexChanged += new System.EventHandler(this.chatsLB_SelectedIndexChanged);
             // 
@@ -291,13 +316,14 @@ namespace WindowsFormsClient
             // 
             this.SendButt.BackColor = System.Drawing.Color.Transparent;
             this.SendButt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SendButt.Font = new System.Drawing.Font("Segoe UI Semibold", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SendButt.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.SendButt.ForeColor = System.Drawing.Color.White;
-            this.SendButt.Location = new System.Drawing.Point(845, 455);
+            this.SendButt.Location = new System.Drawing.Point(743, 439);
             this.SendButt.Name = "SendButt";
-            this.SendButt.Size = new System.Drawing.Size(145, 32);
+            this.SendButt.Size = new System.Drawing.Size(129, 32);
             this.SendButt.TabIndex = 6;
-            this.SendButt.Text = "Прикрепить";
+            this.SendButt.Text = "Отправить";
+            this.SendButt.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.SendButt.Click += new System.EventHandler(this.SendButt_Click);
             // 
             // timer_wighter
@@ -311,7 +337,7 @@ namespace WindowsFormsClient
             this.label_notify1.BackColor = System.Drawing.Color.Transparent;
             this.label_notify1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label_notify1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(199)))), ((int)(((byte)(254)))));
-            this.label_notify1.Location = new System.Drawing.Point(285, 431);
+            this.label_notify1.Location = new System.Drawing.Point(259, 414);
             this.label_notify1.Name = "label_notify1";
             this.label_notify1.Size = new System.Drawing.Size(79, 21);
             this.label_notify1.TabIndex = 9;
@@ -324,7 +350,7 @@ namespace WindowsFormsClient
             this.label_notify2.BackColor = System.Drawing.Color.Transparent;
             this.label_notify2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label_notify2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(199)))), ((int)(((byte)(254)))));
-            this.label_notify2.Location = new System.Drawing.Point(380, 431);
+            this.label_notify2.Location = new System.Drawing.Point(354, 414);
             this.label_notify2.Name = "label_notify2";
             this.label_notify2.Size = new System.Drawing.Size(79, 21);
             this.label_notify2.TabIndex = 10;
@@ -337,7 +363,7 @@ namespace WindowsFormsClient
             this.label_notify3.BackColor = System.Drawing.Color.Transparent;
             this.label_notify3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label_notify3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(199)))), ((int)(((byte)(254)))));
-            this.label_notify3.Location = new System.Drawing.Point(475, 431);
+            this.label_notify3.Location = new System.Drawing.Point(449, 414);
             this.label_notify3.Name = "label_notify3";
             this.label_notify3.Size = new System.Drawing.Size(79, 21);
             this.label_notify3.TabIndex = 11;
@@ -350,7 +376,7 @@ namespace WindowsFormsClient
             this.label_notify4.BackColor = System.Drawing.Color.Transparent;
             this.label_notify4.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label_notify4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(199)))), ((int)(((byte)(254)))));
-            this.label_notify4.Location = new System.Drawing.Point(570, 431);
+            this.label_notify4.Location = new System.Drawing.Point(544, 414);
             this.label_notify4.Name = "label_notify4";
             this.label_notify4.Size = new System.Drawing.Size(79, 21);
             this.label_notify4.TabIndex = 12;
@@ -363,7 +389,7 @@ namespace WindowsFormsClient
             this.label_notifymore.BackColor = System.Drawing.Color.Transparent;
             this.label_notifymore.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label_notifymore.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(199)))), ((int)(((byte)(254)))));
-            this.label_notifymore.Location = new System.Drawing.Point(667, 431);
+            this.label_notifymore.Location = new System.Drawing.Point(641, 414);
             this.label_notifymore.Name = "label_notifymore";
             this.label_notifymore.Size = new System.Drawing.Size(79, 21);
             this.label_notifymore.TabIndex = 13;
@@ -373,15 +399,15 @@ namespace WindowsFormsClient
             // panel_messages
             // 
             this.panel_messages.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_messages.Controls.Add(this.panel_emptyChat);
             this.panel_messages.Controls.Add(this.FixScrollBar);
-            this.panel_messages.Controls.Add(this.Error_label);
             this.panel_messages.Controls.Add(this.panelMsg_4);
             this.panel_messages.Controls.Add(this.panelMsg_3);
             this.panel_messages.Controls.Add(this.panelMsg_2);
             this.panel_messages.Controls.Add(this.panelMsg_1);
-            this.panel_messages.Location = new System.Drawing.Point(279, 62);
+            this.panel_messages.Location = new System.Drawing.Point(249, 91);
             this.panel_messages.Name = "panel_messages";
-            this.panel_messages.Size = new System.Drawing.Size(714, 377);
+            this.panel_messages.Size = new System.Drawing.Size(623, 334);
             this.panel_messages.TabIndex = 14;
             this.panel_messages.Scroll += new System.Windows.Forms.ScrollEventHandler(this.panel_messages_Scroll);
             this.panel_messages.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
@@ -395,7 +421,7 @@ namespace WindowsFormsClient
             this.FixScrollBar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.FixScrollBar.ErrorImage = null;
             this.FixScrollBar.InitialImage = null;
-            this.FixScrollBar.Location = new System.Drawing.Point(701, -1);
+            this.FixScrollBar.Location = new System.Drawing.Point(610, -1);
             this.FixScrollBar.Name = "FixScrollBar";
             this.FixScrollBar.Size = new System.Drawing.Size(12, 86);
             this.FixScrollBar.TabIndex = 18;
@@ -407,9 +433,9 @@ namespace WindowsFormsClient
             this.Error_label.BackColor = System.Drawing.Color.Transparent;
             this.Error_label.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Error_label.ForeColor = System.Drawing.Color.LightCoral;
-            this.Error_label.Location = new System.Drawing.Point(3, 2);
+            this.Error_label.Location = new System.Drawing.Point(83, 31);
             this.Error_label.Name = "Error_label";
-            this.Error_label.Size = new System.Drawing.Size(715, 21);
+            this.Error_label.Size = new System.Drawing.Size(255, 28);
             this.Error_label.TabIndex = 17;
             this.Error_label.Text = "Нет ёжесоединения";
             this.Error_label.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -422,9 +448,9 @@ namespace WindowsFormsClient
             this.panelMsg_4.Controls.Add(this.notifyMsg_4);
             this.panelMsg_4.Controls.Add(this.textMsg_4);
             this.panelMsg_4.Controls.Add(this.nameMsg_4);
-            this.panelMsg_4.Location = new System.Drawing.Point(0, 39);
+            this.panelMsg_4.Location = new System.Drawing.Point(0, 0);
             this.panelMsg_4.Name = "panelMsg_4";
-            this.panelMsg_4.Size = new System.Drawing.Size(702, 77);
+            this.panelMsg_4.Size = new System.Drawing.Size(608, 77);
             this.panelMsg_4.TabIndex = 3;
             this.panelMsg_4.Visible = false;
             // 
@@ -435,7 +461,7 @@ namespace WindowsFormsClient
             this.timeMsg_4.ForeColor = System.Drawing.Color.DarkGray;
             this.timeMsg_4.Location = new System.Drawing.Point(391, 41);
             this.timeMsg_4.Name = "timeMsg_4";
-            this.timeMsg_4.Size = new System.Drawing.Size(301, 21);
+            this.timeMsg_4.Size = new System.Drawing.Size(214, 21);
             this.timeMsg_4.TabIndex = 17;
             this.timeMsg_4.Text = "12:30";
             this.timeMsg_4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -483,9 +509,9 @@ namespace WindowsFormsClient
             this.panelMsg_3.Controls.Add(this.notifyMsg_3);
             this.panelMsg_3.Controls.Add(this.textMsg_3);
             this.panelMsg_3.Controls.Add(this.nameMsg_3);
-            this.panelMsg_3.Location = new System.Drawing.Point(-1, 122);
+            this.panelMsg_3.Location = new System.Drawing.Point(0, 80);
             this.panelMsg_3.Name = "panelMsg_3";
-            this.panelMsg_3.Size = new System.Drawing.Size(703, 77);
+            this.panelMsg_3.Size = new System.Drawing.Size(608, 77);
             this.panelMsg_3.TabIndex = 2;
             this.panelMsg_3.Visible = false;
             // 
@@ -494,9 +520,9 @@ namespace WindowsFormsClient
             this.timeMsg_3.BackColor = System.Drawing.Color.Transparent;
             this.timeMsg_3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.timeMsg_3.ForeColor = System.Drawing.Color.DarkGray;
-            this.timeMsg_3.Location = new System.Drawing.Point(415, 41);
+            this.timeMsg_3.Location = new System.Drawing.Point(414, 41);
             this.timeMsg_3.Name = "timeMsg_3";
-            this.timeMsg_3.Size = new System.Drawing.Size(278, 21);
+            this.timeMsg_3.Size = new System.Drawing.Size(193, 21);
             this.timeMsg_3.TabIndex = 17;
             this.timeMsg_3.Text = "12:30";
             this.timeMsg_3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -544,9 +570,9 @@ namespace WindowsFormsClient
             this.panelMsg_2.Controls.Add(this.notifyMsg_2);
             this.panelMsg_2.Controls.Add(this.textMsg_2);
             this.panelMsg_2.Controls.Add(this.nameMsg_2);
-            this.panelMsg_2.Location = new System.Drawing.Point(-1, 205);
+            this.panelMsg_2.Location = new System.Drawing.Point(0, 160);
             this.panelMsg_2.Name = "panelMsg_2";
-            this.panelMsg_2.Size = new System.Drawing.Size(703, 77);
+            this.panelMsg_2.Size = new System.Drawing.Size(608, 77);
             this.panelMsg_2.TabIndex = 1;
             this.panelMsg_2.Visible = false;
             // 
@@ -555,9 +581,9 @@ namespace WindowsFormsClient
             this.timeMsg_2.BackColor = System.Drawing.Color.Transparent;
             this.timeMsg_2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.timeMsg_2.ForeColor = System.Drawing.Color.DarkGray;
-            this.timeMsg_2.Location = new System.Drawing.Point(411, 40);
+            this.timeMsg_2.Location = new System.Drawing.Point(410, 40);
             this.timeMsg_2.Name = "timeMsg_2";
-            this.timeMsg_2.Size = new System.Drawing.Size(282, 21);
+            this.timeMsg_2.Size = new System.Drawing.Size(197, 21);
             this.timeMsg_2.TabIndex = 17;
             this.timeMsg_2.Text = "12:30";
             this.timeMsg_2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -605,9 +631,9 @@ namespace WindowsFormsClient
             this.panelMsg_1.Controls.Add(this.notifyMsg_1);
             this.panelMsg_1.Controls.Add(this.textMsg_1);
             this.panelMsg_1.Controls.Add(this.nameMsg_1);
-            this.panelMsg_1.Location = new System.Drawing.Point(-1, 288);
+            this.panelMsg_1.Location = new System.Drawing.Point(0, 241);
             this.panelMsg_1.Name = "panelMsg_1";
-            this.panelMsg_1.Size = new System.Drawing.Size(703, 77);
+            this.panelMsg_1.Size = new System.Drawing.Size(608, 77);
             this.panelMsg_1.TabIndex = 0;
             this.panelMsg_1.Visible = false;
             // 
@@ -616,9 +642,9 @@ namespace WindowsFormsClient
             this.timeMsg_1.BackColor = System.Drawing.Color.Transparent;
             this.timeMsg_1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.timeMsg_1.ForeColor = System.Drawing.Color.DarkGray;
-            this.timeMsg_1.Location = new System.Drawing.Point(371, 40);
+            this.timeMsg_1.Location = new System.Drawing.Point(370, 40);
             this.timeMsg_1.Name = "timeMsg_1";
-            this.timeMsg_1.Size = new System.Drawing.Size(322, 21);
+            this.timeMsg_1.Size = new System.Drawing.Size(237, 21);
             this.timeMsg_1.TabIndex = 17;
             this.timeMsg_1.Text = "12:30";
             this.timeMsg_1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -662,9 +688,9 @@ namespace WindowsFormsClient
             // panel_emptyChat
             // 
             this.panel_emptyChat.Controls.Add(this.label5);
-            this.panel_emptyChat.Location = new System.Drawing.Point(280, 65);
+            this.panel_emptyChat.Location = new System.Drawing.Point(1, 1);
             this.panel_emptyChat.Name = "panel_emptyChat";
-            this.panel_emptyChat.Size = new System.Drawing.Size(709, 370);
+            this.panel_emptyChat.Size = new System.Drawing.Size(621, 331);
             this.panel_emptyChat.TabIndex = 15;
             this.panel_emptyChat.Visible = false;
             // 
@@ -678,7 +704,7 @@ namespace WindowsFormsClient
             this.label5.ForeColor = System.Drawing.Color.DarkGray;
             this.label5.Location = new System.Drawing.Point(0, 68);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(706, 235);
+            this.label5.Size = new System.Drawing.Size(618, 196);
             this.label5.TabIndex = 16;
             this.label5.Text = "Этот чат ёжепуст";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -689,7 +715,7 @@ namespace WindowsFormsClient
             this.CreateChat_butt.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CreateChat_butt.Font = new System.Drawing.Font("Segoe UI Semibold", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.CreateChat_butt.ForeColor = System.Drawing.Color.White;
-            this.CreateChat_butt.Location = new System.Drawing.Point(12, 459);
+            this.CreateChat_butt.Location = new System.Drawing.Point(12, 464);
             this.CreateChat_butt.Name = "CreateChat_butt";
             this.CreateChat_butt.Size = new System.Drawing.Size(197, 32);
             this.CreateChat_butt.TabIndex = 16;
@@ -698,29 +724,31 @@ namespace WindowsFormsClient
             // 
             // panelCreateChat
             // 
+            this.panelCreateChat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
+            this.panelCreateChat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelCreateChat.Controls.Add(this.CloseCreateChat);
+            this.panelCreateChat.Controls.Add(this.panel2);
+            this.panelCreateChat.Controls.Add(this.panel1);
+            this.panelCreateChat.Controls.Add(this.label2);
             this.panelCreateChat.Controls.Add(this.ConfirmCreateChat_Butt);
             this.panelCreateChat.Controls.Add(this.SecretChat_CB);
-            this.panelCreateChat.Controls.Add(this.label9);
-            this.panelCreateChat.Controls.Add(this.label8);
-            this.panelCreateChat.Controls.Add(this.ChatMembersTB);
-            this.panelCreateChat.Controls.Add(this.label6);
-            this.panelCreateChat.Controls.Add(this.ChatNameTB);
-            this.panelCreateChat.Location = new System.Drawing.Point(715, 492);
+            this.panelCreateChat.Location = new System.Drawing.Point(268, 456);
             this.panelCreateChat.Name = "panelCreateChat";
-            this.panelCreateChat.Size = new System.Drawing.Size(602, 350);
+            this.panelCreateChat.Size = new System.Drawing.Size(349, 246);
             this.panelCreateChat.TabIndex = 18;
             this.panelCreateChat.Visible = false;
             // 
             // ConfirmCreateChat_Butt
             // 
             this.ConfirmCreateChat_Butt.BackColor = System.Drawing.Color.Transparent;
+            this.ConfirmCreateChat_Butt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ConfirmCreateChat_Butt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ConfirmCreateChat_Butt.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ConfirmCreateChat_Butt.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ConfirmCreateChat_Butt.ForeColor = System.Drawing.Color.White;
-            this.ConfirmCreateChat_Butt.Location = new System.Drawing.Point(409, 302);
+            this.ConfirmCreateChat_Butt.Location = new System.Drawing.Point(110, 207);
             this.ConfirmCreateChat_Butt.Name = "ConfirmCreateChat_Butt";
             this.ConfirmCreateChat_Butt.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.ConfirmCreateChat_Butt.Size = new System.Drawing.Size(197, 32);
+            this.ConfirmCreateChat_Butt.Size = new System.Drawing.Size(130, 24);
             this.ConfirmCreateChat_Butt.TabIndex = 21;
             this.ConfirmCreateChat_Butt.Text = "Создать ёжечат";
             this.ConfirmCreateChat_Butt.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -729,11 +757,11 @@ namespace WindowsFormsClient
             // SecretChat_CB
             // 
             this.SecretChat_CB.AutoSize = true;
-            this.SecretChat_CB.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SecretChat_CB.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.SecretChat_CB.ForeColor = System.Drawing.Color.White;
-            this.SecretChat_CB.Location = new System.Drawing.Point(397, 215);
+            this.SecretChat_CB.Location = new System.Drawing.Point(142, 169);
             this.SecretChat_CB.Name = "SecretChat_CB";
-            this.SecretChat_CB.Size = new System.Drawing.Size(229, 29);
+            this.SecretChat_CB.Size = new System.Drawing.Size(172, 23);
             this.SecretChat_CB.TabIndex = 20;
             this.SecretChat_CB.Text = "Ёжесекретный ёжечат";
             this.SecretChat_CB.UseVisualStyleBackColor = true;
@@ -741,71 +769,71 @@ namespace WindowsFormsClient
             // label9
             // 
             this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label9.ForeColor = System.Drawing.Color.Gray;
             this.label9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label9.Location = new System.Drawing.Point(384, 171);
+            this.label9.Location = new System.Drawing.Point(137, 32);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(408, 34);
+            this.label9.Size = new System.Drawing.Size(294, 27);
             this.label9.TabIndex = 19;
-            this.label9.Text = "Перечислите никнеймы через пробел";
+            this.label9.Text = "Перечислите никнеймы";
             // 
             // label8
             // 
             this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(105, 135);
+            this.label8.Location = new System.Drawing.Point(15, 2);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(277, 28);
+            this.label8.Size = new System.Drawing.Size(124, 28);
             this.label8.TabIndex = 18;
             this.label8.Text = "Участники";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // ChatMembersTB
             // 
-            this.ChatMembersTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.ChatMembersTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(22)))), ((int)(((byte)(22)))));
             this.ChatMembersTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ChatMembersTB.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ChatMembersTB.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ChatMembersTB.ForeColor = System.Drawing.Color.White;
-            this.ChatMembersTB.Location = new System.Drawing.Point(388, 132);
+            this.ChatMembersTB.Location = new System.Drawing.Point(141, 4);
             this.ChatMembersTB.Name = "ChatMembersTB";
-            this.ChatMembersTB.Size = new System.Drawing.Size(367, 36);
+            this.ChatMembersTB.Size = new System.Drawing.Size(185, 27);
             this.ChatMembersTB.TabIndex = 17;
             // 
             // label6
             // 
             this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(105, 81);
+            this.label6.Location = new System.Drawing.Point(18, 1);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(277, 28);
+            this.label6.Size = new System.Drawing.Size(121, 28);
             this.label6.TabIndex = 15;
             this.label6.Text = "Имя ёжечата";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // ChatNameTB
             // 
-            this.ChatNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
+            this.ChatNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(22)))), ((int)(((byte)(22)))));
             this.ChatNameTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ChatNameTB.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ChatNameTB.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ChatNameTB.ForeColor = System.Drawing.Color.White;
-            this.ChatNameTB.Location = new System.Drawing.Point(388, 78);
+            this.ChatNameTB.Location = new System.Drawing.Point(141, 3);
             this.ChatNameTB.Name = "ChatNameTB";
-            this.ChatNameTB.Size = new System.Drawing.Size(367, 36);
+            this.ChatNameTB.Size = new System.Drawing.Size(185, 27);
             this.ChatNameTB.TabIndex = 4;
             // 
             // panel_registration
             // 
             this.panel_registration.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
             this.panel_registration.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_registration.Controls.Add(this.PanelRegName);
             this.panel_registration.Controls.Add(this.label1);
             this.panel_registration.Controls.Add(this.SignUp_Butt);
-            this.panel_registration.Controls.Add(this.panel2);
-            this.panel_registration.Controls.Add(this.panel1);
+            this.panel_registration.Controls.Add(this.PanelRegPass);
             this.panel_registration.Controls.Add(this.LogIn_Butt);
-            this.panel_registration.Location = new System.Drawing.Point(335, 36);
+            this.panel_registration.Location = new System.Drawing.Point(268, 36);
             this.panel_registration.Name = "panel_registration";
             this.panel_registration.Size = new System.Drawing.Size(349, 200);
             this.panel_registration.TabIndex = 19;
@@ -829,28 +857,29 @@ namespace WindowsFormsClient
             this.SignUp_Butt.MouseDown += new System.Windows.Forms.MouseEventHandler(this.SignUp_Butt_MouseDown);
             this.SignUp_Butt.MouseHover += new System.EventHandler(this.SignUp_Butt_MouseHover);
             // 
-            // panel2
+            // PanelRegPass
             // 
-            this.panel2.Controls.Add(this.LogUserPass_label);
-            this.panel2.Controls.Add(this.label12);
-            this.panel2.Controls.Add(this.LogPass_TB);
-            this.panel2.Controls.Add(this.ShowPassword_CB);
-            this.panel2.Location = new System.Drawing.Point(1, 89);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(347, 61);
-            this.panel2.TabIndex = 27;
+            this.PanelRegPass.Controls.Add(this.LogUserPass_label);
+            this.PanelRegPass.Controls.Add(this.label12);
+            this.PanelRegPass.Controls.Add(this.LogPass_TB);
+            this.PanelRegPass.Controls.Add(this.ShowPassword_CB);
+            this.PanelRegPass.Location = new System.Drawing.Point(1, 89);
+            this.PanelRegPass.Name = "PanelRegPass";
+            this.PanelRegPass.Size = new System.Drawing.Size(347, 61);
+            this.PanelRegPass.TabIndex = 27;
             // 
             // LogUserPass_label
             // 
             this.LogUserPass_label.BackColor = System.Drawing.Color.Transparent;
-            this.LogUserPass_label.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LogUserPass_label.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LogUserPass_label.ForeColor = System.Drawing.Color.LightCoral;
-            this.LogUserPass_label.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.LogUserPass_label.Location = new System.Drawing.Point(63, 63);
+            this.LogUserPass_label.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.LogUserPass_label.Location = new System.Drawing.Point(7, 34);
             this.LogUserPass_label.Name = "LogUserPass_label";
-            this.LogUserPass_label.Size = new System.Drawing.Size(270, 30);
+            this.LogUserPass_label.Size = new System.Drawing.Size(235, 21);
             this.LogUserPass_label.TabIndex = 22;
-            this.LogUserPass_label.Text = "Неверный никнейм или пароль";
+            this.LogUserPass_label.Text = "Неверный пароль";
+            this.LogUserPass_label.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.LogUserPass_label.Visible = false;
             // 
             // label12
@@ -874,7 +903,7 @@ namespace WindowsFormsClient
             this.LogPass_TB.Location = new System.Drawing.Point(140, 6);
             this.LogPass_TB.Name = "LogPass_TB";
             this.LogPass_TB.PasswordChar = '*';
-            this.LogPass_TB.Size = new System.Drawing.Size(186, 27);
+            this.LogPass_TB.Size = new System.Drawing.Size(185, 27);
             this.LogPass_TB.TabIndex = 17;
             // 
             // ShowPassword_CB
@@ -890,15 +919,15 @@ namespace WindowsFormsClient
             this.ShowPassword_CB.UseVisualStyleBackColor = true;
             this.ShowPassword_CB.CheckedChanged += new System.EventHandler(this.ShowPassword_CB_CheckedChanged);
             // 
-            // panel1
+            // PanelRegName
             // 
-            this.panel1.Controls.Add(this.LogInNick_TB);
-            this.panel1.Controls.Add(this.LogUserName_label);
-            this.panel1.Controls.Add(this.label14);
-            this.panel1.Location = new System.Drawing.Point(-1, 49);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(349, 40);
-            this.panel1.TabIndex = 26;
+            this.PanelRegName.Controls.Add(this.LogInNick_TB);
+            this.PanelRegName.Controls.Add(this.LogUserName_label);
+            this.PanelRegName.Controls.Add(this.label14);
+            this.PanelRegName.Location = new System.Drawing.Point(-1, 49);
+            this.PanelRegName.Name = "PanelRegName";
+            this.PanelRegName.Size = new System.Drawing.Size(349, 38);
+            this.PanelRegName.TabIndex = 26;
             // 
             // LogInNick_TB
             // 
@@ -917,14 +946,14 @@ namespace WindowsFormsClient
             // LogUserName_label
             // 
             this.LogUserName_label.BackColor = System.Drawing.Color.Transparent;
-            this.LogUserName_label.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LogUserName_label.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LogUserName_label.ForeColor = System.Drawing.Color.LightCoral;
             this.LogUserName_label.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.LogUserName_label.Location = new System.Drawing.Point(202, 54);
+            this.LogUserName_label.Location = new System.Drawing.Point(139, 34);
             this.LogUserName_label.Name = "LogUserName_label";
-            this.LogUserName_label.Size = new System.Drawing.Size(408, 30);
+            this.LogUserName_label.Size = new System.Drawing.Size(191, 20);
             this.LogUserName_label.TabIndex = 19;
-            this.LogUserName_label.Text = "Это имя пользователя уже занято";
+            this.LogUserName_label.Text = "Это имя уже занято";
             this.LogUserName_label.Visible = false;
             // 
             // label14
@@ -962,7 +991,7 @@ namespace WindowsFormsClient
             this.PanelChatMembers.Controls.Add(this.Label_Updating);
             this.PanelChatMembers.Controls.Add(this.CloseMembersButt);
             this.PanelChatMembers.Controls.Add(this.Members_LB);
-            this.PanelChatMembers.Location = new System.Drawing.Point(999, 126);
+            this.PanelChatMembers.Location = new System.Drawing.Point(228, 328);
             this.PanelChatMembers.Name = "PanelChatMembers";
             this.PanelChatMembers.Size = new System.Drawing.Size(177, 197);
             this.PanelChatMembers.TabIndex = 20;
@@ -1156,7 +1185,7 @@ namespace WindowsFormsClient
             this.LogOut_Butt.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LogOut_Butt.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.LogOut_Butt.ForeColor = System.Drawing.Color.White;
-            this.LogOut_Butt.Location = new System.Drawing.Point(829, 27);
+            this.LogOut_Butt.Location = new System.Drawing.Point(755, 54);
             this.LogOut_Butt.Name = "LogOut_Butt";
             this.LogOut_Butt.Size = new System.Drawing.Size(117, 32);
             this.LogOut_Butt.TabIndex = 21;
@@ -1172,7 +1201,7 @@ namespace WindowsFormsClient
             this.panel_invite.Controls.Add(this.InviteRename_Butt);
             this.panel_invite.Controls.Add(this.InviteRename_TB);
             this.panel_invite.Controls.Add(this.CloseInvite);
-            this.panel_invite.Location = new System.Drawing.Point(999, 333);
+            this.panel_invite.Location = new System.Drawing.Point(231, 367);
             this.panel_invite.Name = "panel_invite";
             this.panel_invite.Size = new System.Drawing.Size(230, 102);
             this.panel_invite.TabIndex = 22;
@@ -1242,7 +1271,7 @@ namespace WindowsFormsClient
             this.NavigationBar.Cursor = System.Windows.Forms.Cursors.Default;
             this.NavigationBar.Location = new System.Drawing.Point(0, 0);
             this.NavigationBar.Name = "NavigationBar";
-            this.NavigationBar.Size = new System.Drawing.Size(946, 28);
+            this.NavigationBar.Size = new System.Drawing.Size(885, 28);
             this.NavigationBar.TabIndex = 23;
             this.NavigationBar.TabStop = false;
             this.NavigationBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.NavigationBar_MouseDown);
@@ -1256,7 +1285,7 @@ namespace WindowsFormsClient
             this.CloseWindowButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CloseWindowButton.Font = new System.Drawing.Font("Webdings", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.CloseWindowButton.ForeColor = System.Drawing.Color.White;
-            this.CloseWindowButton.Location = new System.Drawing.Point(972, 0);
+            this.CloseWindowButton.Location = new System.Drawing.Point(839, 0);
             this.CloseWindowButton.Margin = new System.Windows.Forms.Padding(0);
             this.CloseWindowButton.Name = "CloseWindowButton";
             this.CloseWindowButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -1273,7 +1302,7 @@ namespace WindowsFormsClient
             this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label3.Font = new System.Drawing.Font("Webdings", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(926, 0);
+            this.label3.Location = new System.Drawing.Point(793, 0);
             this.label3.Margin = new System.Windows.Forms.Padding(0);
             this.label3.Name = "label3";
             this.label3.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -1281,6 +1310,7 @@ namespace WindowsFormsClient
             this.label3.TabIndex = 25;
             this.label3.Text = "0";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -1290,9 +1320,252 @@ namespace WindowsFormsClient
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(6, 4);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(128, 23);
+            this.label4.Size = new System.Drawing.Size(126, 23);
             this.label4.TabIndex = 26;
             this.label4.Text = "ЁжМессенджер";
+            // 
+            // PictureTriangle
+            // 
+            this.PictureTriangle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.PictureTriangle.Location = new System.Drawing.Point(231, 96);
+            this.PictureTriangle.Name = "PictureTriangle";
+            this.PictureTriangle.Size = new System.Drawing.Size(17, 26);
+            this.PictureTriangle.TabIndex = 27;
+            this.PictureTriangle.TabStop = false;
+            this.PictureTriangle.Click += new System.EventHandler(this.PictureTriangle_Click);
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(1, 6);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(348, 27);
+            this.label2.TabIndex = 29;
+            this.label2.Text = "Создать чат";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.ChatNameTB);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Location = new System.Drawing.Point(1, 53);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(346, 40);
+            this.panel1.TabIndex = 30;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.ChatMembersTB);
+            this.panel2.Location = new System.Drawing.Point(1, 92);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(348, 74);
+            this.panel2.TabIndex = 31;
+            // 
+            // label7
+            // 
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.ForeColor = System.Drawing.Color.Gray;
+            this.label7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label7.Location = new System.Drawing.Point(137, 49);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(294, 25);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "через пробел";
+            // 
+            // CloseCreateChat
+            // 
+            this.CloseCreateChat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
+            this.CloseCreateChat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CloseCreateChat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CloseCreateChat.Font = new System.Drawing.Font("Webdings", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.CloseCreateChat.ForeColor = System.Drawing.Color.White;
+            this.CloseCreateChat.Location = new System.Drawing.Point(225, 7);
+            this.CloseCreateChat.Margin = new System.Windows.Forms.Padding(0);
+            this.CloseCreateChat.Name = "CloseCreateChat";
+            this.CloseCreateChat.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.CloseCreateChat.Size = new System.Drawing.Size(20, 20);
+            this.CloseCreateChat.TabIndex = 32;
+            this.CloseCreateChat.Text = "r";
+            this.CloseCreateChat.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.CloseCreateChat.Click += new System.EventHandler(this.CloseCreateChat_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.label10);
+            this.panel3.Controls.Add(this.panel4);
+            this.panel3.Controls.Add(this.panel5);
+            this.panel3.Controls.Add(this.label17);
+            this.panel3.Controls.Add(this.label18);
+            this.panel3.Controls.Add(this.checkBox1);
+            this.panel3.Location = new System.Drawing.Point(268, 130);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(349, 246);
+            this.panel3.TabIndex = 28;
+            this.panel3.Visible = false;
+            // 
+            // label10
+            // 
+            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
+            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label10.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label10.Font = new System.Drawing.Font("Webdings", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(227, 7);
+            this.label10.Margin = new System.Windows.Forms.Padding(0);
+            this.label10.Name = "label10";
+            this.label10.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label10.Size = new System.Drawing.Size(20, 20);
+            this.label10.TabIndex = 32;
+            this.label10.Text = "r";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.label13);
+            this.panel4.Controls.Add(this.label15);
+            this.panel4.Controls.Add(this.textBox1);
+            this.panel4.Location = new System.Drawing.Point(1, 85);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(348, 67);
+            this.panel4.TabIndex = 31;
+            // 
+            // label13
+            // 
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label13.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label13.Location = new System.Drawing.Point(210, 32);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(116, 27);
+            this.label13.TabIndex = 19;
+            this.label13.Text = "Обзор...";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label15
+            // 
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label15.ForeColor = System.Drawing.Color.White;
+            this.label15.Location = new System.Drawing.Point(1, 2);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(137, 28);
+            this.label15.TabIndex = 18;
+            this.label15.Text = "Путь";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(22)))), ((int)(((byte)(22)))));
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox1.ForeColor = System.Drawing.Color.White;
+            this.textBox1.Location = new System.Drawing.Point(140, 4);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(186, 27);
+            this.textBox1.TabIndex = 17;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.label20);
+            this.panel5.Controls.Add(this.label19);
+            this.panel5.Controls.Add(this.label16);
+            this.panel5.Location = new System.Drawing.Point(1, 53);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(346, 33);
+            this.panel5.TabIndex = 30;
+            // 
+            // label17
+            // 
+            this.label17.BackColor = System.Drawing.Color.Transparent;
+            this.label17.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label17.ForeColor = System.Drawing.Color.White;
+            this.label17.Location = new System.Drawing.Point(1, 6);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(348, 27);
+            this.label17.TabIndex = 29;
+            this.label17.Text = "Прикрепить";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label18
+            // 
+            this.label18.BackColor = System.Drawing.Color.Transparent;
+            this.label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label18.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label18.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label18.ForeColor = System.Drawing.Color.White;
+            this.label18.Location = new System.Drawing.Point(110, 207);
+            this.label18.Name = "label18";
+            this.label18.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label18.Size = new System.Drawing.Size(130, 24);
+            this.label18.TabIndex = 21;
+            this.label18.Text = "Создать ёжечат";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBox1.ForeColor = System.Drawing.Color.White;
+            this.checkBox1.Location = new System.Drawing.Point(142, 169);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(172, 23);
+            this.checkBox1.TabIndex = 20;
+            this.checkBox1.Text = "Ёжесекретный ёжечат";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // label16
+            // 
+            this.label16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label16.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label16.ForeColor = System.Drawing.Color.White;
+            this.label16.Location = new System.Drawing.Point(53, 3);
+            this.label16.Name = "label16";
+            this.label16.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label16.Size = new System.Drawing.Size(75, 24);
+            this.label16.TabIndex = 22;
+            this.label16.Text = "Фото";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label19
+            // 
+            this.label19.BackColor = System.Drawing.Color.Transparent;
+            this.label19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label19.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label19.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label19.ForeColor = System.Drawing.Color.White;
+            this.label19.Location = new System.Drawing.Point(131, 3);
+            this.label19.Name = "label19";
+            this.label19.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label19.Size = new System.Drawing.Size(79, 24);
+            this.label19.TabIndex = 23;
+            this.label19.Text = "Аудио";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label20
+            // 
+            this.label20.BackColor = System.Drawing.Color.Transparent;
+            this.label20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label20.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label20.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label20.ForeColor = System.Drawing.Color.White;
+            this.label20.Location = new System.Drawing.Point(213, 3);
+            this.label20.Name = "label20";
+            this.label20.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label20.Size = new System.Drawing.Size(75, 24);
+            this.label20.TabIndex = 24;
+            this.label20.Text = "Файл";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // FormMessanger
             // 
@@ -1300,17 +1573,20 @@ namespace WindowsFormsClient
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1019, 537);
+            this.ClientSize = new System.Drawing.Size(886, 506);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panelCreateChat);
+            this.Controls.Add(this.PanelChatMembers);
+            this.Controls.Add(this.PictureTriangle);
+            this.Controls.Add(this.Error_label);
             this.Controls.Add(this.chatsLB);
             this.Controls.Add(this.panel_registration);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.CloseWindowButton);
             this.Controls.Add(this.NavigationBar);
-            this.Controls.Add(this.panelCreateChat);
             this.Controls.Add(this.panel_invite);
             this.Controls.Add(this.LogOut_Butt);
-            this.Controls.Add(this.PanelChatMembers);
             this.Controls.Add(this.CreateChat_butt);
             this.Controls.Add(this.label_notifymore);
             this.Controls.Add(this.label_notify4);
@@ -1320,7 +1596,6 @@ namespace WindowsFormsClient
             this.Controls.Add(this.label_notify1);
             this.Controls.Add(this.head_lbl);
             this.Controls.Add(this.MessageTB);
-            this.Controls.Add(this.panel_emptyChat);
             this.Controls.Add(this.panel_messages);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -1343,15 +1618,25 @@ namespace WindowsFormsClient
             this.panelCreateChat.ResumeLayout(false);
             this.panelCreateChat.PerformLayout();
             this.panel_registration.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.PanelRegPass.ResumeLayout(false);
+            this.PanelRegPass.PerformLayout();
+            this.PanelRegName.ResumeLayout(false);
+            this.PanelRegName.PerformLayout();
             this.PanelChatMembers.ResumeLayout(false);
             this.MembList_CM.ResumeLayout(false);
             this.panel_invite.ResumeLayout(false);
             this.panel_invite.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NavigationBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureTriangle)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1460,13 +1745,32 @@ namespace WindowsFormsClient
         private System.Windows.Forms.Label CloseInvite;
         private System.Windows.Forms.Timer TimerOnline;
         private System.Windows.Forms.Label Label_Updating;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel PanelRegName;
+        private System.Windows.Forms.Panel PanelRegPass;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox NavigationBar;
         private System.Windows.Forms.Label CloseWindowButton;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.PictureBox PictureTriangle;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label CloseCreateChat;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label16;
     }
 }
 
