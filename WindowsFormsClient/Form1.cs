@@ -26,14 +26,30 @@ namespace WindowsFormsClient
         private List<string> msgs = new List<string>();
         private List<string> sups = new List<string>();
         private List<DateTime> dates = new List<DateTime>();
+        int wx = 0, wy = 0; bool cursh = false;
 
         public FormMessanger()
         {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private async void Form1_Load(object sender, EventArgs e)
         {
+            this.BackColor = Color.FromArgb(52, 52, 52);
+            MessageTB.BackColor = Color.FromArgb(52, 52, 52);
+            chatsLB.BackColor = Color.FromArgb(37, 37, 37);
+            chatsLB.Enabled = false;
+            panel_registration.Height = 100;
+            panel_registration.Location = new Point(panel_registration.Location.X, -50);
+            
+            for (int ani_y = -50, ani_h = 100; ani_y < 36; ani_y += 4, ani_h += 4, await Task.Delay(1))
+            {
+                panel_registration.Height = ani_h;
+                panel_registration.Location = new Point(panel_registration.Location.X, ani_y);
+
+            }
+            panel_registration.Height = 200;
+            panel_registration.Location = new Point(panel_registration.Location.X, 36);
 
         }
 
@@ -396,7 +412,7 @@ namespace WindowsFormsClient
                 {
                     //Успешно вошли в аккаунт
                     YourName = lp.Login;
-                    panel_registration.Visible = false;
+                    //panel_registration.Visible = false;
                     chatsLB.Items.Clear();
                     List<int> tmp = API.GetChats(YourName);
                     for (int i = 0; i < tmp.Count; i++)
@@ -427,6 +443,18 @@ namespace WindowsFormsClient
                 MessageTB.Text = "";
             }
 
+            for (int ani_y = 36, ani_h = 200; ani_y > -50; ani_y -= 4, ani_h -= 6, await Task.Delay(1))
+            {
+                panel_registration.Height = ani_h;
+                panel_registration.Location = new Point(panel_registration.Location.X, ani_y);
+
+            }
+            panel_registration.Height = 40;
+            panel_registration.Location = new Point(panel_registration.Location.X, -50);
+            chatsLB.Enabled = true;
+            chatsLB.BackColor = Color.FromArgb(18, 18, 18);
+            this.BackColor = Color.FromArgb(35, 35, 35);
+            MessageTB.BackColor = Color.FromArgb(35, 35, 35);
         }
 
         private void LogInNick_TB_TextChanged(object sender, EventArgs e)
@@ -641,7 +669,7 @@ namespace WindowsFormsClient
             {
                 Members_LB.Items.Add(myChats[chatsLB.SelectedIndex].ChatMmbrs[i].Nick);
             }
-
+            
             PanelChatMembers.Location = new Point(PanelChatMembers.Location.X, chatsLB.Location.Y + chatsLB.SelectedIndex * chatsLB.ItemHeight);
             PanelChatMembers.Visible = true;
 
@@ -771,32 +799,38 @@ namespace WindowsFormsClient
 
         private void InviteChat_CMP_Click(object sender, EventArgs e)
         {
-            int j = myChats[chatsLB.SelectedIndex].ChatMmbrs.Count;
-            for (int i = 0; i < j; i++)
-            {
-                Members_LB.Items.Add(myChats[chatsLB.SelectedIndex].ChatMmbrs[i].Nick);
-            }
+            //int j = myChats[chatsLB.SelectedIndex].ChatMmbrs.Count;
+            //for (int i = 0; i < j; i++)
+            //{
+            //    Members_LB.Items.Add(myChats[chatsLB.SelectedIndex].ChatMmbrs[i].Nick);
+            //}
             panel_invite.Location = new Point(panel_invite.Location.X, chatsLB.Location.Y + chatsLB.SelectedIndex * chatsLB.ItemHeight);
+            InviteRename_TB.Text = "Введите никнеймы..";
+            InviteRename_Butt.Text = "Пригласить";
+            InviteRename_Butt.Width = 83;
             panel_invite.Visible = true;
         }
 
         private void InviteRename_Butt_Click(object sender, EventArgs e)
         {
-            panel_invite.Visible = false;
-            List<Member> tmpMember = new List<Member>();
-            string[] spls = InviteRename_TB.Text.Split(' ');
-            foreach (string tempMemb in spls)
+            if (InviteRename_Butt.Text == "Пригласить")
             {
-                string coolstr = tempMemb;
-                if (tempMemb != "") if (tempMemb[0] == '@') coolstr = tempMemb.Substring(1, tempMemb.Length - 1);
-                tmpMember.Add(new Member(coolstr, 0, false));
+                panel_invite.Visible = false;
+                List<Member> tmpMember = new List<Member>();
+                string[] spls = InviteRename_TB.Text.Split(' ');
+                foreach (string tempMemb in spls)
+                {
+                    string coolstr = tempMemb;
+                    if (tempMemb != "") if (tempMemb[0] == '@') coolstr = tempMemb.Substring(1, tempMemb.Length - 1);
+                    tmpMember.Add(new Member(coolstr, 0, false));
+                }
+                Chat tmpChat = new Chat(myChats[chatsLB.SelectedIndex].IdChat, chatsLB.SelectedItem.ToString(), tmpMember, false);
+                API.Invite(tmpChat);
+            } else
+            {
+                panel_invite.Visible = false;
+                //API.Rename(myChats[chatsLB.SelectedIndex].IdChat, InviteRename_TB.Text);
             }
-            Chat tmpChat = new Chat(myChats[chatsLB.SelectedIndex].IdChat, chatsLB.SelectedItem.ToString(), tmpMember, false);
-            API.Invite(tmpChat);
-            //ChatNameTB.Text = "";
-            //ChatMembersTB.Text = "";
-            //SecretChat_CB.Checked = false;
-            //head_lbl.Text = "Ёжечаты";
         }
 
         private void TimerOnline_Tick(object sender, EventArgs e)
@@ -806,6 +840,101 @@ namespace WindowsFormsClient
 
         private void Members_LB_SelectedIndexChanged(object sender, EventArgs e)
         {
+        }
+
+        private void BlockUser_CMP_Click(object sender, EventArgs e)
+        {
+            Event q = new Event(YourName, Members_LB.SelectedItem.ToString(), 6, true, DateTime.Now);
+            
+        }
+
+        private void RenameChat_CMP_Click(object sender, EventArgs e)
+        {
+            panel_invite.Location = new Point(panel_invite.Location.X, chatsLB.Location.Y + chatsLB.SelectedIndex * chatsLB.ItemHeight);
+            InviteRename_TB.Text = "Введите новое имя..";
+            InviteRename_Butt.Text = "Переименовать";
+            InviteRename_Butt.Width = 100;
+            panel_invite.Visible = true;
+        }
+
+        private void CloseInvite_Click(object sender, EventArgs e)
+        {
+            panel_invite.Visible = false;
+        }
+
+        private void SignIn_popup_MouseHover(object sender, EventArgs e)
+        {
+            //TimerBoxZoom.Start();
+        }
+
+        private void TimerBoxZoom_Tick(object sender, EventArgs e)
+        {
+            //TimerBoxOut.Stop();
+            //if (SignIn_popup.Height < 60)
+            //{
+            //    SignIn_popup.Location = new Point(SignIn_popup.Location.X - 4, SignIn_popup.Location.Y - 2);
+            //    SignIn_popup.Width += 8;
+            //    SignIn_popup.Height += 4;
+            //}
+            //else TimerBoxZoom.Stop();
+        }
+
+        private void SignUp_Butt_MouseHover(object sender, EventArgs e)
+        {
+            //TimerBoxZoom.Start();
+        }
+
+        private void SignUp_Butt_MouseDown(object sender, MouseEventArgs e)
+        {
+            //TimerBoxZoom.Start();
+        }
+
+        private void SignIn_popup_MouseLeave(object sender, EventArgs e)
+        {
+            //TimerBoxOut.Start();
+        }
+
+        private void TimerBoxOut_Tick(object sender, EventArgs e)
+        {
+            //TimerBoxZoom.Stop();
+            //if (SignIn_popup.Height > 43)
+            //{
+            //    SignIn_popup.Location = new Point(SignIn_popup.Location.X + 4, SignIn_popup.Location.Y + 2);
+            //    SignIn_popup.Width -= 8;
+            //    SignIn_popup.Height -= 4;
+            //} else
+            //{
+            //    SignIn_popup.Width = 214;
+            //    SignIn_popup.Height = 43;
+            //    TimerBoxOut.Stop();
+            //}
+        }
+
+        private void NavigationBar_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (cursh)
+            {
+                this.Location = new Point(this.Location.X + Cursor.Position.X - wx, this.Location.Y + Cursor.Position.Y - wy);
+                wx = Cursor.Position.X;
+                wy = Cursor.Position.Y;
+            }
+        }
+
+        private void NavigationBar_MouseUp(object sender, MouseEventArgs e)
+        {
+            cursh = false;
+        }
+
+        private void CloseWindowButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void NavigationBar_MouseDown(object sender, MouseEventArgs e)
+        {
+            wx = Cursor.Position.X;
+            wy = Cursor.Position.Y;
+            cursh = true;
         }
     }
 

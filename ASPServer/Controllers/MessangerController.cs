@@ -262,7 +262,18 @@ namespace ASPServer.Controllers
         }
 
 
-
+        //Переименование чата
+        [HttpPost("post/rename/{idChat}")]
+        public IActionResult SendMessage(int idChat, [FromBody] string str)
+        {
+            if (str == "")
+            {
+                return BadRequest();
+            }
+            ListOfChats[idChat].ChatName = str;
+            Console.WriteLine("Чат № " + idChat.ToString() + " теперь называется " + str);
+            return new OkResult();
+        }
 
 
 

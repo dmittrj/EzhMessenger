@@ -235,7 +235,6 @@ namespace CourseMessenger
 
 
 
-
         //Регистрация
         public async Task<string> SendForSignUp(LogPass lgp)
         {
