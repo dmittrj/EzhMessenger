@@ -22,18 +22,90 @@ namespace WindowsFormsClient
         private static int shift = 0;
         private static string YourName = "";
         private List<Chat> myChats = new List<Chat>();
-        private List<string> abonents = new List<string>();
-        private List<string> msgs = new List<string>();
-        private List<string> sups = new List<string>();
         private List<DateTime> dates = new List<DateTime>();
         int wx = 0, wy = 0; bool cursh = false;
+
+        public async void Unfold(Panel obj, int y_start, int y_finish, int h_start, int h_finish, int speed, bool freeze)
+        {
+            int y_speed = (y_finish - y_start) / speed;
+            int h_speed = (h_finish - h_start) / speed;
+            obj.Visible = false;
+            obj.Height = h_start;
+            obj.Location = new Point(obj.Location.X, y_start);
+            obj.Visible = true;
+            if (freeze)
+            {
+                CreateChat_butt.Enabled = false;
+                SendButt.Enabled = false;
+                chatsLB.Enabled = false;
+                MessageTB.Enabled = false;
+                CreateChat_butt.Cursor = Cursors.Default;
+                SendButt.Cursor = Cursors.Default;
+                PictureTriangle.Visible = false;
+            }
+            for (int ani_y = y_start, ani_h = h_start; (ani_y < y_finish || ani_h < h_finish); ani_y += y_speed, ani_h += h_speed, await Task.Delay(10))
+            {
+                obj.Height = ani_h;
+                obj.Location = new Point(obj.Location.X, ani_y);
+                if (freeze)
+                {
+                    MessageTB.BackColor = this.BackColor = Color.FromArgb(this.BackColor.R + 1, this.BackColor.G + 1, this.BackColor.B + 1);
+                    CreateChat_butt.ForeColor = SendButt.ForeColor = head_lbl.ForeColor = Color.FromArgb(head_lbl.ForeColor.R - 2, head_lbl.ForeColor.G - 2, head_lbl.ForeColor.B - 2);
+                    panel_emptyChat.BackColor = Color.FromArgb(panel_emptyChat.BackColor.R + 1, panel_emptyChat.BackColor.G + 1, panel_emptyChat.BackColor.B + 1);
+                    panel_messages.BackColor = Color.FromArgb(panel_messages.BackColor.R + 1, panel_messages.BackColor.G + 1, panel_messages.BackColor.B + 1);
+
+                    chatsLB.BackColor = Color.FromArgb(chatsLB.BackColor.R + 1, chatsLB.BackColor.G + 1, chatsLB.BackColor.B + 1);
+                }
+            }
+            obj.Height = h_finish;
+            obj.Location = new Point(obj.Location.X, y_finish);
+        }
+
+        public async void Fold(Panel obj, int y_start, int y_finish, int h_start, int h_finish, int speed, bool freeze)
+        {
+            int y_speed = (y_finish - y_start) / speed;
+            int h_speed = (h_finish - h_start) / speed;
+            if (freeze)
+            {
+                CreateChat_butt.Enabled = true;
+                SendButt.Enabled = true;
+                chatsLB.Enabled = true;
+                MessageTB.Enabled = true;
+                CreateChat_butt.Cursor = Cursors.Hand;
+                SendButt.Cursor = Cursors.Hand;
+                PictureTriangle.Visible = true;
+            }
+            for (int ani_y = y_finish, ani_h = h_finish; (ani_y > y_start || ani_h > h_start); ani_y -= y_speed, ani_h -= h_speed, await Task.Delay(10))
+            {
+                obj.Height = ani_h;
+                obj.Location = new Point(obj.Location.X, ani_y);
+                if (freeze)
+                {
+                    MessageTB.BackColor = this.BackColor = Color.FromArgb(this.BackColor.R - 1, this.BackColor.G - 1, this.BackColor.B - 1);
+                    if (SendButt.ForeColor.R < 254)
+                        CreateChat_butt.ForeColor = SendButt.ForeColor = head_lbl.ForeColor = Color.FromArgb(head_lbl.ForeColor.R + 2, head_lbl.ForeColor.G + 2, head_lbl.ForeColor.B + 2);
+
+                    panel_emptyChat.BackColor = Color.FromArgb(panel_emptyChat.BackColor.R - 1, panel_emptyChat.BackColor.G - 1, panel_emptyChat.BackColor.B - 1);
+                    panel_messages.BackColor = Color.FromArgb(panel_messages.BackColor.R - 1, panel_messages.BackColor.G - 1, panel_messages.BackColor.B - 1);
+
+                    chatsLB.BackColor = Color.FromArgb(chatsLB.BackColor.R - 1, chatsLB.BackColor.G - 1, chatsLB.BackColor.B - 1);
+                }
+            }
+            obj.Visible = false;
+
+            
+            panel_emptyChat.BackColor = panel_messages.BackColor = this.BackColor = Color.FromArgb(35, 35, 35);
+            MessageTB.BackColor = Color.FromArgb(35, 35, 35);
+            chatsLB.BackColor = Color.FromArgb(18, 18, 18);
+            CreateChat_butt.ForeColor = SendButt.ForeColor = head_lbl.ForeColor = Color.White;
+        }
 
         public FormMessanger()
         {
             InitializeComponent();
         }
 
-        private async void Form1_Load(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
             Point[] p_triangle = new Point[3];
             p_triangle[0].X = 0; p_triangle[0].Y = 0;
@@ -58,18 +130,12 @@ namespace WindowsFormsClient
             panel_registration.Location = new Point(panel_registration.Location.X, -50);
             head_lbl.ForeColor = Color.DarkGray;
             CreateChat_butt.ForeColor = Color.DarkGray;
+            CreateChat_butt.Enabled = false;
+            CreateChat_butt.Cursor = Cursors.Default;
             SendButt.ForeColor = Color.DarkGray;
+            SendButt.Enabled = false;
+            SendButt.Cursor = Cursors.Default;
             MessageTB.Enabled = false;
-
-            for (int ani_y = -50, ani_h = 100; ani_y < 36; ani_y += 4, ani_h += 4, await Task.Delay(1))
-            {
-                panel_registration.Height = ani_h;
-                panel_registration.Location = new Point(panel_registration.Location.X, ani_y);
-
-            }
-            panel_registration.Height = 200;
-            panel_registration.Location = new Point(panel_registration.Location.X, 36);
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -79,7 +145,7 @@ namespace WindowsFormsClient
             if ((UserName.Length > 1) && (Message.Length > 1))
             {
                 CourseMessenger.Message msg = new CourseMessenger.Message(UserName, Message, DateTime.Now);
-                API.SendMessageRestSharp(msg, chatsLB.SelectedIndex); 
+                API.SendMessageRestSharp(msg, chatsLB.SelectedIndex, Error_label); 
                 Error_label.Visible = true;
             }
         }
@@ -90,31 +156,48 @@ namespace WindowsFormsClient
             {
                 MessageTB.ForeColor = Color.Gray;
                 MessageTB.Text = "Введите ёжесообщение...";
+                SendButt.Enabled = false;
                 hl = false;
             }
+            
             if (chatsLB.SelectedItem == null) return;
+
+
+            for (int i = 0; i < myChats[chatsLB.SelectedIndex].ChatMmbrs.Count; i++)
+                if (myChats[chatsLB.SelectedIndex].ChatMmbrs[i].Nick == YourName)
+                    if (myChats[chatsLB.SelectedIndex].ChatMmbrs[i].Blocked)
+                    {
+                        MessageTB.ForeColor = Color.Gray;
+                        MessageTB.Text = "Вы заблокированы";
+                        MessageTB.Cursor = Cursors.Default;
+                        MessageTB.Enabled = false;
+                        SendButt.Enabled = false;
+                    }
+                    else
+                    {
+                        MessageTB.Cursor = Cursors.IBeam;
+                        if (MessageTB.Text == "Вы заблокированы")
+                            MessageTB.Text = "Введите ёжесообщение...";
+                        SendButt.Enabled = true;
+                        MessageTB.Enabled = true;
+                    }
+
+
+
             var getMessage = new Func<Task>(async () =>
             {
                 CourseMessenger.Message msg = await API.GetMessageChatHTTPAsync(myChats[chatsLB.SelectedIndex].IdChat, MessageID[chatsLB.SelectedIndex]);
                 while (msg != null)
                 {
-                    //MessagesList.Items.Add(msg);
-                    //CourseMessenger.Message tmpMsg = new CourseMessenger.Message(msg.UserName, msg.MessageText, msg.TimeStamp);
-                    abonents.Add(msg.UserName);
-                    msgs.Add(msg.MessageText);
-                    dates.Add(msg.TimeStamp);
                     if (Regex.IsMatch(msg.MessageText, @"@everyone"))
                     {
                         msg.ClientNotify = "@everyone";
-                        //sups.Add("@everyone");
                     }
                     else if (Regex.IsMatch(msg.MessageText, $@"@{YourName}"))
                     {
                         msg.ClientNotify = $@"@{YourName}";
-                        //sups.Add($@"@{YourName}");
                     }
                     else msg.ClientNotify = "";
-                    //sups.Add("");
                     MessageID[chatsLB.SelectedIndex]++;
                     myChats[chatsLB.SelectedIndex].ChatMsgs.Add(msg);
                     msg = await API.GetMessageChatHTTPAsync(myChats[chatsLB.SelectedIndex].IdChat, MessageID[chatsLB.SelectedIndex]);
@@ -243,63 +326,42 @@ namespace WindowsFormsClient
 
         private void SendButt_Click(object sender, EventArgs e)
         {
-            if (SendButt.Text == "Прикрепить")
+            string UserName = YourName;
+            string Message = MessageTB.Text;
+            if (chatsLB.SelectedItem == null)
             {
-                MessageBox.Show("Пока нельзя прикреплять :(",
-                "Ой",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Error,
-                MessageBoxDefaultButton.Button1);
-            } 
-            else
-            {
-                string UserName = YourName;
-                string Message = MessageTB.Text;
-                if (chatsLB.SelectedItem == null)
-                {
-                    MessageBox.Show("Вы не выбрали чат для отправки. Выберите его в левом меню",
-                        "Ёжесообщение хотело уйти без ёжечата",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error);
-                    return;
-                }
-                if ((UserName.Length > 0) && (Message.Length > 0))
-                {
-                    if (myChats[chatsLB.SelectedIndex].Secret)
-                        UserName = "Ёжик";
-                    CourseMessenger.Message msg = new CourseMessenger.Message(UserName, Message, DateTime.Now);
-                    API.SendMessageRestSharp(msg, chatsLB.SelectedIndex);
-                    MessageTB.Text = "";
-                }
-                label_notify1.Visible = false;
-                label_notify2.Visible = false;
-                label_notify3.Visible = false;
-                label_notify4.Visible = false;
-                label_notifymore.Visible = false;
-                timer1.Interval = 300;
-                timerFastUpdate.Start();
+                MessageBox.Show("Вы не выбрали чат для отправки. Выберите его в левом меню",
+                    "Ёжесообщение хотело уйти без ёжечата",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
             }
+            if ((UserName.Length > 0) && (Message.Length > 0))
+            {
+                if (myChats[chatsLB.SelectedIndex].Secret)
+                    UserName = "Ёжик";
+                CourseMessenger.Message msg = new CourseMessenger.Message(UserName, Message, DateTime.Now);
+                API.SendMessageRestSharp(msg, chatsLB.SelectedIndex, Error_label);
+                MessageTB.Text = "";
+            }
+            label_notify1.Visible = false;
+            label_notify2.Visible = false;
+            label_notify3.Visible = false;
+            label_notify4.Visible = false;
+            label_notifymore.Visible = false;
+            timer1.Interval = 300;
+            timerFastUpdate.Start();
         }
 
         private void EnterMessage_label_Click(object sender, EventArgs e)
         {
-            //EnterMessage_label.Visible = false;
             MessageTB.Width = 5;
             MessageTB.Visible = true;
             MessageTB.Focus();
-            timer_wighter.Start();
         }
 
         private void timer_wighter_Tick(object sender, EventArgs e)
         {
-            if (MessageTB.Width < 532)
-            {
-                MessageTB.Width += 15;
-            } else
-            {
-                timer_wighter.Stop();
-                MessageTB.Width = 547;
-            }
         }
 
         private void MessageTB_Click(object sender, EventArgs e)
@@ -307,7 +369,7 @@ namespace WindowsFormsClient
             if (hl)
             {
 
-            } else
+            } else if (MessageTB.Enabled)
             {
                 hl = true;
                 MessageTB.Text = "";
@@ -319,13 +381,12 @@ namespace WindowsFormsClient
         {
             if (MessageTB.Text.Length == 0)
             {
-                SendButt.Text = "Прикрепить";
+                SendButt.Enabled = false;
             } 
             else
             {
-                SendButt.Text = "Отправить";
+                SendButt.Enabled = true;
                 if (Regex.IsMatch(MessageTB.Text, @".{0,}[@]\w{1,}\s{1,}")) {
-                    //label_notify.Text = Regex.Matches(MessageTB.Text, @"[@]\w{1,}\s{1,}").ToString();
                     MatchCollection notifies;
                     notifies = Regex.Matches(MessageTB.Text, @"[@]\w{1,}\s{1,}");
                     Label[] not = { label_notify1, label_notify2, label_notify3, label_notify4, label_notifymore };
@@ -344,7 +405,7 @@ namespace WindowsFormsClient
                         
                     }
                     label_notify1.Visible = true;
-                    //MessageTB.Text = Regex.Replace(MessageTB.Text, @"[@]\w{1,}\s{1,}", "");
+                    
                 } else
                 {
                     label_notify1.Visible = false;
@@ -394,30 +455,11 @@ namespace WindowsFormsClient
 
         private void UserNameTB_TextChanged(object sender, EventArgs e)
         {
-            //YourName = UserNameTB.Text;
         }
 
-        private async void CreateChat_butt_Click(object sender, EventArgs e)
+        private void CreateChat_butt_Click(object sender, EventArgs e)
         {
-            panelCreateChat.Location = new Point(panelCreateChat.Location.X, -50);
-            panelCreateChat.Height = 50;
-            panelCreateChat.Visible = true;
-            PictureTriangle.Visible = false;
-            for (int ani_y = -50, ani_h = 50; ani_y < 36; ani_y += 4, ani_h += 8, await Task.Delay(1))
-            {
-                panelCreateChat.Height = ani_h;
-                panelCreateChat.Location = new Point(panelCreateChat.Location.X, ani_y);
-                this.BackColor = Color.FromArgb(this.BackColor.R + 1, this.BackColor.G + 1, this.BackColor.B + 1);
-                head_lbl.ForeColor = Color.FromArgb(head_lbl.ForeColor.R - 2, head_lbl.ForeColor.G - 2, head_lbl.ForeColor.B - 2);
-                chatsLB.BackColor = Color.FromArgb(chatsLB.BackColor.R + 1, chatsLB.BackColor.G + 1, chatsLB.BackColor.B + 1);
-            }
-            this.BackColor = Color.FromArgb(52, 52, 52);
-            chatsLB.BackColor = Color.FromArgb(37, 37, 37);
-            chatsLB.Enabled = false;
-            head_lbl.ForeColor = Color.DarkGray;
-            panelCreateChat.Height = 246;
-            panelCreateChat.Location = new Point(panelCreateChat.Location.X, 36);
-            //head_lbl.Text = "Создание ёжечата";
+            Unfold(panelCreateChat, -50, 36, 50, 246, 21, true);
         }
 
         private void deleteChat_context_Click(object sender, EventArgs e)
@@ -448,9 +490,8 @@ namespace WindowsFormsClient
                 {
                     //Успешно вошли в аккаунт
                     YourName = lp.Login;
-                    //panel_registration.Visible = false;
                     chatsLB.Items.Clear();
-                    List<int> tmp = API.GetChats(YourName);
+                    List<int> tmp = API.GetChats(YourName , Error_label);
                     for (int i = 0; i < tmp.Count; i++)
                     {
                         Chat tmpChat = await API.GetAllAboutChat(tmp[i]);
@@ -472,14 +513,17 @@ namespace WindowsFormsClient
                     MessageTB.BackColor = Color.FromArgb(35, 35, 35);
                     head_lbl.ForeColor = Color.White;
                     CreateChat_butt.ForeColor = Color.White;
+                    CreateChat_butt.Enabled = true;
+                    CreateChat_butt.Cursor = Cursors.Hand;
                     SendButt.ForeColor = Color.White;
+                    SendButt.Enabled = true;
+                    SendButt.Cursor = Cursors.Hand;
                     MessageTB.Enabled = true;
                     timer1.Start();
                     timerChats.Start();
                     TimerOnline_Tick(sender, e);
                     TimerOnline.Start();
 
-                    LogOut_Butt.Visible = true;
                     head_lbl.Text = "Ёжечаты";
                 }
                 else if (result == "\"ErrPass\"")
@@ -541,8 +585,17 @@ namespace WindowsFormsClient
                 }
                 else if (result == "\"ErrWR\"")
                 {
-                    LogUserName_label.Text = "Нельзя использовать имя @everyone";
+                    LogUserName_label.Text = "Это имя недоступно";
                     LogUserName_label.Visible = true;
+                    for (int ani_h = PanelRegName.Height; ani_h < 60; ani_h += 2, await Task.Delay(10))
+                    {
+                        PanelRegName.Height = ani_h;
+                        PanelRegPass.Location = new Point(PanelRegPass.Location.X, PanelRegName.Height + PanelRegName.Location.Y);
+                        SignUp_Butt.Location = new Point(SignUp_Butt.Location.X, PanelRegPass.Height + PanelRegPass.Location.Y + 11);
+                        LogIn_Butt.Location = new Point(LogIn_Butt.Location.X, PanelRegPass.Height + PanelRegPass.Location.Y + 11);
+                        panel_registration.Height = SignUp_Butt.Location.Y + 39;
+                    }
+                    PanelRegName.Height = 60;
                 }
                 MessageTB.Text = "";
             }
@@ -555,7 +608,7 @@ namespace WindowsFormsClient
 
         private void panel_registr_Click(object sender, EventArgs e)
         {
-            //panel_registr.Visible = false;
+
         }
 
         private void MembList_CM_Opening(object sender, CancelEventArgs e)
@@ -569,10 +622,13 @@ namespace WindowsFormsClient
             else
             {
                 MemberStatus_CMP.Visible = false;
-                //string stat;
-                //myChats[chatsLB.SelectedIndex].ChatMmbrs[Members_LB.SelectedIndex].
                 MemberName_CMP.Text = "@" + Members_LB.SelectedItem.ToString();
             }
+
+            if (myChats[chatsLB.SelectedIndex].ChatMmbrs[Members_LB.SelectedIndex].Blocked)
+                BlockUser_CMP.Text = "Разблокировать";
+            else BlockUser_CMP.Text = "Заблокировать";
+
             int i;
             for (i = 0; i < myChats[chatsLB.SelectedIndex].ChatMmbrs.Count; i++)
             {
@@ -691,7 +747,6 @@ namespace WindowsFormsClient
 
         private void ConfirmCreateChat_Butt_Click(object sender, EventArgs e)
         {
-            //panelCreateChat.Visible = false;
             List<Member> tmpMember = new List<Member>();
             tmpMember.Add(new Member(YourName, 2, false));
             string[] spls = ChatMembersTB.Text.Split(' ');
@@ -728,9 +783,15 @@ namespace WindowsFormsClient
             {
                 Members_LB.Items.Add(myChats[chatsLB.SelectedIndex].ChatMmbrs[i].Nick);
             }
+
             
-            PanelChatMembers.Location = new Point(PanelChatMembers.Location.X, chatsLB.Location.Y + chatsLB.SelectedIndex * chatsLB.ItemHeight);
+            PanelChatMembers.Location = new Point(PanelChatMembers.Location.X, chatsLB.Location.Y + chatsLB.SelectedIndex * chatsLB.ItemHeight - 56);
             PanelChatMembers.Visible = true;
+            for (int ani_y = chatsLB.Location.Y + chatsLB.SelectedIndex * chatsLB.ItemHeight - 56, ani_h = 0; ani_h < 168; ani_y += 2, ani_h += 6, await Task.Delay(10))
+            {
+                PanelChatMembers.Height = ani_h;
+                PanelChatMembers.Location = new Point(PanelChatMembers.Location.X, ani_y);
+            }
 
             Chat tmpChat = await API.GetAllAboutChat(myChats[chatsLB.SelectedIndex].IdChat);
             myChats[chatsLB.SelectedIndex].ChatMmbrs.Clear();
@@ -750,7 +811,7 @@ namespace WindowsFormsClient
         private async void timerChats_Tick(object sender, EventArgs e)
         {
             
-            List<int> tmp = API.GetChats(YourName);
+            List<int> tmp = API.GetChats(YourName, Error_label);
             if (tmp.Count != chatsLB.Items.Count)
             {
                 chatsLB.Items.Clear();
@@ -759,6 +820,7 @@ namespace WindowsFormsClient
                 for (int i = 0; i < tmp.Count; i++)
                 {
                     Chat tmpChat = await API.GetAllAboutChat(tmp[i]);
+                    if (tmpChat.IdChat == -1) continue;
                     myChats.Add(tmpChat);
                     MessageID.Add(tmpChat.ChatMsgs.Count);
                     chatsLB.Items.Add(tmpChat.ChatName);
@@ -770,25 +832,14 @@ namespace WindowsFormsClient
         {
             if (myChats[chatsLB.SelectedIndex].Secret)
             {
-                if (MessageBox.Show("Внимание!\n\nПокидая секретный ёжечат, вы больше никогда не сможете в него вернуться\nВы действительно хотите покинуть чат \"" + chatsLB.SelectedItem.ToString() + "\"?",
-                    "Покинуть ёжечат",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Warning,
-                    MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-                {
-                    API.LeaveChat(YourName, myChats[chatsLB.SelectedIndex].IdChat);
-                }
+                TextAttentionLeaving.Text = "Внимание! Покидая секретный ёжечат, вы больше никогда не сможете в него вернуться\nВы действительно хотите покинуть чат \"" + chatsLB.SelectedItem.ToString() + "\"?";
             } else
             {
-                if (MessageBox.Show("Вы действительно хотите покинуть чат \"" + chatsLB.SelectedItem.ToString() + "\"? Вернуться в этот чат вы сможете только по приглашению другого участника чата",
-                    "Покинуть ёжечат",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Exclamation,
-                    MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-                {
-                    API.LeaveChat(YourName, myChats[chatsLB.SelectedIndex].IdChat);
-                }
+                TextAttentionLeaving.Text = "Вы действительно хотите покинуть чат \"" + chatsLB.SelectedItem.ToString() + "\"? Вернуться вы сможете только по приглашению другого участника";
             }
+
+            Unfold(PanelLeavingChat, -50, 36, 50, 172, 14, true);
+            
         }
 
         private void ChatRolesLB_SelectedIndexChanged(object sender, EventArgs e)
@@ -799,7 +850,6 @@ namespace WindowsFormsClient
         private void ChatRolesLB_DrawItem(object sender, DrawItemEventArgs e)
         {
             this.Text += "a";
-            //ChatRolesLB.TopIndex
         }
 
         private void vScrollBar1_Scroll(object sender, ScrollEventArgs e)
@@ -814,13 +864,11 @@ namespace WindowsFormsClient
 
         private void ChatRolesLB_MouseMove(object sender, MouseEventArgs e)
         {
-            //int visibleItems = ChatRolesLB.ClientSize.Height / ChatRolesLB.ItemHeight;
-            //Members_LB.TopIndex = Math.Max(ChatRolesLB.Items.Count - visibleItems + 1, 0);
+            
         }
 
         private async void chatsLB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //+5
             if (!PictureTriangle.Visible)
             {
                 PictureTriangle.Location = new Point(PictureTriangle.Location.X, chatsLB.SelectedIndex * chatsLB.ItemHeight + 96);
@@ -880,38 +928,12 @@ namespace WindowsFormsClient
 
         private void InviteChat_CMP_Click(object sender, EventArgs e)
         {
-            //int j = myChats[chatsLB.SelectedIndex].ChatMmbrs.Count;
-            //for (int i = 0; i < j; i++)
-            //{
-            //    Members_LB.Items.Add(myChats[chatsLB.SelectedIndex].ChatMmbrs[i].Nick);
-            //}
-            panel_invite.Location = new Point(panel_invite.Location.X, chatsLB.Location.Y + chatsLB.SelectedIndex * chatsLB.ItemHeight);
-            InviteRename_TB.Text = "Введите никнеймы..";
-            InviteRename_Butt.Text = "Пригласить";
-            InviteRename_Butt.Width = 83;
-            panel_invite.Visible = true;
+            Unfold(panel_invite, -50, 36, 50, 172, 20, true);
         }
 
         private void InviteRename_Butt_Click(object sender, EventArgs e)
         {
-            if (InviteRename_Butt.Text == "Пригласить")
-            {
-                panel_invite.Visible = false;
-                List<Member> tmpMember = new List<Member>();
-                string[] spls = InviteRename_TB.Text.Split(' ');
-                foreach (string tempMemb in spls)
-                {
-                    string coolstr = tempMemb;
-                    if (tempMemb != "") if (tempMemb[0] == '@') coolstr = tempMemb.Substring(1, tempMemb.Length - 1);
-                    tmpMember.Add(new Member(coolstr, 0, false));
-                }
-                Chat tmpChat = new Chat(myChats[chatsLB.SelectedIndex].IdChat, chatsLB.SelectedItem.ToString(), tmpMember, false);
-                API.Invite(tmpChat);
-            } else
-            {
-                panel_invite.Visible = false;
-                //API.Rename(myChats[chatsLB.SelectedIndex].IdChat, InviteRename_TB.Text);
-            }
+
         }
 
         private void TimerOnline_Tick(object sender, EventArgs e)
@@ -923,18 +945,16 @@ namespace WindowsFormsClient
         {
         }
 
-        private void BlockUser_CMP_Click(object sender, EventArgs e)
+        private async void BlockUser_CMP_Click(object sender, EventArgs e)
         {
             Event q = new Event(YourName, Members_LB.SelectedItem.ToString(), 6, true, DateTime.Now);
-            
+            await API.SendEvent(q, myChats[chatsLB.SelectedIndex].IdChat);
         }
 
         private void RenameChat_CMP_Click(object sender, EventArgs e)
         {
             panel_invite.Location = new Point(panel_invite.Location.X, chatsLB.Location.Y + chatsLB.SelectedIndex * chatsLB.ItemHeight);
             InviteRename_TB.Text = "Введите новое имя..";
-            InviteRename_Butt.Text = "Переименовать";
-            InviteRename_Butt.Width = 100;
             panel_invite.Visible = true;
         }
 
@@ -945,50 +965,32 @@ namespace WindowsFormsClient
 
         private void SignIn_popup_MouseHover(object sender, EventArgs e)
         {
-            //TimerBoxZoom.Start();
+
         }
 
         private void TimerBoxZoom_Tick(object sender, EventArgs e)
         {
-            //TimerBoxOut.Stop();
-            //if (SignIn_popup.Height < 60)
-            //{
-            //    SignIn_popup.Location = new Point(SignIn_popup.Location.X - 4, SignIn_popup.Location.Y - 2);
-            //    SignIn_popup.Width += 8;
-            //    SignIn_popup.Height += 4;
-            //}
-            //else TimerBoxZoom.Stop();
+
         }
 
         private void SignUp_Butt_MouseHover(object sender, EventArgs e)
         {
-            //TimerBoxZoom.Start();
+
         }
 
         private void SignUp_Butt_MouseDown(object sender, MouseEventArgs e)
         {
-            //TimerBoxZoom.Start();
+
         }
 
         private void SignIn_popup_MouseLeave(object sender, EventArgs e)
         {
-            //TimerBoxOut.Start();
+
         }
 
         private void TimerBoxOut_Tick(object sender, EventArgs e)
         {
-            //TimerBoxZoom.Stop();
-            //if (SignIn_popup.Height > 43)
-            //{
-            //    SignIn_popup.Location = new Point(SignIn_popup.Location.X + 4, SignIn_popup.Location.Y + 2);
-            //    SignIn_popup.Width -= 8;
-            //    SignIn_popup.Height -= 4;
-            //} else
-            //{
-            //    SignIn_popup.Width = 214;
-            //    SignIn_popup.Height = 43;
-            //    TimerBoxOut.Stop();
-            //}
+
         }
 
         private void NavigationBar_MouseMove(object sender, MouseEventArgs e)
@@ -1018,29 +1020,99 @@ namespace WindowsFormsClient
 
         private void label3_Click(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void CloseCreateChat_Click(object sender, EventArgs e)
+        {
+            Fold(panelCreateChat, -50, 36, 50, 246, 19, true);
+        }
+
+        private void PinBrowse_Butt_Click(object sender, EventArgs e)
+        {
 
         }
 
-        private async void CloseCreateChat_Click(object sender, EventArgs e)
+        private void PicturePinPreview_Click(object sender, EventArgs e)
         {
-            //panelCreateChat.Location = new Point(panelCreateChat.Location.X, -50);
-            //panelCreateChat.Height = 50;
-            //panelCreateChat.Visible = true;
-            for (int ani_y = panelCreateChat.Location.Y, ani_h = panelCreateChat.Height; ani_y > -50; ani_y -= 4, ani_h -= 8, await Task.Delay(1))
-            {
-                panelCreateChat.Height = ani_h;
-                panelCreateChat.Location = new Point(panelCreateChat.Location.X, ani_y);
-                this.BackColor = Color.FromArgb(this.BackColor.R - 1, this.BackColor.G - 1, this.BackColor.B - 1);
-                head_lbl.ForeColor = Color.FromArgb(head_lbl.ForeColor.R + 1, head_lbl.ForeColor.G + 1, head_lbl.ForeColor.B + 1);
-                chatsLB.BackColor = Color.FromArgb(chatsLB.BackColor.R - 1, chatsLB.BackColor.G - 1, chatsLB.BackColor.B - 1);
 
+        }
+
+        private void LogPass_TB_TextChanged(object sender, EventArgs e)
+        {
+            LogUserPass_label.Visible = false;
+        }
+
+        private void Invite_Butt_Click(object sender, EventArgs e)
+        {
+            List<Member> tmpMember = new List<Member>();
+            string[] spls = InviteRename_TB.Text.Split(' ');
+            foreach (string tempMemb in spls)
+            {
+                string coolstr = tempMemb;
+                if (tempMemb != "") if (tempMemb[0] == '@') coolstr = tempMemb.Substring(1, tempMemb.Length - 1);
+                tmpMember.Add(new Member(coolstr, 0, false));
             }
-            PictureTriangle.Visible = true;
-            chatsLB.Enabled = true;
-            head_lbl.ForeColor = Color.White;
-            this.BackColor = Color.FromArgb(35, 35, 35);
-            chatsLB.BackColor = Color.FromArgb(18, 18, 18);
-            panelCreateChat.Visible = false;
+            Chat tmpChat = new Chat(myChats[chatsLB.SelectedIndex].IdChat, chatsLB.SelectedItem.ToString(), tmpMember, false);
+            API.Invite(tmpChat);
+            CloseInviteWindow_Click(sender, e);
+        }
+
+        private void CloseInviteWindow_Click(object sender, EventArgs e)
+        {
+            Fold(panel_invite, -50, 36, 50, 172, 20, true);
+        }
+
+        private void StayChat_Butt_Click(object sender, EventArgs e)
+        {
+            Fold(PanelLeavingChat, -50, 36, 50, 172, 14, true);
+        }
+
+        private void FormMessanger_Shown(object sender, EventArgs e)
+        {
+            Unfold(panel_registration, -50, 36, 100, 200, 19, false);
+        }
+
+        private void LeaveChat_Butt_Click(object sender, EventArgs e)
+        {
+            API.LeaveChat(YourName, myChats[chatsLB.SelectedIndex].IdChat);
+            StayChat_Butt_Click(sender, e);
+        }
+
+        private async void AwayUser_CMP_Click(object sender, EventArgs e)
+        {
+            Event q = new Event(YourName, Members_LB.SelectedItem.ToString(), 5, true, DateTime.Now);
+            await API.SendEvent(q, myChats[chatsLB.SelectedIndex].IdChat);
+        }
+
+        private async void MakeAdmin_CMP_Click(object sender, EventArgs e)
+        {
+            Event q = new Event(YourName, Members_LB.SelectedItem.ToString(), 0, true, DateTime.Now);
+            await API.SendEvent(q, myChats[chatsLB.SelectedIndex].IdChat);
+        }
+
+        private async void AdminToModer_CMP_Click(object sender, EventArgs e)
+        {
+            Event q = new Event(YourName, Members_LB.SelectedItem.ToString(), 1, true, DateTime.Now);
+            await API.SendEvent(q, myChats[chatsLB.SelectedIndex].IdChat);
+        }
+
+        private async void AdminToMemb_CMP_Click(object sender, EventArgs e)
+        {
+            Event q = new Event(YourName, Members_LB.SelectedItem.ToString(), 2, true, DateTime.Now);
+            await API.SendEvent(q, myChats[chatsLB.SelectedIndex].IdChat);
+        }
+
+        private async void MakeModer_CMP_Click(object sender, EventArgs e)
+        {
+            Event q = new Event(YourName, Members_LB.SelectedItem.ToString(), 3, true, DateTime.Now);
+            await API.SendEvent(q, myChats[chatsLB.SelectedIndex].IdChat);
+        }
+
+        private async void DemoteModer_CMP_Click(object sender, EventArgs e)
+        {
+            Event q = new Event(YourName, Members_LB.SelectedItem.ToString(), 4, true, DateTime.Now);
+            await API.SendEvent(q, myChats[chatsLB.SelectedIndex].IdChat);
         }
 
         private void NavigationBar_MouseDown(object sender, MouseEventArgs e)

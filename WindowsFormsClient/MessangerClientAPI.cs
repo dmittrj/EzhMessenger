@@ -9,6 +9,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CourseMessenger
 {
@@ -56,13 +57,18 @@ namespace CourseMessenger
         }
 
         //Получить список чатов
-        public List<int> GetChats(string userName)
+        public List<int> GetChats(string userName, Label label)
         {
             string ServiceUrl = "http://localhost:5000";
             var client = new RestClient(ServiceUrl);
             var request = new RestRequest("/api/Messanger/get/chats/" + userName, Method.GET);
             IRestResponse<List<int>> Response = client.Execute<List<int>>(request);
-            string ResponseContent = Response.Content;
+            string ResponseContent;
+            if (Response.StatusCode == 0) { 
+                label.Visible = true;
+                return new List<int>();
+            }
+            else ResponseContent = Response.Content;
             ResponseContent = ResponseContent.Substring(1, ResponseContent.Length - 2);
             List<int> deserializedMsg = JsonConvert.DeserializeObject<List<int>>(ResponseContent);
             return deserializedMsg;
@@ -138,7 +144,7 @@ namespace CourseMessenger
         //}
 
         //Отправить сообщение
-        public bool SendMessageRestSharp(Message msg, int idC)
+        public bool SendMessageRestSharp(Message msg, int idC, Label label)
         {
             string ServiceUrl = "http://localhost:5000";
             var client = new RestClient(ServiceUrl);
@@ -159,6 +165,7 @@ namespace CourseMessenger
                     else
                     {
                         ExitIsTrue = false;
+                        label.Visible = true;
                     }
                 });
             }
@@ -233,7 +240,32 @@ namespace CourseMessenger
             return ExitIsTrue;
         }
 
+        //Отправить событие
+        public async Task<string> SendEvent(Event ev, int id)
+        {
+            string ServiceUrl = "http://localhost:5000";
+            var client = new RestClient(ServiceUrl);
+            var request = new RestRequest("/api/Messanger/post/event/" + id.ToString(), Method.POST);
+            //var resetEvent = new ManualResetEvent(false);
 
+            string jsonToSend = JsonConvert.SerializeObject(ev);
+            request.AddParameter("application/json; charset=utf-8", jsonToSend, ParameterType.RequestBody);
+            request.RequestFormat = DataFormat.Json;
+            bool ExitIsTrue = false;
+            string res = "ErrGet";
+            try
+            {
+                var result = await client.ExecuteAsync<string>(request);
+                return result.Content;
+                //resetEvent.WaitOne();
+            }
+            catch (Exception error)
+            {
+                Console.WriteLine(error);
+                return "ErrGet";
+            }
+            //return res;
+        }
 
         //Регистрация
         public async Task<string> SendForSignUp(LogPass lgp)
@@ -333,8 +365,7 @@ namespace CourseMessenger
 
 
 
-
-
+        
 
 
 

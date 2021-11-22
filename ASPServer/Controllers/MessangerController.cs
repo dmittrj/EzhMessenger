@@ -71,6 +71,7 @@ namespace ASPServer.Controllers
         public string GetChatInfo(int id)
         {
             string OutputString;
+            if (id == -1) return null; 
             OutputString = JsonConvert.SerializeObject(ListOfChats[id]);
             return OutputString;
         }
@@ -262,16 +263,43 @@ namespace ASPServer.Controllers
         }
 
 
-        //Переименование чата
-        [HttpPost("post/rename/{idChat}")]
-        public IActionResult SendMessage(int idChat, [FromBody] string str)
+        //Событие
+        [HttpPost("post/event/{idChat}")]
+        public IActionResult SendEvent(int idChat, [FromBody] Event ev)
         {
-            if (str == "")
+            if (ev == null)
             {
                 return BadRequest();
             }
-            ListOfChats[idChat].ChatName = str;
-            Console.WriteLine("Чат № " + idChat.ToString() + " теперь называется " + str);
+            for (int i = 0; i < ListOfChats[idChat].ChatMmbrs.Count; i++)
+                if (ListOfChats[idChat].ChatMmbrs[i].Nick == ev.E_Object)
+                    switch (ev.Happening)
+                    {
+                        case 0:
+                            ListOfChats[idChat].ChatMmbrs[i].Role = 2;
+                            break;
+                        case 1:
+                        case 3:
+                            ListOfChats[idChat].ChatMmbrs[i].Role = 1;
+                            break;
+                        case 2:
+                        case 4:
+                            ListOfChats[idChat].ChatMmbrs[i].Role = 0;
+                            break;
+                        case 5:
+                            ListOfChats[idChat].ChatMmbrs.RemoveAt(i);
+                            for (int j = 0; j < ListOfChats[idChat].ChatMmbrs.Count; j++)
+                                if (ListOfChats[idChat].ChatMmbrs[j].Nick == ev.E_Object)
+                                    ListOfChats[idChat].ChatMmbrs.RemoveAt(j);
+                            break;
+                        case 6:
+                            ListOfChats[idChat].ChatMmbrs[i].Blocked = !ListOfChats[idChat].ChatMmbrs[i].Blocked;
+                            Console.WriteLine("Участник чата №" + idChat.ToString() + " " + ListOfChats[idChat].ChatMmbrs[i].Nick + " заблокирован или разблокирован");
+                            break;
+                    }
+            for (int j = 0; j < ListOfUsers.Count; j++)
+                if (ListOfUsers[j].CompareName(ev.E_Object))
+                    ListOfUsers[j].Chats.Add(-1);
             return new OkResult();
         }
 

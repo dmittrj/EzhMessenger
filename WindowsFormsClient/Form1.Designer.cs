@@ -41,22 +41,20 @@ namespace WindowsFormsClient
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.InviteChat_CMP = new System.Windows.Forms.ToolStripMenuItem();
             this.ChatMembers_CMP = new System.Windows.Forms.ToolStripMenuItem();
-            this.RenameChat_CMP = new System.Windows.Forms.ToolStripMenuItem();
             this.LeaveChat_CMP = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteChat_context = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.CreateChat_CMP = new System.Windows.Forms.ToolStripMenuItem();
             this.CreateSecret_CMP = new System.Windows.Forms.ToolStripMenuItem();
             this.SendButt = new System.Windows.Forms.Label();
-            this.timer_wighter = new System.Windows.Forms.Timer(this.components);
             this.label_notify1 = new System.Windows.Forms.Label();
             this.label_notify2 = new System.Windows.Forms.Label();
             this.label_notify3 = new System.Windows.Forms.Label();
             this.label_notify4 = new System.Windows.Forms.Label();
             this.label_notifymore = new System.Windows.Forms.Label();
             this.panel_messages = new System.Windows.Forms.Panel();
+            this.panel_emptyChat = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.FixScrollBar = new System.Windows.Forms.PictureBox();
-            this.Error_label = new System.Windows.Forms.Label();
             this.panelMsg_4 = new System.Windows.Forms.Panel();
             this.timeMsg_4 = new System.Windows.Forms.Label();
             this.notifyMsg_4 = new System.Windows.Forms.Label();
@@ -77,29 +75,34 @@ namespace WindowsFormsClient
             this.notifyMsg_1 = new System.Windows.Forms.Label();
             this.textMsg_1 = new System.Windows.Forms.Label();
             this.nameMsg_1 = new System.Windows.Forms.Label();
+            this.Error_label = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.panel_emptyChat = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
             this.CreateChat_butt = new System.Windows.Forms.Label();
             this.panelCreateChat = new System.Windows.Forms.Panel();
-            this.ConfirmCreateChat_Butt = new System.Windows.Forms.Label();
-            this.SecretChat_CB = new System.Windows.Forms.CheckBox();
+            this.CloseCreateChat = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.ChatMembersTB = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.ChatNameTB = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.ConfirmCreateChat_Butt = new System.Windows.Forms.Label();
+            this.SecretChat_CB = new System.Windows.Forms.CheckBox();
             this.panel_registration = new System.Windows.Forms.Panel();
+            this.PanelRegName = new System.Windows.Forms.Panel();
+            this.LogInNick_TB = new System.Windows.Forms.TextBox();
+            this.LogUserName_label = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SignUp_Butt = new System.Windows.Forms.Label();
             this.PanelRegPass = new System.Windows.Forms.Panel();
             this.LogUserPass_label = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.LogPass_TB = new System.Windows.Forms.TextBox();
             this.ShowPassword_CB = new System.Windows.Forms.CheckBox();
-            this.PanelRegName = new System.Windows.Forms.Panel();
-            this.LogInNick_TB = new System.Windows.Forms.TextBox();
-            this.LogUserName_label = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.LogIn_Butt = new System.Windows.Forms.Label();
             this.PanelChatMembers = new System.Windows.Forms.Panel();
             this.Label_Updating = new System.Windows.Forms.Label();
@@ -125,58 +128,47 @@ namespace WindowsFormsClient
             this.BecomeMemb_CMP = new System.Windows.Forms.ToolStripMenuItem();
             this.timerChats = new System.Windows.Forms.Timer(this.components);
             this.timerFastUpdate = new System.Windows.Forms.Timer(this.components);
-            this.LogOut_Butt = new System.Windows.Forms.Label();
             this.panel_invite = new System.Windows.Forms.Panel();
-            this.InviteRename_Butt = new System.Windows.Forms.Button();
+            this.Invite_Butt = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.InviteRename_TB = new System.Windows.Forms.TextBox();
-            this.CloseInvite = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.CloseInviteWindow = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.TimerOnline = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
             this.NavigationBar = new System.Windows.Forms.PictureBox();
             this.CloseWindowButton = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.Minimize_Butt = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.PictureTriangle = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.CloseCreateChat = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
+            this.UploadImage = new System.Windows.Forms.OpenFileDialog();
+            this.PanelLeavingChat = new System.Windows.Forms.Panel();
+            this.LeaveChat_Butt = new System.Windows.Forms.Label();
+            this.StayChat_Butt = new System.Windows.Forms.Label();
+            this.TextAttentionLeaving = new System.Windows.Forms.Label();
             this.ChatListCM.SuspendLayout();
             this.panel_messages.SuspendLayout();
+            this.panel_emptyChat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FixScrollBar)).BeginInit();
             this.panelMsg_4.SuspendLayout();
             this.panelMsg_3.SuspendLayout();
             this.panelMsg_2.SuspendLayout();
             this.panelMsg_1.SuspendLayout();
-            this.panel_emptyChat.SuspendLayout();
             this.panelCreateChat.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.panel_registration.SuspendLayout();
-            this.PanelRegPass.SuspendLayout();
             this.PanelRegName.SuspendLayout();
+            this.PanelRegPass.SuspendLayout();
             this.PanelChatMembers.SuspendLayout();
             this.MembList_CM.SuspendLayout();
             this.panel_invite.SuspendLayout();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NavigationBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureTriangle)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
+            this.PanelLeavingChat.SuspendLayout();
             this.SuspendLayout();
             // 
             // MessageTB
@@ -187,7 +179,8 @@ namespace WindowsFormsClient
             this.MessageTB.ForeColor = System.Drawing.Color.Gray;
             this.MessageTB.Location = new System.Drawing.Point(249, 439);
             this.MessageTB.Name = "MessageTB";
-            this.MessageTB.Size = new System.Drawing.Size(547, 25);
+            this.MessageTB.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.MessageTB.Size = new System.Drawing.Size(511, 25);
             this.MessageTB.TabIndex = 3;
             this.MessageTB.Text = "Введите ёжесообщение...";
             this.MessageTB.Click += new System.EventHandler(this.MessageTB_Click);
@@ -234,14 +227,12 @@ namespace WindowsFormsClient
             this.toolStripMenuItem1,
             this.InviteChat_CMP,
             this.ChatMembers_CMP,
-            this.RenameChat_CMP,
             this.LeaveChat_CMP,
-            this.deleteChat_context,
             this.toolStripMenuItem2,
             this.CreateChat_CMP,
             this.CreateSecret_CMP});
             this.ChatListCM.Name = "contextMenuStrip1";
-            this.ChatListCM.Size = new System.Drawing.Size(243, 192);
+            this.ChatListCM.Size = new System.Drawing.Size(243, 148);
             this.ChatListCM.Opening += new System.ComponentModel.CancelEventHandler(this.ChatListCM_Opening);
             // 
             // ChatNameCMP
@@ -270,28 +261,12 @@ namespace WindowsFormsClient
             this.ChatMembers_CMP.Text = "Участники";
             this.ChatMembers_CMP.Click += new System.EventHandler(this.ChatMembers_CMP_Click);
             // 
-            // RenameChat_CMP
-            // 
-            this.RenameChat_CMP.Name = "RenameChat_CMP";
-            this.RenameChat_CMP.Size = new System.Drawing.Size(242, 22);
-            this.RenameChat_CMP.Text = "Переименовать";
-            this.RenameChat_CMP.Visible = false;
-            this.RenameChat_CMP.Click += new System.EventHandler(this.RenameChat_CMP_Click);
-            // 
             // LeaveChat_CMP
             // 
             this.LeaveChat_CMP.Name = "LeaveChat_CMP";
             this.LeaveChat_CMP.Size = new System.Drawing.Size(242, 22);
             this.LeaveChat_CMP.Text = "Покинуть ёжечат";
             this.LeaveChat_CMP.Click += new System.EventHandler(this.LeaveChat_CMP_Click);
-            // 
-            // deleteChat_context
-            // 
-            this.deleteChat_context.Name = "deleteChat_context";
-            this.deleteChat_context.Size = new System.Drawing.Size(242, 22);
-            this.deleteChat_context.Text = "Удалить ёжечат";
-            this.deleteChat_context.Visible = false;
-            this.deleteChat_context.Click += new System.EventHandler(this.deleteChat_context_Click);
             // 
             // toolStripMenuItem2
             // 
@@ -325,11 +300,6 @@ namespace WindowsFormsClient
             this.SendButt.Text = "Отправить";
             this.SendButt.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.SendButt.Click += new System.EventHandler(this.SendButt_Click);
-            // 
-            // timer_wighter
-            // 
-            this.timer_wighter.Interval = 2;
-            this.timer_wighter.Tick += new System.EventHandler(this.timer_wighter_Tick);
             // 
             // label_notify1
             // 
@@ -415,6 +385,30 @@ namespace WindowsFormsClient
             this.panel_messages.MouseLeave += new System.EventHandler(this.panel_messages_MouseLeave);
             this.panel_messages.MouseWheel += new System.Windows.Forms.MouseEventHandler(this.panel_messages_MouseWheel);
             // 
+            // panel_emptyChat
+            // 
+            this.panel_emptyChat.Controls.Add(this.label5);
+            this.panel_emptyChat.Location = new System.Drawing.Point(1, 1);
+            this.panel_emptyChat.Name = "panel_emptyChat";
+            this.panel_emptyChat.Size = new System.Drawing.Size(621, 331);
+            this.panel_emptyChat.TabIndex = 15;
+            this.panel_emptyChat.Visible = false;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.ForeColor = System.Drawing.Color.DarkGray;
+            this.label5.Location = new System.Drawing.Point(0, 68);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(618, 196);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Этот чат ёжепуст";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // FixScrollBar
             // 
             this.FixScrollBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
@@ -427,19 +421,6 @@ namespace WindowsFormsClient
             this.FixScrollBar.TabIndex = 18;
             this.FixScrollBar.TabStop = false;
             this.FixScrollBar.Visible = false;
-            // 
-            // Error_label
-            // 
-            this.Error_label.BackColor = System.Drawing.Color.Transparent;
-            this.Error_label.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Error_label.ForeColor = System.Drawing.Color.LightCoral;
-            this.Error_label.Location = new System.Drawing.Point(83, 31);
-            this.Error_label.Name = "Error_label";
-            this.Error_label.Size = new System.Drawing.Size(255, 28);
-            this.Error_label.TabIndex = 17;
-            this.Error_label.Text = "Нет ёжесоединения";
-            this.Error_label.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Error_label.Visible = false;
             // 
             // panelMsg_4
             // 
@@ -685,29 +666,18 @@ namespace WindowsFormsClient
             this.nameMsg_1.TabIndex = 14;
             this.nameMsg_1.Text = "Name of contact";
             // 
-            // panel_emptyChat
+            // Error_label
             // 
-            this.panel_emptyChat.Controls.Add(this.label5);
-            this.panel_emptyChat.Location = new System.Drawing.Point(1, 1);
-            this.panel_emptyChat.Name = "panel_emptyChat";
-            this.panel_emptyChat.Size = new System.Drawing.Size(621, 331);
-            this.panel_emptyChat.TabIndex = 15;
-            this.panel_emptyChat.Visible = false;
-            // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.ForeColor = System.Drawing.Color.DarkGray;
-            this.label5.Location = new System.Drawing.Point(0, 68);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(618, 196);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "Этот чат ёжепуст";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Error_label.BackColor = System.Drawing.Color.Transparent;
+            this.Error_label.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Error_label.ForeColor = System.Drawing.Color.LightCoral;
+            this.Error_label.Location = new System.Drawing.Point(0, 30);
+            this.Error_label.Name = "Error_label";
+            this.Error_label.Size = new System.Drawing.Size(885, 28);
+            this.Error_label.TabIndex = 17;
+            this.Error_label.Text = "Нет ёжесоединения";
+            this.Error_label.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Error_label.Visible = false;
             // 
             // CreateChat_butt
             // 
@@ -732,39 +702,51 @@ namespace WindowsFormsClient
             this.panelCreateChat.Controls.Add(this.label2);
             this.panelCreateChat.Controls.Add(this.ConfirmCreateChat_Butt);
             this.panelCreateChat.Controls.Add(this.SecretChat_CB);
-            this.panelCreateChat.Location = new System.Drawing.Point(268, 456);
+            this.panelCreateChat.Location = new System.Drawing.Point(268, 445);
             this.panelCreateChat.Name = "panelCreateChat";
             this.panelCreateChat.Size = new System.Drawing.Size(349, 246);
             this.panelCreateChat.TabIndex = 18;
             this.panelCreateChat.Visible = false;
             // 
-            // ConfirmCreateChat_Butt
+            // CloseCreateChat
             // 
-            this.ConfirmCreateChat_Butt.BackColor = System.Drawing.Color.Transparent;
-            this.ConfirmCreateChat_Butt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ConfirmCreateChat_Butt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ConfirmCreateChat_Butt.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ConfirmCreateChat_Butt.ForeColor = System.Drawing.Color.White;
-            this.ConfirmCreateChat_Butt.Location = new System.Drawing.Point(110, 207);
-            this.ConfirmCreateChat_Butt.Name = "ConfirmCreateChat_Butt";
-            this.ConfirmCreateChat_Butt.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.ConfirmCreateChat_Butt.Size = new System.Drawing.Size(130, 24);
-            this.ConfirmCreateChat_Butt.TabIndex = 21;
-            this.ConfirmCreateChat_Butt.Text = "Создать ёжечат";
-            this.ConfirmCreateChat_Butt.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.ConfirmCreateChat_Butt.Click += new System.EventHandler(this.ConfirmCreateChat_Butt_Click);
+            this.CloseCreateChat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
+            this.CloseCreateChat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CloseCreateChat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CloseCreateChat.Font = new System.Drawing.Font("Webdings", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.CloseCreateChat.ForeColor = System.Drawing.Color.White;
+            this.CloseCreateChat.Location = new System.Drawing.Point(225, 7);
+            this.CloseCreateChat.Margin = new System.Windows.Forms.Padding(0);
+            this.CloseCreateChat.Name = "CloseCreateChat";
+            this.CloseCreateChat.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.CloseCreateChat.Size = new System.Drawing.Size(20, 20);
+            this.CloseCreateChat.TabIndex = 32;
+            this.CloseCreateChat.Text = "r";
+            this.CloseCreateChat.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.CloseCreateChat.Click += new System.EventHandler(this.CloseCreateChat_Click);
             // 
-            // SecretChat_CB
+            // panel2
             // 
-            this.SecretChat_CB.AutoSize = true;
-            this.SecretChat_CB.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.SecretChat_CB.ForeColor = System.Drawing.Color.White;
-            this.SecretChat_CB.Location = new System.Drawing.Point(142, 169);
-            this.SecretChat_CB.Name = "SecretChat_CB";
-            this.SecretChat_CB.Size = new System.Drawing.Size(172, 23);
-            this.SecretChat_CB.TabIndex = 20;
-            this.SecretChat_CB.Text = "Ёжесекретный ёжечат";
-            this.SecretChat_CB.UseVisualStyleBackColor = true;
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.ChatMembersTB);
+            this.panel2.Location = new System.Drawing.Point(1, 92);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(348, 74);
+            this.panel2.TabIndex = 31;
+            // 
+            // label7
+            // 
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.ForeColor = System.Drawing.Color.Gray;
+            this.label7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label7.Location = new System.Drawing.Point(137, 49);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(294, 25);
+            this.label7.TabIndex = 20;
+            this.label7.Text = "через пробел";
             // 
             // label9
             // 
@@ -801,6 +783,26 @@ namespace WindowsFormsClient
             this.ChatMembersTB.Size = new System.Drawing.Size(185, 27);
             this.ChatMembersTB.TabIndex = 17;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.ChatNameTB);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Location = new System.Drawing.Point(1, 53);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(346, 40);
+            this.panel1.TabIndex = 30;
+            // 
+            // ChatNameTB
+            // 
+            this.ChatNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(22)))), ((int)(((byte)(22)))));
+            this.ChatNameTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ChatNameTB.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ChatNameTB.ForeColor = System.Drawing.Color.White;
+            this.ChatNameTB.Location = new System.Drawing.Point(141, 3);
+            this.ChatNameTB.Name = "ChatNameTB";
+            this.ChatNameTB.Size = new System.Drawing.Size(185, 27);
+            this.ChatNameTB.TabIndex = 4;
+            // 
             // label6
             // 
             this.label6.BackColor = System.Drawing.Color.Transparent;
@@ -813,16 +815,45 @@ namespace WindowsFormsClient
             this.label6.Text = "Имя ёжечата";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // ChatNameTB
+            // label2
             // 
-            this.ChatNameTB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(22)))), ((int)(((byte)(22)))));
-            this.ChatNameTB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ChatNameTB.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ChatNameTB.ForeColor = System.Drawing.Color.White;
-            this.ChatNameTB.Location = new System.Drawing.Point(141, 3);
-            this.ChatNameTB.Name = "ChatNameTB";
-            this.ChatNameTB.Size = new System.Drawing.Size(185, 27);
-            this.ChatNameTB.TabIndex = 4;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(1, 6);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(348, 27);
+            this.label2.TabIndex = 29;
+            this.label2.Text = "Создать чат";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // ConfirmCreateChat_Butt
+            // 
+            this.ConfirmCreateChat_Butt.BackColor = System.Drawing.Color.Transparent;
+            this.ConfirmCreateChat_Butt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ConfirmCreateChat_Butt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ConfirmCreateChat_Butt.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ConfirmCreateChat_Butt.ForeColor = System.Drawing.Color.White;
+            this.ConfirmCreateChat_Butt.Location = new System.Drawing.Point(110, 207);
+            this.ConfirmCreateChat_Butt.Name = "ConfirmCreateChat_Butt";
+            this.ConfirmCreateChat_Butt.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.ConfirmCreateChat_Butt.Size = new System.Drawing.Size(130, 24);
+            this.ConfirmCreateChat_Butt.TabIndex = 21;
+            this.ConfirmCreateChat_Butt.Text = "Создать ёжечат";
+            this.ConfirmCreateChat_Butt.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.ConfirmCreateChat_Butt.Click += new System.EventHandler(this.ConfirmCreateChat_Butt_Click);
+            // 
+            // SecretChat_CB
+            // 
+            this.SecretChat_CB.AutoSize = true;
+            this.SecretChat_CB.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SecretChat_CB.ForeColor = System.Drawing.Color.White;
+            this.SecretChat_CB.Location = new System.Drawing.Point(142, 169);
+            this.SecretChat_CB.Name = "SecretChat_CB";
+            this.SecretChat_CB.Size = new System.Drawing.Size(172, 23);
+            this.SecretChat_CB.TabIndex = 20;
+            this.SecretChat_CB.Text = "Ёжесекретный ёжечат";
+            this.SecretChat_CB.UseVisualStyleBackColor = true;
             // 
             // panel_registration
             // 
@@ -837,6 +868,67 @@ namespace WindowsFormsClient
             this.panel_registration.Name = "panel_registration";
             this.panel_registration.Size = new System.Drawing.Size(349, 200);
             this.panel_registration.TabIndex = 19;
+            // 
+            // PanelRegName
+            // 
+            this.PanelRegName.Controls.Add(this.LogInNick_TB);
+            this.PanelRegName.Controls.Add(this.LogUserName_label);
+            this.PanelRegName.Controls.Add(this.label14);
+            this.PanelRegName.Location = new System.Drawing.Point(-1, 49);
+            this.PanelRegName.Name = "PanelRegName";
+            this.PanelRegName.Size = new System.Drawing.Size(349, 38);
+            this.PanelRegName.TabIndex = 26;
+            // 
+            // LogInNick_TB
+            // 
+            this.LogInNick_TB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(22)))), ((int)(((byte)(22)))));
+            this.LogInNick_TB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LogInNick_TB.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LogInNick_TB.ForeColor = System.Drawing.Color.White;
+            this.LogInNick_TB.Location = new System.Drawing.Point(142, 6);
+            this.LogInNick_TB.Margin = new System.Windows.Forms.Padding(0);
+            this.LogInNick_TB.Name = "LogInNick_TB";
+            this.LogInNick_TB.Size = new System.Drawing.Size(185, 27);
+            this.LogInNick_TB.TabIndex = 4;
+            this.LogInNick_TB.Text = "@";
+            this.LogInNick_TB.TextChanged += new System.EventHandler(this.LogInNick_TB_TextChanged);
+            // 
+            // LogUserName_label
+            // 
+            this.LogUserName_label.BackColor = System.Drawing.Color.Transparent;
+            this.LogUserName_label.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LogUserName_label.ForeColor = System.Drawing.Color.LightCoral;
+            this.LogUserName_label.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.LogUserName_label.Location = new System.Drawing.Point(139, 34);
+            this.LogUserName_label.Name = "LogUserName_label";
+            this.LogUserName_label.Size = new System.Drawing.Size(191, 20);
+            this.LogUserName_label.TabIndex = 19;
+            this.LogUserName_label.Text = "Это имя уже занято";
+            this.LogUserName_label.Visible = false;
+            // 
+            // label14
+            // 
+            this.label14.BackColor = System.Drawing.Color.Transparent;
+            this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label14.ForeColor = System.Drawing.Color.White;
+            this.label14.Location = new System.Drawing.Point(3, 5);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(137, 28);
+            this.label14.TabIndex = 15;
+            this.label14.Text = "Никнейм ёжика";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(-1, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(349, 27);
+            this.label1.TabIndex = 28;
+            this.label1.Text = "Войдите или зарегистрируйтесь";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // SignUp_Butt
             // 
@@ -905,6 +997,7 @@ namespace WindowsFormsClient
             this.LogPass_TB.PasswordChar = '*';
             this.LogPass_TB.Size = new System.Drawing.Size(185, 27);
             this.LogPass_TB.TabIndex = 17;
+            this.LogPass_TB.TextChanged += new System.EventHandler(this.LogPass_TB_TextChanged);
             // 
             // ShowPassword_CB
             // 
@@ -918,55 +1011,6 @@ namespace WindowsFormsClient
             this.ShowPassword_CB.Text = "Показать";
             this.ShowPassword_CB.UseVisualStyleBackColor = true;
             this.ShowPassword_CB.CheckedChanged += new System.EventHandler(this.ShowPassword_CB_CheckedChanged);
-            // 
-            // PanelRegName
-            // 
-            this.PanelRegName.Controls.Add(this.LogInNick_TB);
-            this.PanelRegName.Controls.Add(this.LogUserName_label);
-            this.PanelRegName.Controls.Add(this.label14);
-            this.PanelRegName.Location = new System.Drawing.Point(-1, 49);
-            this.PanelRegName.Name = "PanelRegName";
-            this.PanelRegName.Size = new System.Drawing.Size(349, 38);
-            this.PanelRegName.TabIndex = 26;
-            // 
-            // LogInNick_TB
-            // 
-            this.LogInNick_TB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(22)))), ((int)(((byte)(22)))));
-            this.LogInNick_TB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LogInNick_TB.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LogInNick_TB.ForeColor = System.Drawing.Color.White;
-            this.LogInNick_TB.Location = new System.Drawing.Point(142, 6);
-            this.LogInNick_TB.Margin = new System.Windows.Forms.Padding(0);
-            this.LogInNick_TB.Name = "LogInNick_TB";
-            this.LogInNick_TB.Size = new System.Drawing.Size(185, 27);
-            this.LogInNick_TB.TabIndex = 4;
-            this.LogInNick_TB.Text = "@";
-            this.LogInNick_TB.TextChanged += new System.EventHandler(this.LogInNick_TB_TextChanged);
-            // 
-            // LogUserName_label
-            // 
-            this.LogUserName_label.BackColor = System.Drawing.Color.Transparent;
-            this.LogUserName_label.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LogUserName_label.ForeColor = System.Drawing.Color.LightCoral;
-            this.LogUserName_label.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.LogUserName_label.Location = new System.Drawing.Point(139, 34);
-            this.LogUserName_label.Name = "LogUserName_label";
-            this.LogUserName_label.Size = new System.Drawing.Size(191, 20);
-            this.LogUserName_label.TabIndex = 19;
-            this.LogUserName_label.Text = "Это имя уже занято";
-            this.LogUserName_label.Visible = false;
-            // 
-            // label14
-            // 
-            this.label14.BackColor = System.Drawing.Color.Transparent;
-            this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(3, 5);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(137, 28);
-            this.label14.TabIndex = 15;
-            this.label14.Text = "Никнейм ёжика";
-            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // LogIn_Butt
             // 
@@ -991,7 +1035,7 @@ namespace WindowsFormsClient
             this.PanelChatMembers.Controls.Add(this.Label_Updating);
             this.PanelChatMembers.Controls.Add(this.CloseMembersButt);
             this.PanelChatMembers.Controls.Add(this.Members_LB);
-            this.PanelChatMembers.Location = new System.Drawing.Point(228, 328);
+            this.PanelChatMembers.Location = new System.Drawing.Point(231, 182);
             this.PanelChatMembers.Name = "PanelChatMembers";
             this.PanelChatMembers.Size = new System.Drawing.Size(177, 197);
             this.PanelChatMembers.TabIndex = 20;
@@ -1058,7 +1102,7 @@ namespace WindowsFormsClient
             this.BecomeModer_CMP,
             this.BecomeMemb_CMP});
             this.MembList_CM.Name = "MembList_CM";
-            this.MembList_CM.Size = new System.Drawing.Size(239, 286);
+            this.MembList_CM.Size = new System.Drawing.Size(239, 308);
             this.MembList_CM.Opening += new System.ComponentModel.CancelEventHandler(this.MembList_CM_Opening);
             // 
             // MemberName_CMP
@@ -1101,6 +1145,7 @@ namespace WindowsFormsClient
             this.AwayUser_CMP.Name = "AwayUser_CMP";
             this.AwayUser_CMP.Size = new System.Drawing.Size(238, 22);
             this.AwayUser_CMP.Text = "Изгнать";
+            this.AwayUser_CMP.Click += new System.EventHandler(this.AwayUser_CMP_Click);
             // 
             // toolStripMenuItem4
             // 
@@ -1112,6 +1157,7 @@ namespace WindowsFormsClient
             this.MakeAdmin_CMP.Name = "MakeAdmin_CMP";
             this.MakeAdmin_CMP.Size = new System.Drawing.Size(238, 22);
             this.MakeAdmin_CMP.Text = "Назначить администратором";
+            this.MakeAdmin_CMP.Click += new System.EventHandler(this.MakeAdmin_CMP_Click);
             // 
             // DemoteAdmin_CMP
             // 
@@ -1125,26 +1171,30 @@ namespace WindowsFormsClient
             // AdminToModer_CMP
             // 
             this.AdminToModer_CMP.Name = "AdminToModer_CMP";
-            this.AdminToModer_CMP.Size = new System.Drawing.Size(156, 22);
+            this.AdminToModer_CMP.Size = new System.Drawing.Size(180, 22);
             this.AdminToModer_CMP.Text = "до модератора";
+            this.AdminToModer_CMP.Click += new System.EventHandler(this.AdminToModer_CMP_Click);
             // 
             // AdminToMemb_CMP
             // 
             this.AdminToMemb_CMP.Name = "AdminToMemb_CMP";
-            this.AdminToMemb_CMP.Size = new System.Drawing.Size(156, 22);
+            this.AdminToMemb_CMP.Size = new System.Drawing.Size(180, 22);
             this.AdminToMemb_CMP.Text = "до участника";
+            this.AdminToMemb_CMP.Click += new System.EventHandler(this.AdminToMemb_CMP_Click);
             // 
             // MakeModer_CMP
             // 
             this.MakeModer_CMP.Name = "MakeModer_CMP";
             this.MakeModer_CMP.Size = new System.Drawing.Size(238, 22);
             this.MakeModer_CMP.Text = "Назначить модератором";
+            this.MakeModer_CMP.Click += new System.EventHandler(this.MakeModer_CMP_Click);
             // 
             // DemoteModer_CMP
             // 
             this.DemoteModer_CMP.Name = "DemoteModer_CMP";
             this.DemoteModer_CMP.Size = new System.Drawing.Size(238, 22);
             this.DemoteModer_CMP.Text = "Разжаловать модератора";
+            this.DemoteModer_CMP.Click += new System.EventHandler(this.DemoteModer_CMP_Click);
             // 
             // статьМодераторомToolStripMenuItem
             // 
@@ -1179,90 +1229,128 @@ namespace WindowsFormsClient
             this.timerFastUpdate.Interval = 5000;
             this.timerFastUpdate.Tick += new System.EventHandler(this.timerFastUpdate_Tick);
             // 
-            // LogOut_Butt
-            // 
-            this.LogOut_Butt.BackColor = System.Drawing.Color.Transparent;
-            this.LogOut_Butt.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.LogOut_Butt.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.LogOut_Butt.ForeColor = System.Drawing.Color.White;
-            this.LogOut_Butt.Location = new System.Drawing.Point(755, 54);
-            this.LogOut_Butt.Name = "LogOut_Butt";
-            this.LogOut_Butt.Size = new System.Drawing.Size(117, 32);
-            this.LogOut_Butt.TabIndex = 21;
-            this.LogOut_Butt.Text = "Выйти";
-            this.LogOut_Butt.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.LogOut_Butt.Visible = false;
-            this.LogOut_Butt.Click += new System.EventHandler(this.LogOut_Butt_Click);
-            // 
             // panel_invite
             // 
             this.panel_invite.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
             this.panel_invite.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel_invite.Controls.Add(this.InviteRename_Butt);
-            this.panel_invite.Controls.Add(this.InviteRename_TB);
-            this.panel_invite.Controls.Add(this.CloseInvite);
-            this.panel_invite.Location = new System.Drawing.Point(231, 367);
+            this.panel_invite.Controls.Add(this.Invite_Butt);
+            this.panel_invite.Controls.Add(this.panel3);
+            this.panel_invite.Controls.Add(this.CloseInviteWindow);
+            this.panel_invite.Controls.Add(this.label3);
+            this.panel_invite.Location = new System.Drawing.Point(268, 302);
             this.panel_invite.Name = "panel_invite";
-            this.panel_invite.Size = new System.Drawing.Size(230, 102);
+            this.panel_invite.Size = new System.Drawing.Size(349, 172);
             this.panel_invite.TabIndex = 22;
             this.panel_invite.Visible = false;
             // 
-            // InviteRename_Butt
+            // Invite_Butt
             // 
-            this.InviteRename_Butt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
-            this.InviteRename_Butt.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.InviteRename_Butt.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.InviteRename_Butt.ForeColor = System.Drawing.Color.White;
-            this.InviteRename_Butt.Location = new System.Drawing.Point(7, 70);
-            this.InviteRename_Butt.Name = "InviteRename_Butt";
-            this.InviteRename_Butt.Size = new System.Drawing.Size(100, 21);
-            this.InviteRename_Butt.TabIndex = 19;
-            this.InviteRename_Butt.Text = "Переименовать";
-            this.InviteRename_Butt.UseVisualStyleBackColor = false;
-            this.InviteRename_Butt.Click += new System.EventHandler(this.InviteRename_Butt_Click);
+            this.Invite_Butt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(14)))), ((int)(((byte)(14)))));
+            this.Invite_Butt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Invite_Butt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Invite_Butt.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Invite_Butt.ForeColor = System.Drawing.Color.White;
+            this.Invite_Butt.Location = new System.Drawing.Point(122, 135);
+            this.Invite_Butt.Margin = new System.Windows.Forms.Padding(0);
+            this.Invite_Butt.Name = "Invite_Butt";
+            this.Invite_Butt.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Invite_Butt.Size = new System.Drawing.Size(105, 24);
+            this.Invite_Butt.TabIndex = 35;
+            this.Invite_Butt.Text = "Пригласить";
+            this.Invite_Butt.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Invite_Butt.Click += new System.EventHandler(this.Invite_Butt_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.label11);
+            this.panel3.Controls.Add(this.label15);
+            this.panel3.Controls.Add(this.InviteRename_TB);
+            this.panel3.Controls.Add(this.label13);
+            this.panel3.Location = new System.Drawing.Point(2, 47);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(349, 73);
+            this.panel3.TabIndex = 34;
+            // 
+            // label11
+            // 
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label11.ForeColor = System.Drawing.Color.Gray;
+            this.label11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label11.Location = new System.Drawing.Point(138, 50);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(294, 25);
+            this.label11.TabIndex = 22;
+            this.label11.Text = "через пробел";
+            // 
+            // label15
+            // 
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label15.ForeColor = System.Drawing.Color.Gray;
+            this.label15.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label15.Location = new System.Drawing.Point(138, 33);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(294, 27);
+            this.label15.TabIndex = 21;
+            this.label15.Text = "Перечислите никнеймы";
             // 
             // InviteRename_TB
             // 
             this.InviteRename_TB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
             this.InviteRename_TB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.InviteRename_TB.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.InviteRename_TB.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.InviteRename_TB.ForeColor = System.Drawing.Color.White;
-            this.InviteRename_TB.Location = new System.Drawing.Point(8, 38);
+            this.InviteRename_TB.Location = new System.Drawing.Point(141, 5);
             this.InviteRename_TB.Name = "InviteRename_TB";
-            this.InviteRename_TB.Size = new System.Drawing.Size(210, 29);
+            this.InviteRename_TB.Size = new System.Drawing.Size(193, 27);
             this.InviteRename_TB.TabIndex = 18;
-            this.InviteRename_TB.Text = "Введите никнеймы...";
             // 
-            // CloseInvite
+            // label13
             // 
-            this.CloseInvite.BackColor = System.Drawing.Color.Transparent;
-            this.CloseInvite.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.CloseInvite.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CloseInvite.ForeColor = System.Drawing.Color.White;
-            this.CloseInvite.Location = new System.Drawing.Point(142, 5);
-            this.CloseInvite.Name = "CloseInvite";
-            this.CloseInvite.Size = new System.Drawing.Size(83, 19);
-            this.CloseInvite.TabIndex = 17;
-            this.CloseInvite.Text = "Закрыть";
-            this.CloseInvite.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.CloseInvite.Click += new System.EventHandler(this.CloseInvite_Click);
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(41, 5);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(99, 28);
+            this.label13.TabIndex = 15;
+            this.label13.Text = "Ёжики";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // CloseInviteWindow
+            // 
+            this.CloseInviteWindow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
+            this.CloseInviteWindow.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CloseInviteWindow.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CloseInviteWindow.Font = new System.Drawing.Font("Webdings", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.CloseInviteWindow.ForeColor = System.Drawing.Color.White;
+            this.CloseInviteWindow.Location = new System.Drawing.Point(226, 7);
+            this.CloseInviteWindow.Margin = new System.Windows.Forms.Padding(0);
+            this.CloseInviteWindow.Name = "CloseInviteWindow";
+            this.CloseInviteWindow.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.CloseInviteWindow.Size = new System.Drawing.Size(20, 20);
+            this.CloseInviteWindow.TabIndex = 33;
+            this.CloseInviteWindow.Text = "r";
+            this.CloseInviteWindow.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.CloseInviteWindow.Click += new System.EventHandler(this.CloseInviteWindow_Click);
+            // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(3, 6);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(345, 27);
+            this.label3.TabIndex = 29;
+            this.label3.Text = "Пригласить";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // TimerOnline
             // 
             this.TimerOnline.Interval = 45000;
             this.TimerOnline.Tick += new System.EventHandler(this.TimerOnline_Tick);
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(-1, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(349, 27);
-            this.label1.TabIndex = 28;
-            this.label1.Text = "Войдите или зарегистрируйтесь";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // NavigationBar
             // 
@@ -1295,22 +1383,22 @@ namespace WindowsFormsClient
             this.CloseWindowButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.CloseWindowButton.Click += new System.EventHandler(this.CloseWindowButton_Click);
             // 
-            // label3
+            // Minimize_Butt
             // 
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(7)))));
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label3.Font = new System.Drawing.Font("Webdings", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(793, 0);
-            this.label3.Margin = new System.Windows.Forms.Padding(0);
-            this.label3.Name = "label3";
-            this.label3.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label3.Size = new System.Drawing.Size(47, 28);
-            this.label3.TabIndex = 25;
-            this.label3.Text = "0";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.Minimize_Butt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(7)))), ((int)(((byte)(7)))));
+            this.Minimize_Butt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Minimize_Butt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Minimize_Butt.Font = new System.Drawing.Font("Webdings", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
+            this.Minimize_Butt.ForeColor = System.Drawing.Color.White;
+            this.Minimize_Butt.Location = new System.Drawing.Point(793, 0);
+            this.Minimize_Butt.Margin = new System.Windows.Forms.Padding(0);
+            this.Minimize_Butt.Name = "Minimize_Butt";
+            this.Minimize_Butt.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Minimize_Butt.Size = new System.Drawing.Size(47, 28);
+            this.Minimize_Butt.TabIndex = 25;
+            this.Minimize_Butt.Text = "0";
+            this.Minimize_Butt.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Minimize_Butt.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -1334,238 +1422,69 @@ namespace WindowsFormsClient
             this.PictureTriangle.TabStop = false;
             this.PictureTriangle.Click += new System.EventHandler(this.PictureTriangle_Click);
             // 
-            // label2
+            // UploadImage
             // 
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(1, 6);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(348, 27);
-            this.label2.TabIndex = 29;
-            this.label2.Text = "Создать чат";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.UploadImage.Filter = "Изображения|*.jpg";
+            this.UploadImage.Title = "Выберите изображение для отправки";
             // 
-            // panel1
+            // PanelLeavingChat
             // 
-            this.panel1.Controls.Add(this.ChatNameTB);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Location = new System.Drawing.Point(1, 53);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(346, 40);
-            this.panel1.TabIndex = 30;
+            this.PanelLeavingChat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
+            this.PanelLeavingChat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PanelLeavingChat.Controls.Add(this.LeaveChat_Butt);
+            this.PanelLeavingChat.Controls.Add(this.StayChat_Butt);
+            this.PanelLeavingChat.Controls.Add(this.TextAttentionLeaving);
+            this.PanelLeavingChat.Location = new System.Drawing.Point(246, 224);
+            this.PanelLeavingChat.Name = "PanelLeavingChat";
+            this.PanelLeavingChat.Size = new System.Drawing.Size(394, 172);
+            this.PanelLeavingChat.TabIndex = 28;
+            this.PanelLeavingChat.Visible = false;
             // 
-            // panel2
+            // LeaveChat_Butt
             // 
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.ChatMembersTB);
-            this.panel2.Location = new System.Drawing.Point(1, 92);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(348, 74);
-            this.panel2.TabIndex = 31;
+            this.LeaveChat_Butt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(14)))), ((int)(((byte)(14)))));
+            this.LeaveChat_Butt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LeaveChat_Butt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.LeaveChat_Butt.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LeaveChat_Butt.ForeColor = System.Drawing.Color.LightCoral;
+            this.LeaveChat_Butt.Location = new System.Drawing.Point(97, 125);
+            this.LeaveChat_Butt.Margin = new System.Windows.Forms.Padding(0);
+            this.LeaveChat_Butt.Name = "LeaveChat_Butt";
+            this.LeaveChat_Butt.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.LeaveChat_Butt.Size = new System.Drawing.Size(93, 24);
+            this.LeaveChat_Butt.TabIndex = 36;
+            this.LeaveChat_Butt.Text = "Покинуть";
+            this.LeaveChat_Butt.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.LeaveChat_Butt.Click += new System.EventHandler(this.LeaveChat_Butt_Click);
             // 
-            // label7
+            // StayChat_Butt
             // 
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.ForeColor = System.Drawing.Color.Gray;
-            this.label7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label7.Location = new System.Drawing.Point(137, 49);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(294, 25);
-            this.label7.TabIndex = 20;
-            this.label7.Text = "через пробел";
+            this.StayChat_Butt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(14)))), ((int)(((byte)(14)))));
+            this.StayChat_Butt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.StayChat_Butt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.StayChat_Butt.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.StayChat_Butt.ForeColor = System.Drawing.Color.White;
+            this.StayChat_Butt.Location = new System.Drawing.Point(198, 125);
+            this.StayChat_Butt.Margin = new System.Windows.Forms.Padding(0);
+            this.StayChat_Butt.Name = "StayChat_Butt";
+            this.StayChat_Butt.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.StayChat_Butt.Size = new System.Drawing.Size(93, 24);
+            this.StayChat_Butt.TabIndex = 35;
+            this.StayChat_Butt.Text = "Остаться";
+            this.StayChat_Butt.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.StayChat_Butt.Click += new System.EventHandler(this.StayChat_Butt_Click);
             // 
-            // CloseCreateChat
+            // TextAttentionLeaving
             // 
-            this.CloseCreateChat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
-            this.CloseCreateChat.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CloseCreateChat.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.CloseCreateChat.Font = new System.Drawing.Font("Webdings", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.CloseCreateChat.ForeColor = System.Drawing.Color.White;
-            this.CloseCreateChat.Location = new System.Drawing.Point(225, 7);
-            this.CloseCreateChat.Margin = new System.Windows.Forms.Padding(0);
-            this.CloseCreateChat.Name = "CloseCreateChat";
-            this.CloseCreateChat.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.CloseCreateChat.Size = new System.Drawing.Size(20, 20);
-            this.CloseCreateChat.TabIndex = 32;
-            this.CloseCreateChat.Text = "r";
-            this.CloseCreateChat.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.CloseCreateChat.Click += new System.EventHandler(this.CloseCreateChat_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.label10);
-            this.panel3.Controls.Add(this.panel4);
-            this.panel3.Controls.Add(this.panel5);
-            this.panel3.Controls.Add(this.label17);
-            this.panel3.Controls.Add(this.label18);
-            this.panel3.Controls.Add(this.checkBox1);
-            this.panel3.Location = new System.Drawing.Point(268, 130);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(349, 246);
-            this.panel3.TabIndex = 28;
-            this.panel3.Visible = false;
-            // 
-            // label10
-            // 
-            this.label10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
-            this.label10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label10.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label10.Font = new System.Drawing.Font("Webdings", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
-            this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(227, 7);
-            this.label10.Margin = new System.Windows.Forms.Padding(0);
-            this.label10.Name = "label10";
-            this.label10.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label10.Size = new System.Drawing.Size(20, 20);
-            this.label10.TabIndex = 32;
-            this.label10.Text = "r";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.label13);
-            this.panel4.Controls.Add(this.label15);
-            this.panel4.Controls.Add(this.textBox1);
-            this.panel4.Location = new System.Drawing.Point(1, 85);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(348, 67);
-            this.panel4.TabIndex = 31;
-            // 
-            // label13
-            // 
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label13.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label13.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label13.Location = new System.Drawing.Point(210, 32);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(116, 27);
-            this.label13.TabIndex = 19;
-            this.label13.Text = "Обзор...";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // label15
-            // 
-            this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label15.ForeColor = System.Drawing.Color.White;
-            this.label15.Location = new System.Drawing.Point(1, 2);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(137, 28);
-            this.label15.TabIndex = 18;
-            this.label15.Text = "Путь";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(22)))), ((int)(((byte)(22)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.ForeColor = System.Drawing.Color.White;
-            this.textBox1.Location = new System.Drawing.Point(140, 4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(186, 27);
-            this.textBox1.TabIndex = 17;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.label20);
-            this.panel5.Controls.Add(this.label19);
-            this.panel5.Controls.Add(this.label16);
-            this.panel5.Location = new System.Drawing.Point(1, 53);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(346, 33);
-            this.panel5.TabIndex = 30;
-            // 
-            // label17
-            // 
-            this.label17.BackColor = System.Drawing.Color.Transparent;
-            this.label17.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(1, 6);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(348, 27);
-            this.label17.TabIndex = 29;
-            this.label17.Text = "Прикрепить";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label18
-            // 
-            this.label18.BackColor = System.Drawing.Color.Transparent;
-            this.label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label18.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label18.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label18.ForeColor = System.Drawing.Color.White;
-            this.label18.Location = new System.Drawing.Point(110, 207);
-            this.label18.Name = "label18";
-            this.label18.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label18.Size = new System.Drawing.Size(130, 24);
-            this.label18.TabIndex = 21;
-            this.label18.Text = "Создать ёжечат";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBox1.ForeColor = System.Drawing.Color.White;
-            this.checkBox1.Location = new System.Drawing.Point(142, 169);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(172, 23);
-            this.checkBox1.TabIndex = 20;
-            this.checkBox1.Text = "Ёжесекретный ёжечат";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // label16
-            // 
-            this.label16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.label16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label16.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label16.ForeColor = System.Drawing.Color.White;
-            this.label16.Location = new System.Drawing.Point(53, 3);
-            this.label16.Name = "label16";
-            this.label16.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label16.Size = new System.Drawing.Size(75, 24);
-            this.label16.TabIndex = 22;
-            this.label16.Text = "Фото";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label19
-            // 
-            this.label19.BackColor = System.Drawing.Color.Transparent;
-            this.label19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label19.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label19.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label19.ForeColor = System.Drawing.Color.White;
-            this.label19.Location = new System.Drawing.Point(131, 3);
-            this.label19.Name = "label19";
-            this.label19.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label19.Size = new System.Drawing.Size(79, 24);
-            this.label19.TabIndex = 23;
-            this.label19.Text = "Аудио";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label20
-            // 
-            this.label20.BackColor = System.Drawing.Color.Transparent;
-            this.label20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label20.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label20.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label20.ForeColor = System.Drawing.Color.White;
-            this.label20.Location = new System.Drawing.Point(213, 3);
-            this.label20.Name = "label20";
-            this.label20.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label20.Size = new System.Drawing.Size(75, 24);
-            this.label20.TabIndex = 24;
-            this.label20.Text = "Файл";
-            this.label20.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.TextAttentionLeaving.BackColor = System.Drawing.Color.Transparent;
+            this.TextAttentionLeaving.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TextAttentionLeaving.ForeColor = System.Drawing.Color.White;
+            this.TextAttentionLeaving.Location = new System.Drawing.Point(42, 38);
+            this.TextAttentionLeaving.Name = "TextAttentionLeaving";
+            this.TextAttentionLeaving.Size = new System.Drawing.Size(347, 79);
+            this.TextAttentionLeaving.TabIndex = 29;
+            this.TextAttentionLeaving.Text = "Вы действительно хотите покинуть чат?\r\nВернуться в него вы сможете только по приг" +
+    "лашению";
             // 
             // FormMessanger
             // 
@@ -1574,19 +1493,17 @@ namespace WindowsFormsClient
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(886, 506);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panelCreateChat);
+            this.Controls.Add(this.PanelLeavingChat);
+            this.Controls.Add(this.panel_invite);
             this.Controls.Add(this.PanelChatMembers);
             this.Controls.Add(this.PictureTriangle);
-            this.Controls.Add(this.Error_label);
             this.Controls.Add(this.chatsLB);
             this.Controls.Add(this.panel_registration);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.Minimize_Butt);
             this.Controls.Add(this.CloseWindowButton);
             this.Controls.Add(this.NavigationBar);
-            this.Controls.Add(this.panel_invite);
-            this.Controls.Add(this.LogOut_Butt);
             this.Controls.Add(this.CreateChat_butt);
             this.Controls.Add(this.label_notifymore);
             this.Controls.Add(this.label_notify4);
@@ -1597,14 +1514,17 @@ namespace WindowsFormsClient
             this.Controls.Add(this.head_lbl);
             this.Controls.Add(this.MessageTB);
             this.Controls.Add(this.panel_messages);
+            this.Controls.Add(this.Error_label);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormMessanger";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ЁжМессенджер";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Shown += new System.EventHandler(this.FormMessanger_Shown);
             this.ChatListCM.ResumeLayout(false);
             this.panel_messages.ResumeLayout(false);
+            this.panel_emptyChat.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.FixScrollBar)).EndInit();
             this.panelMsg_4.ResumeLayout(false);
             this.panelMsg_4.PerformLayout();
@@ -1614,29 +1534,25 @@ namespace WindowsFormsClient
             this.panelMsg_2.PerformLayout();
             this.panelMsg_1.ResumeLayout(false);
             this.panelMsg_1.PerformLayout();
-            this.panel_emptyChat.ResumeLayout(false);
             this.panelCreateChat.ResumeLayout(false);
             this.panelCreateChat.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel_registration.ResumeLayout(false);
-            this.PanelRegPass.ResumeLayout(false);
-            this.PanelRegPass.PerformLayout();
             this.PanelRegName.ResumeLayout(false);
             this.PanelRegName.PerformLayout();
+            this.PanelRegPass.ResumeLayout(false);
+            this.PanelRegPass.PerformLayout();
             this.PanelChatMembers.ResumeLayout(false);
             this.MembList_CM.ResumeLayout(false);
             this.panel_invite.ResumeLayout(false);
-            this.panel_invite.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.NavigationBar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PictureTriangle)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.NavigationBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureTriangle)).EndInit();
+            this.PanelLeavingChat.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1653,7 +1569,6 @@ namespace WindowsFormsClient
         private System.Windows.Forms.Label head_lbl;
         private System.Windows.Forms.ListBox chatsLB;
         private System.Windows.Forms.Label SendButt;
-        private System.Windows.Forms.Timer timer_wighter;
         private System.Windows.Forms.Label label_notify1;
         private System.Windows.Forms.Label label_notify2;
         private System.Windows.Forms.Label label_notify3;
@@ -1689,9 +1604,7 @@ namespace WindowsFormsClient
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem InviteChat_CMP;
         private System.Windows.Forms.ToolStripMenuItem ChatMembers_CMP;
-        private System.Windows.Forms.ToolStripMenuItem RenameChat_CMP;
         private System.Windows.Forms.ToolStripMenuItem LeaveChat_CMP;
-        private System.Windows.Forms.ToolStripMenuItem deleteChat_context;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem CreateChat_CMP;
         private System.Windows.Forms.ToolStripMenuItem CreateSecret_CMP;
@@ -1738,11 +1651,8 @@ namespace WindowsFormsClient
         private System.Windows.Forms.Label CloseMembersButt;
         private System.Windows.Forms.Timer timerFastUpdate;
         private System.Windows.Forms.ToolStripMenuItem MemberStatus_CMP;
-        private System.Windows.Forms.Label LogOut_Butt;
         private System.Windows.Forms.Panel panel_invite;
-        private System.Windows.Forms.Button InviteRename_Butt;
         private System.Windows.Forms.TextBox InviteRename_TB;
-        private System.Windows.Forms.Label CloseInvite;
         private System.Windows.Forms.Timer TimerOnline;
         private System.Windows.Forms.Label Label_Updating;
         private System.Windows.Forms.Panel PanelRegName;
@@ -1750,7 +1660,7 @@ namespace WindowsFormsClient
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox NavigationBar;
         private System.Windows.Forms.Label CloseWindowButton;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label Minimize_Butt;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox PictureTriangle;
         private System.Windows.Forms.Label label2;
@@ -1758,19 +1668,18 @@ namespace WindowsFormsClient
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label CloseCreateChat;
+        private System.Windows.Forms.OpenFileDialog UploadImage;
+        private System.Windows.Forms.Label CloseInviteWindow;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label Invite_Butt;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Panel PanelLeavingChat;
+        private System.Windows.Forms.Label StayChat_Butt;
+        private System.Windows.Forms.Label TextAttentionLeaving;
+        private System.Windows.Forms.Label LeaveChat_Butt;
     }
 }
 
