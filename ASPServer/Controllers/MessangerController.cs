@@ -19,21 +19,6 @@ namespace ASPServer.Controllers
         static List<Chat> ListOfChats = new List<Chat>() { new Chat(0, "Общий ёжечат", flins, false) };
         static List<Message> ListOfMessages = new List<Message>();
         static List<User> ListOfUsers = new List<User>();
-        //static List<string> ListOfPasswords = new List<string>();
-
-        // GET api/<MessangerController>/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    string OutputString = "Not found";
-        //    if ((id < ListOfMessages.Count) && (id >= 0))
-        //    {
-        //        OutputString = JsonConvert.SerializeObject(ListOfMessages[id]);
-        //    }
-        //    Console.WriteLine(String.Format("Запрошено сообщение № {0} : {1}", id, OutputString));
-        //    return OutputString;
-        //}
-
 
         //Запрошено сообщение из чата
         [HttpGet("get/message/{idC}/{idM}")]
@@ -71,7 +56,12 @@ namespace ASPServer.Controllers
         public string GetChatInfo(int id)
         {
             string OutputString;
-            if (id == -1) return null; 
+            if (id == -1)
+            {
+                for (int i = 0; i < ListOfUsers.Count; i++)
+                    ListOfUsers[i].DeleteEmptyChats();
+                return JsonConvert.SerializeObject(new Chat(-1, "", flins, false));
+            }
             OutputString = JsonConvert.SerializeObject(ListOfChats[id]);
             return OutputString;
         }

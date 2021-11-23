@@ -24,5 +24,15 @@ namespace CourseMessenger
         {
             if (Nickname == str) return true; else return false;
         }
+
+        public void DeleteEmptyChats()
+        {
+            for (int i = 0; i < Chats.Count; i++)
+                if (Chats[i] == -1)
+                {
+                    Chats.RemoveAt(i);
+                    break;
+                }
+        }
     }
 }

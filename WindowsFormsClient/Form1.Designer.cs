@@ -143,7 +143,6 @@ namespace WindowsFormsClient
             this.Minimize_Butt = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.PictureTriangle = new System.Windows.Forms.PictureBox();
-            this.UploadImage = new System.Windows.Forms.OpenFileDialog();
             this.PanelLeavingChat = new System.Windows.Forms.Panel();
             this.LeaveChat_Butt = new System.Windows.Forms.Label();
             this.StayChat_Butt = new System.Windows.Forms.Label();
@@ -1102,7 +1101,7 @@ namespace WindowsFormsClient
             this.BecomeModer_CMP,
             this.BecomeMemb_CMP});
             this.MembList_CM.Name = "MembList_CM";
-            this.MembList_CM.Size = new System.Drawing.Size(239, 308);
+            this.MembList_CM.Size = new System.Drawing.Size(239, 286);
             this.MembList_CM.Opening += new System.ComponentModel.CancelEventHandler(this.MembList_CM_Opening);
             // 
             // MemberName_CMP
@@ -1171,14 +1170,14 @@ namespace WindowsFormsClient
             // AdminToModer_CMP
             // 
             this.AdminToModer_CMP.Name = "AdminToModer_CMP";
-            this.AdminToModer_CMP.Size = new System.Drawing.Size(180, 22);
+            this.AdminToModer_CMP.Size = new System.Drawing.Size(156, 22);
             this.AdminToModer_CMP.Text = "до модератора";
             this.AdminToModer_CMP.Click += new System.EventHandler(this.AdminToModer_CMP_Click);
             // 
             // AdminToMemb_CMP
             // 
             this.AdminToMemb_CMP.Name = "AdminToMemb_CMP";
-            this.AdminToMemb_CMP.Size = new System.Drawing.Size(180, 22);
+            this.AdminToMemb_CMP.Size = new System.Drawing.Size(156, 22);
             this.AdminToMemb_CMP.Text = "до участника";
             this.AdminToMemb_CMP.Click += new System.EventHandler(this.AdminToMemb_CMP_Click);
             // 
@@ -1422,11 +1421,6 @@ namespace WindowsFormsClient
             this.PictureTriangle.TabStop = false;
             this.PictureTriangle.Click += new System.EventHandler(this.PictureTriangle_Click);
             // 
-            // UploadImage
-            // 
-            this.UploadImage.Filter = "Изображения|*.jpg";
-            this.UploadImage.Title = "Выберите изображение для отправки";
-            // 
             // PanelLeavingChat
             // 
             this.PanelLeavingChat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
@@ -1668,7 +1662,6 @@ namespace WindowsFormsClient
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label CloseCreateChat;
-        private System.Windows.Forms.OpenFileDialog UploadImage;
         private System.Windows.Forms.Label CloseInviteWindow;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label Invite_Butt;
