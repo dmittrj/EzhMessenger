@@ -16,13 +16,13 @@ namespace WindowsFormsClient
     public partial class FormMessanger : Form
     {
         private static List<int> MessageID = new List<int>();
-        private static string UserName;
+        //private static string UserName;
         private static MessangerClientAPI API = new MessangerClientAPI();
         private static bool hl = false;
         private static int shift = 0;
         private static string YourName = "";
         private List<Chat> myChats = new List<Chat>();
-        private List<DateTime> dates = new List<DateTime>();
+        //private List<DateTime> dates = new List<DateTime>();
         int wx = 0, wy = 0; bool cursh = false;
 
         public async void Unfold(Panel obj, int y_start, int y_finish, int h_start, int h_finish, int speed, bool freeze)
@@ -140,14 +140,7 @@ namespace WindowsFormsClient
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //string UserName = UserNameTB.Text;
-            string Message = MessageTB.Text;
-            if ((UserName.Length > 1) && (Message.Length > 1))
-            {
-                CourseMessenger.Message msg = new CourseMessenger.Message(UserName, Message, DateTime.Now);
-                API.SendMessageRestSharp(msg, chatsLB.SelectedIndex, Error_label); 
-                Error_label.Visible = true;
-            }
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -341,7 +334,7 @@ namespace WindowsFormsClient
                 if (myChats[chatsLB.SelectedIndex].Secret)
                     UserName = "Ёжик";
                 CourseMessenger.Message msg = new CourseMessenger.Message(UserName, Message, DateTime.Now);
-                API.SendMessageRestSharp(msg, chatsLB.SelectedIndex, Error_label);
+                API.SendMessageRestSharp(msg, myChats[chatsLB.SelectedIndex].IdChat, Error_label);
                 MessageTB.Text = "";
             }
             label_notify1.Visible = false;
@@ -687,8 +680,8 @@ namespace WindowsFormsClient
                     BlockUser_CMP.Visible = true;
                     AwayUser_CMP.Visible = true;
                     BecomeAdmin_CMP.Visible = false;
-                    BecomeModer_CMP.Visible = true;
-                    BecomeMemb_CMP.Visible = true;
+                    BecomeModer_CMP.Visible = false;
+                    BecomeMemb_CMP.Visible = false;
                     if (myChats[chatsLB.SelectedIndex].ChatMmbrs[Members_LB.SelectedIndex].Role == 2)
                     {
                         MakeAdmin_CMP.Visible = false;
