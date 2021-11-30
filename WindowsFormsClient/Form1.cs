@@ -211,6 +211,8 @@ namespace WindowsFormsClient
             {
                 nameMsg_1.Text = myChats[chatsLB.SelectedIndex].ChatMsgs[myChats[chatsLB.SelectedIndex].ChatMsgs.Count - 1 - shift].UserName;
                 textMsg_1.Text = myChats[chatsLB.SelectedIndex].ChatMsgs[myChats[chatsLB.SelectedIndex].ChatMsgs.Count - 1 - shift].MessageText;
+                panelMsg_1.Height = textMsg_1.Height + textMsg_1.Location.Y + 16;
+                panelMsg_1.Location = new Point(panelMsg_1.Location.X, panel_messages.Height - panelMsg_1.Height);
                 notifyMsg_1.Location = new Point(nameMsg_1.Location.X + nameMsg_1.Width + 3, nameMsg_1.Location.Y);
 
                 if (Regex.IsMatch(textMsg_1.Text, @"@everyone"))
@@ -236,6 +238,8 @@ namespace WindowsFormsClient
             {
                 nameMsg_2.Text = myChats[chatsLB.SelectedIndex].ChatMsgs[myChats[chatsLB.SelectedIndex].ChatMsgs.Count - 2 - shift].UserName;
                 textMsg_2.Text = myChats[chatsLB.SelectedIndex].ChatMsgs[myChats[chatsLB.SelectedIndex].ChatMsgs.Count - 2 - shift].MessageText;
+                panelMsg_2.Height = textMsg_2.Height + textMsg_2.Location.Y + 16;
+                panelMsg_2.Location = new Point(panelMsg_2.Location.X, panelMsg_1.Location.Y - panelMsg_2.Height);
                 notifyMsg_2.Location = new Point(nameMsg_2.Location.X + nameMsg_2.Width + 3, nameMsg_2.Location.Y);
 
                 if (Regex.IsMatch(textMsg_2.Text, @"@everyone"))
@@ -261,6 +265,8 @@ namespace WindowsFormsClient
             {
                 nameMsg_3.Text = myChats[chatsLB.SelectedIndex].ChatMsgs[myChats[chatsLB.SelectedIndex].ChatMsgs.Count - 3 - shift].UserName;
                 textMsg_3.Text = myChats[chatsLB.SelectedIndex].ChatMsgs[myChats[chatsLB.SelectedIndex].ChatMsgs.Count - 3 - shift].MessageText;
+                panelMsg_3.Height = textMsg_3.Height + textMsg_3.Location.Y + 16;
+                panelMsg_3.Location = new Point(panelMsg_3.Location.X, panelMsg_2.Location.Y - panelMsg_3.Height);
                 notifyMsg_3.Location = new Point(nameMsg_3.Location.X + nameMsg_3.Width + 3, nameMsg_3.Location.Y);
 
                 if (Regex.IsMatch(textMsg_3.Text, @"@everyone"))
@@ -286,6 +292,8 @@ namespace WindowsFormsClient
             {
                 nameMsg_4.Text = myChats[chatsLB.SelectedIndex].ChatMsgs[myChats[chatsLB.SelectedIndex].ChatMsgs.Count - 4 - shift].UserName;
                 textMsg_4.Text = myChats[chatsLB.SelectedIndex].ChatMsgs[myChats[chatsLB.SelectedIndex].ChatMsgs.Count - 4 - shift].MessageText;
+                panelMsg_4.Height = textMsg_4.Height + textMsg_4.Location.Y + 16;
+                panelMsg_4.Location = new Point(panelMsg_4.Location.X, panelMsg_3.Location.Y - panelMsg_4.Height);
                 notifyMsg_4.Location = new Point(nameMsg_4.Location.X + nameMsg_4.Width + 3, nameMsg_4.Location.Y);
 
                 if (Regex.IsMatch(textMsg_4.Text, @"@everyone"))

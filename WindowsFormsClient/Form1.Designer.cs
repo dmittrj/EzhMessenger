@@ -465,6 +465,7 @@ namespace WindowsFormsClient
             this.textMsg_4.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textMsg_4.ForeColor = System.Drawing.Color.DarkGray;
             this.textMsg_4.Location = new System.Drawing.Point(18, 38);
+            this.textMsg_4.MaximumSize = new System.Drawing.Size(300, 0);
             this.textMsg_4.Name = "textMsg_4";
             this.textMsg_4.Size = new System.Drawing.Size(290, 23);
             this.textMsg_4.TabIndex = 15;
@@ -526,6 +527,7 @@ namespace WindowsFormsClient
             this.textMsg_3.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textMsg_3.ForeColor = System.Drawing.Color.DarkGray;
             this.textMsg_3.Location = new System.Drawing.Point(18, 38);
+            this.textMsg_3.MaximumSize = new System.Drawing.Size(300, 0);
             this.textMsg_3.Name = "textMsg_3";
             this.textMsg_3.Size = new System.Drawing.Size(290, 23);
             this.textMsg_3.TabIndex = 15;
@@ -546,9 +548,9 @@ namespace WindowsFormsClient
             // panelMsg_2
             // 
             this.panelMsg_2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelMsg_2.Controls.Add(this.textMsg_2);
             this.panelMsg_2.Controls.Add(this.timeMsg_2);
             this.panelMsg_2.Controls.Add(this.notifyMsg_2);
-            this.panelMsg_2.Controls.Add(this.textMsg_2);
             this.panelMsg_2.Controls.Add(this.nameMsg_2);
             this.panelMsg_2.Location = new System.Drawing.Point(0, 160);
             this.panelMsg_2.Name = "panelMsg_2";
@@ -587,6 +589,7 @@ namespace WindowsFormsClient
             this.textMsg_2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textMsg_2.ForeColor = System.Drawing.Color.DarkGray;
             this.textMsg_2.Location = new System.Drawing.Point(18, 38);
+            this.textMsg_2.MaximumSize = new System.Drawing.Size(300, 0);
             this.textMsg_2.Name = "textMsg_2";
             this.textMsg_2.Size = new System.Drawing.Size(290, 23);
             this.textMsg_2.TabIndex = 15;
@@ -607,9 +610,9 @@ namespace WindowsFormsClient
             // panelMsg_1
             // 
             this.panelMsg_1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelMsg_1.Controls.Add(this.textMsg_1);
             this.panelMsg_1.Controls.Add(this.timeMsg_1);
             this.panelMsg_1.Controls.Add(this.notifyMsg_1);
-            this.panelMsg_1.Controls.Add(this.textMsg_1);
             this.panelMsg_1.Controls.Add(this.nameMsg_1);
             this.panelMsg_1.Location = new System.Drawing.Point(0, 241);
             this.panelMsg_1.Name = "panelMsg_1";
@@ -648,6 +651,7 @@ namespace WindowsFormsClient
             this.textMsg_1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textMsg_1.ForeColor = System.Drawing.Color.DarkGray;
             this.textMsg_1.Location = new System.Drawing.Point(18, 38);
+            this.textMsg_1.MaximumSize = new System.Drawing.Size(300, 0);
             this.textMsg_1.Name = "textMsg_1";
             this.textMsg_1.Size = new System.Drawing.Size(290, 23);
             this.textMsg_1.TabIndex = 15;
@@ -701,7 +705,7 @@ namespace WindowsFormsClient
             this.panelCreateChat.Controls.Add(this.label2);
             this.panelCreateChat.Controls.Add(this.ConfirmCreateChat_Butt);
             this.panelCreateChat.Controls.Add(this.SecretChat_CB);
-            this.panelCreateChat.Location = new System.Drawing.Point(268, 445);
+            this.panelCreateChat.Location = new System.Drawing.Point(268, 462);
             this.panelCreateChat.Name = "panelCreateChat";
             this.panelCreateChat.Size = new System.Drawing.Size(349, 246);
             this.panelCreateChat.TabIndex = 18;
@@ -1236,7 +1240,7 @@ namespace WindowsFormsClient
             this.panel_invite.Controls.Add(this.panel3);
             this.panel_invite.Controls.Add(this.CloseInviteWindow);
             this.panel_invite.Controls.Add(this.label3);
-            this.panel_invite.Location = new System.Drawing.Point(268, 302);
+            this.panel_invite.Location = new System.Drawing.Point(268, 397);
             this.panel_invite.Name = "panel_invite";
             this.panel_invite.Size = new System.Drawing.Size(349, 172);
             this.panel_invite.TabIndex = 22;
@@ -1428,7 +1432,7 @@ namespace WindowsFormsClient
             this.PanelLeavingChat.Controls.Add(this.LeaveChat_Butt);
             this.PanelLeavingChat.Controls.Add(this.StayChat_Butt);
             this.PanelLeavingChat.Controls.Add(this.TextAttentionLeaving);
-            this.PanelLeavingChat.Location = new System.Drawing.Point(246, 224);
+            this.PanelLeavingChat.Location = new System.Drawing.Point(246, 443);
             this.PanelLeavingChat.Name = "PanelLeavingChat";
             this.PanelLeavingChat.Size = new System.Drawing.Size(394, 172);
             this.PanelLeavingChat.TabIndex = 28;
@@ -1487,13 +1491,13 @@ namespace WindowsFormsClient
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(886, 506);
+            this.Controls.Add(this.panel_registration);
             this.Controls.Add(this.panelCreateChat);
             this.Controls.Add(this.PanelLeavingChat);
             this.Controls.Add(this.panel_invite);
             this.Controls.Add(this.PanelChatMembers);
             this.Controls.Add(this.PictureTriangle);
             this.Controls.Add(this.chatsLB);
-            this.Controls.Add(this.panel_registration);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.Minimize_Butt);
             this.Controls.Add(this.CloseWindowButton);
