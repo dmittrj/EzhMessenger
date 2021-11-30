@@ -115,14 +115,14 @@ namespace WindowsFormsClient
             this.notify_CMP = new System.Windows.Forms.ToolStripMenuItem();
             this.BlockUser_CMP = new System.Windows.Forms.ToolStripMenuItem();
             this.AwayUser_CMP = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
+            this.MembSep1 = new System.Windows.Forms.ToolStripSeparator();
             this.MakeAdmin_CMP = new System.Windows.Forms.ToolStripMenuItem();
             this.DemoteAdmin_CMP = new System.Windows.Forms.ToolStripMenuItem();
             this.AdminToModer_CMP = new System.Windows.Forms.ToolStripMenuItem();
             this.AdminToMemb_CMP = new System.Windows.Forms.ToolStripMenuItem();
             this.MakeModer_CMP = new System.Windows.Forms.ToolStripMenuItem();
             this.DemoteModer_CMP = new System.Windows.Forms.ToolStripMenuItem();
-            this.статьМодераторомToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
+            this.MembSep2 = new System.Windows.Forms.ToolStripSeparator();
             this.BecomeAdmin_CMP = new System.Windows.Forms.ToolStripMenuItem();
             this.BecomeModer_CMP = new System.Windows.Forms.ToolStripMenuItem();
             this.BecomeMemb_CMP = new System.Windows.Forms.ToolStripMenuItem();
@@ -1091,12 +1091,12 @@ namespace WindowsFormsClient
             this.notify_CMP,
             this.BlockUser_CMP,
             this.AwayUser_CMP,
-            this.toolStripMenuItem4,
+            this.MembSep1,
             this.MakeAdmin_CMP,
             this.DemoteAdmin_CMP,
             this.MakeModer_CMP,
             this.DemoteModer_CMP,
-            this.статьМодераторомToolStripMenuItem,
+            this.MembSep2,
             this.BecomeAdmin_CMP,
             this.BecomeModer_CMP,
             this.BecomeMemb_CMP});
@@ -1146,10 +1146,10 @@ namespace WindowsFormsClient
             this.AwayUser_CMP.Text = "Изгнать";
             this.AwayUser_CMP.Click += new System.EventHandler(this.AwayUser_CMP_Click);
             // 
-            // toolStripMenuItem4
+            // MembSep1
             // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(235, 6);
+            this.MembSep1.Name = "MembSep1";
+            this.MembSep1.Size = new System.Drawing.Size(235, 6);
             // 
             // MakeAdmin_CMP
             // 
@@ -1195,10 +1195,10 @@ namespace WindowsFormsClient
             this.DemoteModer_CMP.Text = "Разжаловать модератора";
             this.DemoteModer_CMP.Click += new System.EventHandler(this.DemoteModer_CMP_Click);
             // 
-            // статьМодераторомToolStripMenuItem
+            // MembSep2
             // 
-            this.статьМодераторомToolStripMenuItem.Name = "статьМодераторомToolStripMenuItem";
-            this.статьМодераторомToolStripMenuItem.Size = new System.Drawing.Size(235, 6);
+            this.MembSep2.Name = "MembSep2";
+            this.MembSep2.Size = new System.Drawing.Size(235, 6);
             // 
             // BecomeAdmin_CMP
             // 
@@ -1630,14 +1630,14 @@ namespace WindowsFormsClient
         private System.Windows.Forms.ToolStripMenuItem notify_CMP;
         private System.Windows.Forms.ToolStripMenuItem BlockUser_CMP;
         private System.Windows.Forms.ToolStripMenuItem AwayUser_CMP;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripSeparator MembSep1;
         private System.Windows.Forms.ToolStripMenuItem MakeAdmin_CMP;
         private System.Windows.Forms.ToolStripMenuItem DemoteAdmin_CMP;
         private System.Windows.Forms.ToolStripMenuItem AdminToModer_CMP;
         private System.Windows.Forms.ToolStripMenuItem AdminToMemb_CMP;
         private System.Windows.Forms.ToolStripMenuItem MakeModer_CMP;
         private System.Windows.Forms.ToolStripMenuItem DemoteModer_CMP;
-        private System.Windows.Forms.ToolStripSeparator статьМодераторомToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator MembSep2;
         private System.Windows.Forms.ToolStripMenuItem BecomeAdmin_CMP;
         private System.Windows.Forms.ToolStripMenuItem BecomeModer_CMP;
         private System.Windows.Forms.ToolStripMenuItem BecomeMemb_CMP;

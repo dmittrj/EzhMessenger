@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -17,8 +19,40 @@ namespace ASPServer.Controllers
         static int lastChat = 1;
         static List<Member> flins = new List<Member>() { new Member("TheMainHedgehog", 2, true) };
         static List<Chat> ListOfChats = new List<Chat>() { new Chat(0, "Общий ёжечат", flins, false) };
-        static List<Message> ListOfMessages = new List<Message>();
+        //static List<Message> ListOfMessages = new List<Message>();
         static List<User> ListOfUsers = new List<User>();
+
+        public MessangerController()
+        {
+            try
+            {
+                ServInfo dsp = new ServInfo();
+                FileStream fs = new FileStream("Info.data", FileMode.Open);
+                BinaryFormatter bf = new BinaryFormatter();
+                BinaryReader reader = new BinaryReader(fs);
+                string a = reader.ReadString();
+                dsp = JsonConvert.DeserializeObject<ServInfo>(a);
+                lastChat = dsp.LastChat;
+                ListOfChats = dsp.Chats;
+                ListOfUsers = dsp.Users;
+                Console.WriteLine("Сервер восстановил данные с момента последнего закрытия");
+                fs.Close();
+            } catch
+            {
+
+            }
+
+        }
+
+        private static void SaveMe()
+        {
+            ServInfo sp = new ServInfo(ListOfUsers, ListOfChats, lastChat);
+            FileStream fs = new FileStream("Info.data", FileMode.Create);
+            //BinaryFormatter bf = new BinaryFormatter();
+            BinaryWriter writer = new BinaryWriter(fs);
+            writer.Write(JsonConvert.SerializeObject(sp));
+            fs.Close();
+        }
 
         //Запрошено сообщение из чата
         [HttpGet("get/message/{idC}/{idM}")]
@@ -100,7 +134,7 @@ namespace ASPServer.Controllers
                     break;
                 }
             }
-            //OutputString = JsonConvert.SerializeObject(ListOfChats[id]);
+            SaveMe();
             return OutputString;
         }
 
@@ -132,6 +166,7 @@ namespace ASPServer.Controllers
                 Console.WriteLine("Пользователь удалён из списка участников чата");
             }
             OutputString = "deleted";
+            SaveMe();
             return OutputString;
         }
 
@@ -163,6 +198,7 @@ namespace ASPServer.Controllers
             ListOfUsers.Add(user);
             ListOfChats[0].ChatMmbrs.Add(new Member(user.Nickname, 0, false));
             Console.WriteLine("Зарегистрирован");
+            SaveMe();
             return "ok";
         }
 
@@ -175,7 +211,7 @@ namespace ASPServer.Controllers
             {
                 return "Err400";
             }
-            int req = -1;
+            //int req = -1;
             int i;
             Console.WriteLine(String.Format("Пользователь, логин: {0}, пароль: {1}, пытается войти", lgp.Login, lgp.HashPass));
             for (i = 0; i < ListOfUsers.Count; i++)
@@ -194,7 +230,8 @@ namespace ASPServer.Controllers
                     }
                 }
             }
-            char toSend;
+            //char toSend;
+            SaveMe();
             return "ErrLog";
         }
 
@@ -222,6 +259,7 @@ namespace ASPServer.Controllers
                     }
                 }
             }
+            SaveMe();
             return new OkResult();
         }
 
@@ -249,6 +287,7 @@ namespace ASPServer.Controllers
                     }
                 }
             }
+            SaveMe();
             return new OkResult();
         }
 
@@ -290,6 +329,7 @@ namespace ASPServer.Controllers
             for (int j = 0; j < ListOfUsers.Count; j++)
                 if (ListOfUsers[j].CompareName(ev.E_Object))
                     ListOfUsers[j].Chats.Add(-1);
+            SaveMe();
             return new OkResult();
         }
 
@@ -307,6 +347,7 @@ namespace ASPServer.Controllers
             }
             ListOfChats[idChat].ChatMsgs.Add(msg);
             Console.WriteLine(String.Format("Всего сообщений в чате № {2}: {0} Посланное сообщение: {1}", ListOfChats[idChat].ChatMsgs.Count, msg, idChat));
+            SaveMe();
             return new OkResult();
         }
 

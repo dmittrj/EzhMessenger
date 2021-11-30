@@ -628,6 +628,21 @@ namespace WindowsFormsClient
                 if (myChats[chatsLB.SelectedIndex].ChatMmbrs[i].Nick == YourName) break;
             }
 
+            if (MemberName_CMP.Text == "@" + YourName)
+            {
+                MemberName_CMP.Text += " (я)";
+                notify_CMP.Visible = false;
+                BlockUser_CMP.Visible = false;
+                AwayUser_CMP.Visible = false;
+                MakeAdmin_CMP.Visible = false;
+                DemoteAdmin_CMP.Visible = false;
+                MakeModer_CMP.Visible = false;
+                DemoteModer_CMP.Visible = false;
+                BecomeAdmin_CMP.Visible = false;
+                BecomeModer_CMP.Visible = false;
+                BecomeMemb_CMP.Visible = false;
+            } else
+
             switch (myChats[chatsLB.SelectedIndex].ChatMmbrs[i].Role)
             {
                 case 0:
