@@ -1184,6 +1184,11 @@ namespace WindowsFormsClient
             timerChats.Start();
         }
 
+        private void NavigationBar_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void NavigationBar_MouseDown(object sender, MouseEventArgs e)
         {
             wx = Cursor.Position.X;

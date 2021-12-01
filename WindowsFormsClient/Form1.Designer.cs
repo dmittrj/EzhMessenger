@@ -707,7 +707,7 @@ namespace WindowsFormsClient
             this.panelCreateChat.Controls.Add(this.label2);
             this.panelCreateChat.Controls.Add(this.ConfirmCreateChat_Butt);
             this.panelCreateChat.Controls.Add(this.SecretChat_CB);
-            this.panelCreateChat.Location = new System.Drawing.Point(268, 462);
+            this.panelCreateChat.Location = new System.Drawing.Point(268, 486);
             this.panelCreateChat.Name = "panelCreateChat";
             this.panelCreateChat.Size = new System.Drawing.Size(349, 246);
             this.panelCreateChat.TabIndex = 18;
@@ -1367,6 +1367,7 @@ namespace WindowsFormsClient
             this.NavigationBar.Size = new System.Drawing.Size(885, 28);
             this.NavigationBar.TabIndex = 23;
             this.NavigationBar.TabStop = false;
+            this.NavigationBar.Click += new System.EventHandler(this.NavigationBar_Click);
             this.NavigationBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.NavigationBar_MouseDown);
             this.NavigationBar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.NavigationBar_MouseMove);
             this.NavigationBar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.NavigationBar_MouseUp);
@@ -1521,9 +1522,9 @@ namespace WindowsFormsClient
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(886, 506);
+            this.Controls.Add(this.panelCreateChat);
             this.Controls.Add(this.Panel_NoConnection);
             this.Controls.Add(this.panel_registration);
-            this.Controls.Add(this.panelCreateChat);
             this.Controls.Add(this.PanelLeavingChat);
             this.Controls.Add(this.panel_invite);
             this.Controls.Add(this.PanelChatMembers);
