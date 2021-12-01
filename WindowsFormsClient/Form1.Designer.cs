@@ -1539,11 +1539,9 @@ namespace WindowsFormsClient
             this.Invites_LB.ForeColor = System.Drawing.Color.White;
             this.Invites_LB.FormattingEnabled = true;
             this.Invites_LB.ItemHeight = 23;
-            this.Invites_LB.Items.AddRange(new object[] {
-            "Общий чат"});
-            this.Invites_LB.Location = new System.Drawing.Point(14, 413);
+            this.Invites_LB.Location = new System.Drawing.Point(14, 451);
             this.Invites_LB.Name = "Invites_LB";
-            this.Invites_LB.Size = new System.Drawing.Size(208, 48);
+            this.Invites_LB.Size = new System.Drawing.Size(208, 2);
             this.Invites_LB.TabIndex = 31;
             this.Invites_LB.Visible = false;
             // 

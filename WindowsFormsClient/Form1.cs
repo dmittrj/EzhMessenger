@@ -22,6 +22,7 @@ namespace WindowsFormsClient
         private static int shift = 0;
         private static string YourName = "";
         private List<Chat> myChats = new List<Chat>();
+        private List<Chat> InvitesChats = new List<Chat>();
         //private List<DateTime> dates = new List<DateTime>();
         int wx = 0, wy = 0; bool cursh = false;
 
@@ -69,6 +70,29 @@ namespace WindowsFormsClient
             }
             obj.Height = h_finish;
             obj.Location = new Point(obj.Location.X, y_finish);
+        }
+
+        public async void Unfold()
+        {
+            //Изменить размер списка
+            int p;
+            if (Invites_LB.Height > Invites_LB.Items.Count * Invites_LB.ItemHeight)
+            {
+                p = 1;
+            } else if (Invites_LB.Height < Invites_LB.Items.Count * Invites_LB.ItemHeight)
+            {
+                p = -1;
+            } else p = 0;
+            for (int ani_h = chatsLB.Height; Math.Abs(370 - ani_h - Label_Invitations.Height - 8 - Invites_LB.Items.Count * Invites_LB.ItemHeight) > 3; ani_h += p, await Task.Delay(100))
+            {
+                chatsLB.Height = ani_h;
+                Label_Invitations.Location = new Point(Label_Invitations.Location.X, chatsLB.Location.Y + chatsLB.Height + 8);
+                Invites_LB.Height = 370 - chatsLB.Height - Label_Invitations.Height - 8 - Invites_LB.Items.Count * Invites_LB.ItemHeight;
+                Invites_LB.Location = new Point(Invites_LB.Location.X, Label_Invitations.Location.Y + Label_Invitations.Height);
+            }
+            Label_Invitations.Visible = true;
+            Invites_LB.Visible = true;
+            Invites_LB.Height = (Invites_LB.Items.Count + 1) * Invites_LB.ItemHeight;
         }
 
         public async void Fold(Panel obj, int y_start, int y_finish, int h_start, int h_finish, int speed, bool freeze)
@@ -799,7 +823,7 @@ namespace WindowsFormsClient
             {
                 string coolstr = tempMemb;
                 if (tempMemb != "") if (tempMemb[0] == '@') coolstr = tempMemb.Substring(1, tempMemb.Length - 1);
-                tmpMember.Add(new Member(coolstr, 3, false));
+                tmpMember.Add(new Member(coolstr, 0, false));
             }
             Chat tmpChat = new Chat(0, ChatNameTB.Text, tmpMember, SecretChat_CB.Checked);
             API.CreateNewChat(tmpChat);
@@ -872,13 +896,32 @@ namespace WindowsFormsClient
                     chatsLB.Items.Clear();
                     myChats.Clear();
                     MessageID.Clear();
+                    InvitesChats.Clear();
+                    Invites_LB.Items.Clear();
                     for (int i = 0; i < tmp.Count; i++)
                     {
                         Chat tmpChat = await API.GetAllAboutChat(tmp[i]);
                         if (tmpChat.IdChat == -1) continue;
-                        myChats.Add(tmpChat);
-                        MessageID.Add(tmpChat.ChatMsgs.Count);
-                        chatsLB.Items.Add(tmpChat.ChatName);
+                        for (int j = 0; j < tmpChat.ChatMmbrs.Count; j++)
+                            if (tmpChat.ChatMmbrs[j].Nick == YourName)
+                                if (tmpChat.ChatMmbrs[j].Role == 3)
+                                {
+                                    InvitesChats.Add(tmpChat);
+                                    Invites_LB.Items.Add(tmpChat.ChatName);
+                                    break;
+                                } 
+                                else {
+                                    myChats.Add(tmpChat);
+                                    MessageID.Add(tmpChat.ChatMsgs.Count);
+                                    chatsLB.Items.Add(tmpChat.ChatName);
+                                    break;
+                                }
+                    }
+                    if (InvitesChats.Count == 0)
+                    {
+
+                    } else {
+                        //Unfold();
                     }
                 }
             }
