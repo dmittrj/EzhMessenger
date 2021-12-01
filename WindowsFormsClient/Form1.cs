@@ -799,7 +799,7 @@ namespace WindowsFormsClient
             {
                 string coolstr = tempMemb;
                 if (tempMemb != "") if (tempMemb[0] == '@') coolstr = tempMemb.Substring(1, tempMemb.Length - 1);
-                tmpMember.Add(new Member(coolstr, 0, false));
+                tmpMember.Add(new Member(coolstr, 3, false));
             }
             Chat tmpChat = new Chat(0, ChatNameTB.Text, tmpMember, SecretChat_CB.Checked);
             API.CreateNewChat(tmpChat);

@@ -149,6 +149,8 @@ namespace WindowsFormsClient
             this.TextAttentionLeaving = new System.Windows.Forms.Label();
             this.Panel_NoConnection = new System.Windows.Forms.Panel();
             this.Button_repeatConnection = new System.Windows.Forms.Label();
+            this.Label_Invitations = new System.Windows.Forms.Label();
+            this.Invites_LB = new System.Windows.Forms.ListBox();
             this.ChatListCM.SuspendLayout();
             this.panel_messages.SuspendLayout();
             this.panel_emptyChat.SuspendLayout();
@@ -707,7 +709,7 @@ namespace WindowsFormsClient
             this.panelCreateChat.Controls.Add(this.label2);
             this.panelCreateChat.Controls.Add(this.ConfirmCreateChat_Butt);
             this.panelCreateChat.Controls.Add(this.SecretChat_CB);
-            this.panelCreateChat.Location = new System.Drawing.Point(268, 486);
+            this.panelCreateChat.Location = new System.Drawing.Point(268, 249);
             this.panelCreateChat.Name = "panelCreateChat";
             this.panelCreateChat.Size = new System.Drawing.Size(349, 246);
             this.panelCreateChat.TabIndex = 18;
@@ -1515,6 +1517,36 @@ namespace WindowsFormsClient
             this.Button_repeatConnection.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.Button_repeatConnection.Click += new System.EventHandler(this.Button_repeatConnection_Click);
             // 
+            // Label_Invitations
+            // 
+            this.Label_Invitations.BackColor = System.Drawing.Color.Transparent;
+            this.Label_Invitations.Font = new System.Drawing.Font("Segoe UI Semibold", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Label_Invitations.ForeColor = System.Drawing.Color.White;
+            this.Label_Invitations.Location = new System.Drawing.Point(7, 365);
+            this.Label_Invitations.Name = "Label_Invitations";
+            this.Label_Invitations.Size = new System.Drawing.Size(213, 40);
+            this.Label_Invitations.TabIndex = 30;
+            this.Label_Invitations.Text = "Приглашения";
+            this.Label_Invitations.Visible = false;
+            // 
+            // Invites_LB
+            // 
+            this.Invites_LB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
+            this.Invites_LB.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Invites_LB.ContextMenuStrip = this.ChatListCM;
+            this.Invites_LB.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Invites_LB.Font = new System.Drawing.Font("Segoe UI Semibold", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Invites_LB.ForeColor = System.Drawing.Color.White;
+            this.Invites_LB.FormattingEnabled = true;
+            this.Invites_LB.ItemHeight = 23;
+            this.Invites_LB.Items.AddRange(new object[] {
+            "Общий чат"});
+            this.Invites_LB.Location = new System.Drawing.Point(14, 413);
+            this.Invites_LB.Name = "Invites_LB";
+            this.Invites_LB.Size = new System.Drawing.Size(208, 48);
+            this.Invites_LB.TabIndex = 31;
+            this.Invites_LB.Visible = false;
+            // 
             // FormMessanger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1522,6 +1554,8 @@ namespace WindowsFormsClient
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(886, 506);
+            this.Controls.Add(this.Invites_LB);
+            this.Controls.Add(this.Label_Invitations);
             this.Controls.Add(this.panelCreateChat);
             this.Controls.Add(this.Panel_NoConnection);
             this.Controls.Add(this.panel_registration);
@@ -1711,6 +1745,8 @@ namespace WindowsFormsClient
         private System.Windows.Forms.Label LeaveChat_Butt;
         private System.Windows.Forms.Panel Panel_NoConnection;
         private System.Windows.Forms.Label Button_repeatConnection;
+        private System.Windows.Forms.Label Label_Invitations;
+        private System.Windows.Forms.ListBox Invites_LB;
     }
 }
 
