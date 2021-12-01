@@ -66,14 +66,14 @@ namespace WindowsFormsClient
             this.textMsg_3 = new System.Windows.Forms.Label();
             this.nameMsg_3 = new System.Windows.Forms.Label();
             this.panelMsg_2 = new System.Windows.Forms.Panel();
+            this.textMsg_2 = new System.Windows.Forms.Label();
             this.timeMsg_2 = new System.Windows.Forms.Label();
             this.notifyMsg_2 = new System.Windows.Forms.Label();
-            this.textMsg_2 = new System.Windows.Forms.Label();
             this.nameMsg_2 = new System.Windows.Forms.Label();
             this.panelMsg_1 = new System.Windows.Forms.Panel();
+            this.textMsg_1 = new System.Windows.Forms.Label();
             this.timeMsg_1 = new System.Windows.Forms.Label();
             this.notifyMsg_1 = new System.Windows.Forms.Label();
-            this.textMsg_1 = new System.Windows.Forms.Label();
             this.nameMsg_1 = new System.Windows.Forms.Label();
             this.Error_label = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -147,6 +147,8 @@ namespace WindowsFormsClient
             this.LeaveChat_Butt = new System.Windows.Forms.Label();
             this.StayChat_Butt = new System.Windows.Forms.Label();
             this.TextAttentionLeaving = new System.Windows.Forms.Label();
+            this.Panel_NoConnection = new System.Windows.Forms.Panel();
+            this.Button_repeatConnection = new System.Windows.Forms.Label();
             this.ChatListCM.SuspendLayout();
             this.panel_messages.SuspendLayout();
             this.panel_emptyChat.SuspendLayout();
@@ -168,6 +170,7 @@ namespace WindowsFormsClient
             ((System.ComponentModel.ISupportInitialize)(this.NavigationBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureTriangle)).BeginInit();
             this.PanelLeavingChat.SuspendLayout();
+            this.Panel_NoConnection.SuspendLayout();
             this.SuspendLayout();
             // 
             // MessageTB
@@ -558,6 +561,19 @@ namespace WindowsFormsClient
             this.panelMsg_2.TabIndex = 1;
             this.panelMsg_2.Visible = false;
             // 
+            // textMsg_2
+            // 
+            this.textMsg_2.AutoSize = true;
+            this.textMsg_2.BackColor = System.Drawing.Color.Transparent;
+            this.textMsg_2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textMsg_2.ForeColor = System.Drawing.Color.DarkGray;
+            this.textMsg_2.Location = new System.Drawing.Point(18, 38);
+            this.textMsg_2.MaximumSize = new System.Drawing.Size(300, 0);
+            this.textMsg_2.Name = "textMsg_2";
+            this.textMsg_2.Size = new System.Drawing.Size(290, 23);
+            this.textMsg_2.TabIndex = 15;
+            this.textMsg_2.Text = "Hello, hello again. I am writing you...";
+            // 
             // timeMsg_2
             // 
             this.timeMsg_2.BackColor = System.Drawing.Color.Transparent;
@@ -581,19 +597,6 @@ namespace WindowsFormsClient
             this.notifyMsg_2.Size = new System.Drawing.Size(94, 21);
             this.notifyMsg_2.TabIndex = 16;
             this.notifyMsg_2.Text = "@everyone";
-            // 
-            // textMsg_2
-            // 
-            this.textMsg_2.AutoSize = true;
-            this.textMsg_2.BackColor = System.Drawing.Color.Transparent;
-            this.textMsg_2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textMsg_2.ForeColor = System.Drawing.Color.DarkGray;
-            this.textMsg_2.Location = new System.Drawing.Point(18, 38);
-            this.textMsg_2.MaximumSize = new System.Drawing.Size(300, 0);
-            this.textMsg_2.Name = "textMsg_2";
-            this.textMsg_2.Size = new System.Drawing.Size(290, 23);
-            this.textMsg_2.TabIndex = 15;
-            this.textMsg_2.Text = "Hello, hello again. I am writing you...";
             // 
             // nameMsg_2
             // 
@@ -620,6 +623,19 @@ namespace WindowsFormsClient
             this.panelMsg_1.TabIndex = 0;
             this.panelMsg_1.Visible = false;
             // 
+            // textMsg_1
+            // 
+            this.textMsg_1.AutoSize = true;
+            this.textMsg_1.BackColor = System.Drawing.Color.Transparent;
+            this.textMsg_1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textMsg_1.ForeColor = System.Drawing.Color.DarkGray;
+            this.textMsg_1.Location = new System.Drawing.Point(18, 38);
+            this.textMsg_1.MaximumSize = new System.Drawing.Size(300, 0);
+            this.textMsg_1.Name = "textMsg_1";
+            this.textMsg_1.Size = new System.Drawing.Size(290, 23);
+            this.textMsg_1.TabIndex = 15;
+            this.textMsg_1.Text = "Hello, hello again. I am writing you...";
+            // 
             // timeMsg_1
             // 
             this.timeMsg_1.BackColor = System.Drawing.Color.Transparent;
@@ -644,19 +660,6 @@ namespace WindowsFormsClient
             this.notifyMsg_1.TabIndex = 16;
             this.notifyMsg_1.Text = "@everyone";
             // 
-            // textMsg_1
-            // 
-            this.textMsg_1.AutoSize = true;
-            this.textMsg_1.BackColor = System.Drawing.Color.Transparent;
-            this.textMsg_1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textMsg_1.ForeColor = System.Drawing.Color.DarkGray;
-            this.textMsg_1.Location = new System.Drawing.Point(18, 38);
-            this.textMsg_1.MaximumSize = new System.Drawing.Size(300, 0);
-            this.textMsg_1.Name = "textMsg_1";
-            this.textMsg_1.Size = new System.Drawing.Size(290, 23);
-            this.textMsg_1.TabIndex = 15;
-            this.textMsg_1.Text = "Hello, hello again. I am writing you...";
-            // 
             // nameMsg_1
             // 
             this.nameMsg_1.AutoSize = true;
@@ -674,13 +677,12 @@ namespace WindowsFormsClient
             this.Error_label.BackColor = System.Drawing.Color.Transparent;
             this.Error_label.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Error_label.ForeColor = System.Drawing.Color.LightCoral;
-            this.Error_label.Location = new System.Drawing.Point(0, 30);
+            this.Error_label.Location = new System.Drawing.Point(-1, 6);
             this.Error_label.Name = "Error_label";
-            this.Error_label.Size = new System.Drawing.Size(885, 28);
+            this.Error_label.Size = new System.Drawing.Size(198, 32);
             this.Error_label.TabIndex = 17;
             this.Error_label.Text = "Нет ёжесоединения";
             this.Error_label.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Error_label.Visible = false;
             // 
             // CreateChat_butt
             // 
@@ -1484,6 +1486,34 @@ namespace WindowsFormsClient
             this.TextAttentionLeaving.Text = "Вы действительно хотите покинуть чат?\r\nВернуться в него вы сможете только по приг" +
     "лашению";
             // 
+            // Panel_NoConnection
+            // 
+            this.Panel_NoConnection.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
+            this.Panel_NoConnection.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Panel_NoConnection.Controls.Add(this.Button_repeatConnection);
+            this.Panel_NoConnection.Controls.Add(this.Error_label);
+            this.Panel_NoConnection.Location = new System.Drawing.Point(682, 34);
+            this.Panel_NoConnection.Name = "Panel_NoConnection";
+            this.Panel_NoConnection.Size = new System.Drawing.Size(198, 64);
+            this.Panel_NoConnection.TabIndex = 29;
+            this.Panel_NoConnection.Visible = false;
+            // 
+            // Button_repeatConnection
+            // 
+            this.Button_repeatConnection.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(14)))), ((int)(((byte)(14)))), ((int)(((byte)(14)))));
+            this.Button_repeatConnection.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Button_repeatConnection.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_repeatConnection.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Button_repeatConnection.ForeColor = System.Drawing.Color.White;
+            this.Button_repeatConnection.Location = new System.Drawing.Point(53, 34);
+            this.Button_repeatConnection.Name = "Button_repeatConnection";
+            this.Button_repeatConnection.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.Button_repeatConnection.Size = new System.Drawing.Size(89, 24);
+            this.Button_repeatConnection.TabIndex = 22;
+            this.Button_repeatConnection.Text = "Повторить";
+            this.Button_repeatConnection.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Button_repeatConnection.Click += new System.EventHandler(this.Button_repeatConnection_Click);
+            // 
             // FormMessanger
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1491,6 +1521,7 @@ namespace WindowsFormsClient
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(35)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(886, 506);
+            this.Controls.Add(this.Panel_NoConnection);
             this.Controls.Add(this.panel_registration);
             this.Controls.Add(this.panelCreateChat);
             this.Controls.Add(this.PanelLeavingChat);
@@ -1512,7 +1543,6 @@ namespace WindowsFormsClient
             this.Controls.Add(this.head_lbl);
             this.Controls.Add(this.MessageTB);
             this.Controls.Add(this.panel_messages);
-            this.Controls.Add(this.Error_label);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormMessanger";
@@ -1551,6 +1581,7 @@ namespace WindowsFormsClient
             ((System.ComponentModel.ISupportInitialize)(this.NavigationBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureTriangle)).EndInit();
             this.PanelLeavingChat.ResumeLayout(false);
+            this.Panel_NoConnection.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1677,6 +1708,8 @@ namespace WindowsFormsClient
         private System.Windows.Forms.Label StayChat_Butt;
         private System.Windows.Forms.Label TextAttentionLeaving;
         private System.Windows.Forms.Label LeaveChat_Butt;
+        private System.Windows.Forms.Panel Panel_NoConnection;
+        private System.Windows.Forms.Label Button_repeatConnection;
     }
 }
 

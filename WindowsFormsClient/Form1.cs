@@ -25,6 +25,16 @@ namespace WindowsFormsClient
         //private List<DateTime> dates = new List<DateTime>();
         int wx = 0, wy = 0; bool cursh = false;
 
+        /// <summary>
+        /// This function creates a "microwindow" that has been repesented with Panel
+        /// </summary>
+        /// <param name="obj">The panel to be unfold</param>
+        /// <param name="y_start">Y start position</param>
+        /// <param name="y_finish">Y finish position</param>
+        /// <param name="h_start">Initial height</param>
+        /// <param name="h_finish">Final height</param>
+        /// <param name="speed">Relative speed</param>
+        /// <param name="freeze">If true, all the other elements of window will be unenabled</param>
         public async void Unfold(Panel obj, int y_start, int y_finish, int h_start, int h_finish, int speed, bool freeze)
         {
             int y_speed = (y_finish - y_start) / speed;
@@ -180,6 +190,7 @@ namespace WindowsFormsClient
             var getMessage = new Func<Task>(async () =>
             {
                 CourseMessenger.Message msg = await API.GetMessageChatHTTPAsync(myChats[chatsLB.SelectedIndex].IdChat, MessageID[chatsLB.SelectedIndex]);
+                
                 while (msg != null)
                 {
                     if (Regex.IsMatch(msg.MessageText, @"@everyone"))
@@ -194,6 +205,7 @@ namespace WindowsFormsClient
                     MessageID[chatsLB.SelectedIndex]++;
                     myChats[chatsLB.SelectedIndex].ChatMsgs.Add(msg);
                     msg = await API.GetMessageChatHTTPAsync(myChats[chatsLB.SelectedIndex].IdChat, MessageID[chatsLB.SelectedIndex]);
+                    
                 }
             });
             getMessage.Invoke();
@@ -492,13 +504,30 @@ namespace WindowsFormsClient
                     //Успешно вошли в аккаунт
                     YourName = lp.Login;
                     chatsLB.Items.Clear();
-                    List<int> tmp = API.GetChats(YourName , Error_label);
+                    List<int> tmp = API.GetChats(YourName);
+                    if (tmp.Count == 0)
+                    {
+                        Unfold(Panel_NoConnection, -50, 36, 34, 64, 15, true);
+                        timerChats.Stop();
+                        timer1.Stop();
+                    } else if (Panel_NoConnection.Visible)
+                    {
+                        Fold(Panel_NoConnection, -50, 36, 34, 64, 15, true);
+                    }
+                    //if (tmp == null) { }
                     for (int i = 0; i < tmp.Count; i++)
                     {
-                        Chat tmpChat = await API.GetAllAboutChat(tmp[i]);
-                        myChats.Add(tmpChat);
-                        MessageID.Add(tmpChat.ChatMsgs.Count);
-                        chatsLB.Items.Add(tmpChat.ChatName);
+                        try
+                        {
+                            Chat tmpChat = await API.GetAllAboutChat(tmp[i]);
+                            myChats.Add(tmpChat);
+                            MessageID.Add(tmpChat.ChatMsgs.Count);
+                            chatsLB.Items.Add(tmpChat.ChatName);
+                        } catch
+                        {
+                            Unfold(Panel_NoConnection, -50, 36, 34, 64, 21, true);
+                        }
+                        
                     }
                     for (int ani_y = 36, ani_h = 200; ani_y > -50; ani_y -= 4, ani_h -= 6, await Task.Delay(1))
                     {
@@ -826,22 +855,40 @@ namespace WindowsFormsClient
 
         private async void timerChats_Tick(object sender, EventArgs e)
         {
-            
-            List<int> tmp = API.GetChats(YourName, Error_label);
-            if (tmp.Count != chatsLB.Items.Count)
+            try
             {
-                chatsLB.Items.Clear();
-                myChats.Clear();
-                MessageID.Clear();
-                for (int i = 0; i < tmp.Count; i++)
+                List<int> tmp = API.GetChats(YourName);
+                if (tmp.Count == 0) {
+                    Unfold(Panel_NoConnection, -50, 36, 34, 64, 15, true);
+                    timerChats.Stop();
+                    timer1.Stop();
+                }
+                else if (Panel_NoConnection.Visible)
                 {
-                    Chat tmpChat = await API.GetAllAboutChat(tmp[i]);
-                    if (tmpChat.IdChat == -1) continue;
-                    myChats.Add(tmpChat);
-                    MessageID.Add(tmpChat.ChatMsgs.Count);
-                    chatsLB.Items.Add(tmpChat.ChatName);
+                    Fold(Panel_NoConnection, -50, 36, 34, 64, 15, true);
+                }
+                if (tmp.Count != chatsLB.Items.Count)
+                {
+                    chatsLB.Items.Clear();
+                    myChats.Clear();
+                    MessageID.Clear();
+                    for (int i = 0; i < tmp.Count; i++)
+                    {
+                        Chat tmpChat = await API.GetAllAboutChat(tmp[i]);
+                        if (tmpChat.IdChat == -1) continue;
+                        myChats.Add(tmpChat);
+                        MessageID.Add(tmpChat.ChatMsgs.Count);
+                        chatsLB.Items.Add(tmpChat.ChatName);
+                    }
                 }
             }
+            catch
+            {
+                Unfold(Panel_NoConnection, -50, 36, 34, 64, 21, true);
+            }
+            
+            //if (tmp == null) { }
+            
         }
 
         private void LeaveChat_CMP_Click(object sender, EventArgs e)
@@ -1129,6 +1176,12 @@ namespace WindowsFormsClient
         {
             Event q = new Event(YourName, Members_LB.SelectedItem.ToString(), 4, true, DateTime.Now);
             await API.SendEvent(q, myChats[chatsLB.SelectedIndex].IdChat);
+        }
+
+        private void Button_repeatConnection_Click(object sender, EventArgs e)
+        {
+            timer1.Start();
+            timerChats.Start();
         }
 
         private void NavigationBar_MouseDown(object sender, MouseEventArgs e)

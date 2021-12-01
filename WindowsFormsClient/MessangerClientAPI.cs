@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsClient;
 
 namespace CourseMessenger
 {
@@ -57,15 +58,14 @@ namespace CourseMessenger
         }
 
         //Получить список чатов
-        public List<int> GetChats(string userName, Label label)
+        public List<int> GetChats(string userName)
         {
             string ServiceUrl = "http://localhost:5000";
             var client = new RestClient(ServiceUrl);
             var request = new RestRequest("/api/Messanger/get/chats/" + userName, Method.GET);
             IRestResponse<List<int>> Response = client.Execute<List<int>>(request);
             string ResponseContent;
-            if (Response.StatusCode == 0) { 
-                label.Visible = true;
+            if (Response.StatusCode == 0) {
                 return new List<int>();
             }
             else ResponseContent = Response.Content;
